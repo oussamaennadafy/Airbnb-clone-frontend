@@ -2,7 +2,7 @@ import Type from "../utilities/filter/Type";
 
 function Filter() {
   return (
-    <section className="flex items-center p-8 sticky top-[66px] bg-white pb-3">
+    <section className="flex items-center p-8 sticky top-[66px] bg-white pb-3 gap-6">
       <div className="flex items-center grow overflow-x-auto gap-14 scrollbar-hide">
         <Type
           name="Treanding"
@@ -89,7 +89,7 @@ function Filter() {
           img="https://a0.muscache.com/pictures/8e507f16-4943-4be9-b707-59bd38d56309.jpg"
         />
       </div>
-      <button className="flex items-center gap-2 px-4 py-3 border border-gray rounded-md">
+      <button className="flex items-center gap-2 px-4 py-3 border border-gray-300 rounded-xl">
         <svg
           viewBox="0 0 16 16"
           xmlns="http://www.w3.org/2000/svg"

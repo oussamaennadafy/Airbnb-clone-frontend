@@ -7,7 +7,7 @@ function Header() {
   return (
     <header className="flex items-center z-10 justify-between px-10 py-4 border-b border-gray-300 sticky top-0 bg-white">
       <Link to="/">
-        <Logo color="main" />
+        <Logo />
       </Link>
       <Search />
       <UserDetails />
