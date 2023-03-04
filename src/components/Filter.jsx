@@ -1,5 +1,8 @@
 import Type from "../utilities/filter/Type";
 import { useEffect, useState, useRef } from "react";
+import leftArrow from "../assets/left-arrow.svg";
+import filterIcon from "../assets/filter-icon.svg";
+import closeIcon from "../assets/close-icon.svg";
 
 function Filter() {
   const [scroll, SetScroll] = useState(false);
@@ -31,13 +34,13 @@ function Filter() {
       }`}
     >
       <div className="flex items-center grow overflow-x-auto gap-14 scrollbar-hide h-full">
+        <img src={leftArrow} alt="left arrow" className="w-3" />
         <Type
           name="Treanding"
           active={true}
           img="https://a0.muscache.com/pictures/3726d94b-534a-42b8-bca0-a0304d912260.jpg"
         />
         <Type
-          active={false}
           name="Riads"
           img="https://a0.muscache.com/pictures/7ff6e4a1-51b4-4671-bc9a-6f523f196c61.jpg"
         />
@@ -118,29 +121,12 @@ function Filter() {
           img="https://a0.muscache.com/pictures/8e507f16-4943-4be9-b707-59bd38d56309.jpg"
         />
       </div>
-      <button className="flex items-center gap-2 px-4 py-3 border border-gray-300 rounded-xl">
-        <svg
-          viewBox="0 0 16 16"
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-[14px] w-[14px] fill-black"
-          aria-hidden="true"
-          role="presentation"
-          focusable="false"
-        >
-          <path d="M5 8c1.306 0 2.418.835 2.83 2H14v2H7.829A3.001 3.001 0 1 1 5 8zm0 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm6-8a3 3 0 1 1-2.829 4H2V4h6.17A3.001 3.001 0 0 1 11 2zm0 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
-        </svg>
+      <button className="flex items-center gap-2 min-w-max px-4 py-3 border border-gray-300 rounded-xl">
+        <img src={filterIcon} alt="filter icon" className="h-3" />
         <span>Filter</span>
       </button>
       <button onClick={hideFilter} className={scroll ? "block" : "hidden"}>
-        <svg
-          width="24"
-          height="24"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          fill="currentColor"
-        >
-          <path d="M13.41,12l4.3-4.29a1,1,0,1,0-1.42-1.42L12,10.59,7.71,6.29A1,1,0,0,0,6.29,7.71L10.59,12l-4.3,4.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L12,13.41l4.29,4.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z"></path>
-        </svg>
+        <img className="w-9" src={closeIcon} alt="close icon" />
       </button>
     </section>
   );
