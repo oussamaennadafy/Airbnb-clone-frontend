@@ -5,7 +5,7 @@ import Main from "../components/Main";
 
 function Home() {
   return (
-    <div className="w-screen font-medium">
+    <div className="max-w-screen font-medium">
       <AboveHeader />
       <Header />
       <Filter />

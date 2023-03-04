@@ -3,7 +3,7 @@ function Search() {
     <div className="border ml-48 border-gray-300 rounded-full shadow-md flex items-center px-2 py-2 text-sm">
       <button className="pr-3 pl-4 border-r border-gray-300">Anywhere</button>
       <button className="px-3 border-r border-gray-300">Any Week</button>
-      <button className="px-3 text-gray-500">Add guests</button>
+      <button className="px-3 text-gray-500 font-normal">Add guests</button>
       <button className="rounded-full w-8 h-8 flex items-center justify-center bg-main">
         <svg
           viewBox="0 0 32 32"
