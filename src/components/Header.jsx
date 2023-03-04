@@ -5,9 +5,9 @@ import UserDetails from "../utilities/header/UserDetails";
 
 function Header() {
   return (
-    <header className="flex items-center justify-between px-10 py-4 border-b border-gray-300">
+    <header className="flex items-center justify-between px-10 py-4 border-b border-gray-300 sticky top-0 bg-white">
       <Link to="/">
-        <Logo color="#ff385c" />
+        <Logo color="main" />
       </Link>
       <Search />
       <UserDetails />
