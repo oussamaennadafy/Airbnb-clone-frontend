@@ -1,8 +1,31 @@
 import Type from "../utilities/filter/Type";
+import { useEffect, useState } from "react";
 
 function Filter() {
+  const [shadow, SetShadow] = useState(false);
+
+  useEffect(() => {
+    const HomeObserverOptions = {
+      root: null,
+      threshold: 0.1,
+    };
+    const HomeObserverFunction = (entries) => {
+      const entry = entries[0];
+      console.log("set state");
+      SetShadow(!entry.isIntersecting);
+    };
+    new IntersectionObserver(HomeObserverFunction, HomeObserverOptions).observe(
+      document.querySelector("#aboveHeader")
+    );
+  }, []);
+
   return (
-    <section className="flex items-center p-8 sticky top-[66px] bg-white pb-3 gap-6">
+    <section
+      id="Filter"
+      className={`flex items-center p-8 sticky top-[66px] bg-white pb-3 gap-6 mb-3 ${
+        shadow && "shadow-md"
+      }`}
+    >
       <div className="flex items-center grow overflow-x-auto gap-14 scrollbar-hide">
         <Type
           name="Treanding"
