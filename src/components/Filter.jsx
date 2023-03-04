@@ -1,8 +1,9 @@
 import Type from "../utilities/filter/Type";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 function Filter() {
-  const [shadow, SetShadow] = useState(false);
+  const [scroll, SetScroll] = useState(false);
+  const filterRef = useRef();
 
   useEffect(() => {
     const HomeObserverOptions = {
@@ -11,18 +12,22 @@ function Filter() {
     };
     const HomeObserverFunction = (entries) => {
       const entry = entries[0];
-      SetShadow(!entry.isIntersecting);
+      SetScroll(!entry.isIntersecting);
     };
     new IntersectionObserver(HomeObserverFunction, HomeObserverOptions).observe(
       document.querySelector("#aboveHeader")
     );
   }, []);
 
+  const hideFilter = () => {
+    filterRef.current.classList.add("opacity-0", "-translate-y-full");
+  };
+
   return (
     <section
-      id="Filter"
-      className={`flex items-center px-8 pt-[14px] h-[86px] sticky top-[66px] bg-white gap-6 ${
-        shadow ? "shadow-lg" : ""
+      ref={filterRef}
+      className={`flex items-center transition-all px-8 pt-[14px] h-[86px] sticky top-[66px] bg-white gap-6 ${
+        scroll ? "shadow-lg" : ""
       }`}
     >
       <div className="flex items-center grow overflow-x-auto gap-14 scrollbar-hide h-full">
@@ -125,6 +130,17 @@ function Filter() {
           <path d="M5 8c1.306 0 2.418.835 2.83 2H14v2H7.829A3.001 3.001 0 1 1 5 8zm0 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm6-8a3 3 0 1 1-2.829 4H2V4h6.17A3.001 3.001 0 0 1 11 2zm0 2a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"></path>
         </svg>
         <span>Filter</span>
+      </button>
+      <button onClick={hideFilter} className={scroll ? "block" : "hidden"}>
+        <svg
+          width="24"
+          height="24"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+        >
+          <path d="M13.41,12l4.3-4.29a1,1,0,1,0-1.42-1.42L12,10.59,7.71,6.29A1,1,0,0,0,6.29,7.71L10.59,12l-4.3,4.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0L12,13.41l4.29,4.3a1,1,0,0,0,1.42,0,1,1,0,0,0,0-1.42Z"></path>
+        </svg>
       </button>
     </section>
   );
