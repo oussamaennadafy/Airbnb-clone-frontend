@@ -2,7 +2,7 @@ function UserDetails() {
   return (
     <div className="flex items-center justify-between">
       <a
-        className="py-3 px-5 hover:bg-gray-100 font-normal rounded-full"
+        className="py-3 px-5 hover:bg-gray-100 rounded-full"
         href=""
       >
         Airbnb your home

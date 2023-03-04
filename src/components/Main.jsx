@@ -1,3 +1,3 @@
 export default function Main() {
-  return <div className="h-screen -z-9">Main</div>;
+  return <div className="h-screen max-w-screen bg-gray-300">Main</div>;
 }

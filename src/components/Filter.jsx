@@ -2,8 +2,12 @@ import Type from "../utilities/filter/Type";
 
 function Filter() {
   return (
-    <section className="flex items-center p-8">
-      <div className="flex items-center grow overflow-x-auto gap-3">
+    <section className="flex items-center p-8 sticky top-[66px] bg-white pb-3">
+      <div className="flex items-center grow overflow-x-auto gap-14 scrollbar-hide">
+        <Type
+          name="Treanding"
+          img="https://a0.muscache.com/pictures/3726d94b-534a-42b8-bca0-a0304d912260.jpg"
+        />
         <Type
           name="Riads"
           img="https://a0.muscache.com/pictures/7ff6e4a1-51b4-4671-bc9a-6f523f196c61.jpg"
