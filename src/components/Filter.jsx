@@ -11,7 +11,6 @@ function Filter() {
     };
     const HomeObserverFunction = (entries) => {
       const entry = entries[0];
-      console.log("set state");
       SetShadow(!entry.isIntersecting);
     };
     new IntersectionObserver(HomeObserverFunction, HomeObserverOptions).observe(
@@ -22,16 +21,18 @@ function Filter() {
   return (
     <section
       id="Filter"
-      className={`flex items-center p-8 sticky top-[66px] bg-white pb-3 gap-6 mb-3 ${
-        shadow && "shadow-md"
+      className={`flex items-center px-8 pt-[14px] h-[86px] sticky top-[66px] bg-white gap-6 ${
+        shadow ? "shadow-lg" : ""
       }`}
     >
-      <div className="flex items-center grow overflow-x-auto gap-14 scrollbar-hide">
+      <div className="flex items-center grow overflow-x-auto gap-14 scrollbar-hide h-full">
         <Type
           name="Treanding"
+          active={true}
           img="https://a0.muscache.com/pictures/3726d94b-534a-42b8-bca0-a0304d912260.jpg"
         />
         <Type
+          active={false}
           name="Riads"
           img="https://a0.muscache.com/pictures/7ff6e4a1-51b4-4671-bc9a-6f523f196c61.jpg"
         />
