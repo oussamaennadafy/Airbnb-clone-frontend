@@ -7,20 +7,58 @@ import closeIcon from "../assets/close-icon.svg";
 
 function Filter() {
   const [scroll, SetScroll] = useState(false);
+  const [leftArrowVisibility, SetleftArrowVisibility] = useState(false);
+  const [rightArrowVisibility, SerightArrowVisibility] = useState(true);
   const filterRef = useRef();
+  const scrollRef = useRef();
+  const leftArrowRef = useRef();
+  const rightArrowRef = useRef();
 
   useEffect(() => {
-    const HomeObserverOptions = {
+    const homeObserverOptions = {
       root: null,
       threshold: 0.1,
     };
-    const HomeObserverFunction = (entries) => {
+    const homeObserverFunction = (entries) => {
       const entry = entries[0];
       SetScroll(!entry.isIntersecting);
     };
-    new IntersectionObserver(HomeObserverFunction, HomeObserverOptions).observe(
+    new IntersectionObserver(homeObserverFunction, homeObserverOptions).observe(
       document.querySelector("#aboveHeader")
     );
+  }, []);
+
+  useEffect(() => {
+    const parentElement = scrollRef.current;
+    const firstElementChild = parentElement.firstElementChild;
+    const lastElementChild = parentElement.lastElementChild;
+
+    const filterObserverOptions = {
+      root: parentElement,
+      threshold: 0.1,
+    };
+    const filterObserverFunction = (entries) => {
+      // get rid of the first initial entries
+      if (entries.length > 1) return;
+      // check for the left arrow
+      if (entries[0].target === firstElementChild) {
+        leftArrowRef.current.classList.toggle("opacity-0");
+        leftArrowRef.current.classList.toggle("pointer-events-none");
+        leftArrowRef.current.disable = true;
+      }
+      // check for the left arrow
+      if (entries[0].target === lastElementChild) {
+        rightArrowRef.current.classList.toggle("opacity-0");
+        rightArrowRef.current.classList.toggle("pointer-events-none");
+        rightArrowRef.current.disable = true;
+      }
+    };
+    const filterObserver = new IntersectionObserver(
+      filterObserverFunction,
+      filterObserverOptions
+    );
+    filterObserver.observe(firstElementChild);
+    filterObserver.observe(lastElementChild);
   }, []);
 
   const hideFilter = () => {
@@ -31,20 +69,33 @@ function Filter() {
     );
   };
 
+  const handleClickArrowLeft = () => {
+    console.log("handle Click Arrow Left");
+  };
+
   return (
     <section
       ref={filterRef}
-      className={`flex items-center transition-all px-8 pt-[14px] h-[86px] sticky top-[66px] bg-white gap-5 ${
+      className={`flex items-center transition-all px-8 pt-[14px] h-[86px] sticky top-[66px] bg-white gap-5 overflow-y-hidden ${
         scroll ? "shadow-lg" : ""
       }`}
     >
       <div className="flex items-center grow h-full overflow-x-auto scrollbar-hide">
-        <div className="flex items-center grow gap-14 h-full overflow-x-auto scrollbar-hide">
-          <div className="absolute z-10 left-1/1 h-full w-8 left-arrow-shadow bg-white flex items-center">
-            <button className="z-10 left-1/1 min-h-max min-w-max p-2 bg-white border border-gray-300 rounded-full">
-              <img src={leftArrow} alt="left arrow" className="w-4" />
-            </button>
-          </div>
+        <div
+          ref={leftArrowRef}
+          className="absolute z-10 left-1/1 h-full w-8 left-arrow-shadow bg-white flex items-center transition-all opacity-0 pointer-events-none"
+        >
+          <button
+            onClick={handleClickArrowLeft}
+            className="z-10 left-1/1 min-h-max min-w-max p-2 bg-white border border-gray-300 rounded-full"
+          >
+            <img src={leftArrow} alt="left arrow" className="w-4" />
+          </button>
+        </div>
+        <div
+          ref={scrollRef}
+          className="flex items-center grow gap-14 h-full overflow-x-auto scrollbar-hide"
+        >
           <Type
             name="Trending"
             active={true}
@@ -131,7 +182,10 @@ function Filter() {
             img="https://a0.muscache.com/pictures/8e507f16-4943-4be9-b707-59bd38d56309.jpg"
           />
         </div>
-        <div className="z-10 left-1/1 h-full w-max right-arrow-shadow bg-white flex items-center">
+        <div
+          ref={rightArrowRef}
+          className="z-10 left-1/1 h-full w-max right-arrow-shadow bg-white flex items-center"
+        >
           <button className="min-h-max min-w-max p-2 bg-white border border-gray-300 rounded-full">
             <img src={rightArrow} alt="right arrow" className="w-4" />
           </button>
