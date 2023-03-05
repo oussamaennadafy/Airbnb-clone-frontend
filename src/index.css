@@ -4,19 +4,24 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
 /* For Webkit-based browsers (Chrome, Safari and Opera) */
 .scrollbar-hide::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 /* For IE, Edge and Firefox  */
 .scrollbar-hide {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .active-type {
-    @apply opacity-100
+  @apply opacity-100;
+}
+
+.left-arrow-shadow {
+  box-shadow: 10px 0px 10px 5px rgb(255 255 255);
+}
+.right-arrow-shadow {
+  box-shadow: -20px 0px 15px 0px rgb(255, 255, 255);
 }
