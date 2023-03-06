@@ -2,9 +2,9 @@ import Item from "../utilities/main/Item";
 
 export default function Main() {
   return (
-    <div
+    <section
       id="Main"
-      className="min-h-screen max-w-screen p-8 grid grid-cols-4 gap-x-5 gap-y-10 mt-1"
+      className="min-h-screen max-w-screen p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-5 gap-y-10 mt-1"
     >
       <Item
         photos={[
@@ -56,6 +56,6 @@ export default function Main() {
         period="Feb 26 - Mar 4"
         price={379}
       />
-    </div>
+    </section>
   );
 }

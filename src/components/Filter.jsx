@@ -4,6 +4,7 @@ import leftArrow from "../assets/left-arrow.svg";
 import rightArrow from "../assets/right-arrow.svg";
 import filterIcon from "../assets/filter-icon.svg";
 import closeIcon from "../assets/close-icon.svg";
+import useSlider from "../hooks/useSlider";
 
 function Filter() {
   const [scroll, SetScroll] = useState(false);
@@ -11,6 +12,16 @@ function Filter() {
   const scrollRef = useRef();
   const leftArrowRef = useRef();
   const rightArrowRef = useRef();
+
+  useEffect(() => {
+    useSlider(
+      scrollRef.current,
+      scrollRef.current.parentElement,
+      leftArrowRef.current,
+      rightArrowRef.current,
+      100
+    );
+  }, []);
 
   useEffect(() => {
     const homeObserverOptions = {
@@ -68,27 +79,22 @@ function Filter() {
     );
   };
 
-  const handleClick = () => {
-    console.dir(scrollRef.current.parentElement);
-  };
-
   return (
     <section
       ref={filterRef}
-      className={`flex items-center transition-all px-8 pt-[14px] h-[86px] sticky top-[66px] bg-white gap-5 overflow-y-hidden ${
+      className={`flex items-center transition-all px-8 pt-[16px] h-[86px] sticky top-[66px] bg-white gap-5 overflow-y-hidden ${
         scroll ? "shadow-md" : ""
       }`}
     >
-      <div className="flex items-center grow h-full overflow-x-auto scrollbar-hide">
-        <div
-          onClick={handleClick}
+      <div className="flex items-center grow h-full overflow-x-auto scrollbar-hide relative">
+        <button
           ref={leftArrowRef}
           className="absolute z-10 left-1/1 h-full w-8 left-arrow-shadow bg-white flex items-center transition-all opacity-0 pointer-events-none invisible"
         >
-          <button className="z-10 left-1/1 min-h-max min-w-max p-2 bg-white border border-gray-300 rounded-full">
+          <a className="z-10 left-1/1 min-h-max min-w-max p-2 bg-white border border-gray-300 rounded-full">
             <img src={leftArrow} alt="left arrow" className="w-3" />
-          </button>
-        </div>
+          </a>
+        </button>
         <div
           ref={scrollRef}
           className="flex items-center grow gap-14 h-full overflow-x-auto scrollbar-hide"
@@ -179,20 +185,25 @@ function Filter() {
             img="https://a0.muscache.com/pictures/8e507f16-4943-4be9-b707-59bd38d56309.jpg"
           />
         </div>
-        <div
+        <button
           ref={rightArrowRef}
           className="z-10 left-1/1 h-full w-max right-arrow-shadow bg-white flex items-center transition-all"
         >
-          <button className="min-h-max min-w-max p-2 bg-white border border-gray-300 rounded-full">
+          <a className="min-h-max min-w-max p-2 bg-white border border-gray-300 rounded-full">
             <img src={rightArrow} alt="right arrow" className="w-3" />
-          </button>
-        </div>
+          </a>
+        </button>
       </div>
       <button className="flex items-center gap-2 min-w-max px-4 py-3 border border-gray-300 rounded-xl">
         <img src={filterIcon} alt="filter icon" className="h-3" />
         <span>Filter</span>
       </button>
-      <button onClick={hideFilter} className={scroll ? "block" : "hidden"}>
+      <button
+        onClick={hideFilter}
+        className={`${
+          scroll ? "block" : "hidden"
+        } p-3 rounded-full bg-gray-50 hover:bg-gray-100`}
+      >
         <img className="w-9" src={closeIcon} alt="close icon" />
       </button>
     </section>
