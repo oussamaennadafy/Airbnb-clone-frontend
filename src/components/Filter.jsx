@@ -82,7 +82,7 @@ function Filter() {
   return (
     <section
       ref={filterRef}
-      className={`flex items-center transition-all px-8 pt-[16px] h-[86px] sticky top-[66px] bg-white gap-5 overflow-y-hidden ${
+      className={`flex items-center transition-all px-8 pt-[16px] h-[86px] sticky md:top-[66px] -top-4 bg-white gap-5 overflow-y-hidden ${
         scroll ? "shadow-md" : ""
       }`}
     >
