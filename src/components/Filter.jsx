@@ -202,9 +202,9 @@ function Filter() {
         onClick={hideFilter}
         className={`${
           scroll ? "block" : "hidden"
-        } p-3 rounded-full bg-gray-50 hover:bg-gray-100`}
+        } p-3 rounded-full min-w-max bg-gray-50 hover:bg-gray-100`}
       >
-        <img className="w-9" src={closeIcon} alt="close icon" />
+        <img className="min-w-5 md:min-w-9" src={closeIcon} alt="close icon" />
       </button>
     </section>
   );
