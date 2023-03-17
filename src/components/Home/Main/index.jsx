@@ -1,4 +1,4 @@
-import Item from "../../utilities/main/Item";
+import Item from "./Item";
 
 export default function Main() {
   return (

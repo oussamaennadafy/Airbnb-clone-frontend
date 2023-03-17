@@ -1,16 +1,16 @@
 /* component */
-import Type from "../../utilities/filter/Type";
+import Type from "./Type";
 /* hook */
 import { useEffect, useState, useRef } from "react";
 /* custom hook */
-import useSlider from "../../hooks/useSlider";
+import useSlider from "../../../hooks/useSlider";
 /* assets */
-import leftArrow from "../../assets/left-arrow.svg";
-import rightArrow from "../../assets/right-arrow.svg";
-import filterIcon from "../../assets/filter-icon.svg";
-import closeIcon from "../../assets/close-icon.svg";
+import leftArrow from "../../../assets/left-arrow.svg";
+import rightArrow from "../../../assets/right-arrow.svg";
+import filterIcon from "../../../assets/filter-icon.svg";
+import closeIcon from "../../../assets/close-icon.svg";
 /* static types */
-import types from "./../../static/Types";
+import types from "../../../static/Types";
 
 function Filter() {
   const [scroll, SetScroll] = useState(false);

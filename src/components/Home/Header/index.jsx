@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import Logo from "../../utilities/header/logo";
-import Search from "../../utilities/header/Search";
-import UserDetails from "../../utilities/header/UserDetails";
+import Logo from "./logo";
+import Search from "./Search";
+import UserDetails from "./UserDetails";
 
 function Header() {
   return (
