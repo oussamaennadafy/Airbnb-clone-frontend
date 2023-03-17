@@ -65,6 +65,7 @@ function Filter() {
       if (entries.length > 1) return;
       // check for the left arrow
       if (entries[0].target === firstElementChild) {
+        console.log("left arrow");
         setDisplayLeftArrow((prevState) => !prevState);
       }
       // check for the left arrow
@@ -79,10 +80,6 @@ function Filter() {
     filterObserver.observe(firstElementChild);
     filterObserver.observe(lastElementChild);
   }, []);
-
-  const hideFilter = () => {
-    setdisplayFilter(false);
-  };
 
   return (
     <section
@@ -136,7 +133,7 @@ function Filter() {
         <span>Filter</span>
       </button>
       <button
-        onClick={hideFilter}
+        onClick={() => setdisplayFilter(false)}
         className={`${
           scroll ? "block" : "hidden"
         } p-3 rounded-full min-w-max bg-gray-50 hover:bg-gray-100`}
