@@ -65,7 +65,6 @@ function Filter() {
       if (entries.length > 1) return;
       // check for the left arrow
       if (entries[0].target === firstElementChild) {
-        console.log("left arrow");
         setDisplayLeftArrow((prevState) => !prevState);
       }
       // check for the left arrow
