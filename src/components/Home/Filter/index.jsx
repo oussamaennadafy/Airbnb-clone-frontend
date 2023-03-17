@@ -1,4 +1,4 @@
-/* component */
+/* components */
 import Type from "./Type";
 /* hook */
 import { useEffect, useState, useRef } from "react";
@@ -18,6 +18,8 @@ import types from "../../../static/Types";
 function Filter() {
   const [scroll, setScroll] = useState(false);
   const [displayFilter, setdisplayFilter] = useState(true);
+  const [displayLeftArrow, setDisplayLeftArrow] = useState(false);
+  const [displayRightArrow, setDisplayRightArrow] = useState(true);
   const scrollRef = useRef();
   const leftArrowRef = useRef();
   const rightArrowRef = useRef();
@@ -39,7 +41,9 @@ function Filter() {
     };
     const homeObserverFunction = (entries) => {
       const entry = entries[0];
-      if (entry.isIntersecting) setdisplayFilter(true);
+      if (entry.isIntersecting) {
+        setdisplayFilter(true);
+      }
       setScroll(!entry.isIntersecting);
     };
     new IntersectionObserver(homeObserverFunction, homeObserverOptions).observe(
@@ -61,15 +65,11 @@ function Filter() {
       if (entries.length > 1) return;
       // check for the left arrow
       if (entries[0].target === firstElementChild) {
-        leftArrowRef.current.classList.toggle("opacity-0");
-        leftArrowRef.current.classList.toggle("pointer-events-none");
-        leftArrowRef.current.classList.toggle("invisible");
+        setDisplayLeftArrow((prevState) => !prevState);
       }
       // check for the left arrow
       if (entries[0].target === lastElementChild) {
-        rightArrowRef.current.classList.toggle("opacity-0");
-        rightArrowRef.current.classList.toggle("pointer-events-none");
-        rightArrowRef.current.classList.toggle("invisible");
+        setDisplayRightArrow((prevState) => !prevState);
       }
     };
     const filterObserver = new IntersectionObserver(
@@ -97,7 +97,9 @@ function Filter() {
       <div className="flex items-center grow h-full overflow-x-auto scrollbar-hide relative">
         <button
           ref={leftArrowRef}
-          className="absolute z-10 left-1/1 h-full w-8 left-arrow-shadow bg-white flex items-center transition-all opacity-0 pointer-events-none invisible"
+          className={`absolute z-10 left-1/1 h-full w-8 left-arrow-shadow bg-white flex items-center transition-all ${
+            !displayLeftArrow ? "opacity-0 pointer-events-none invisible" : ""
+          }`}
         >
           <a className="z-10 left-1/1 min-h-max min-w-max p-2 bg-white border border-gray-300 rounded-full">
             <img src={leftArrow} alt="left arrow" className="w-3" />
@@ -120,7 +122,9 @@ function Filter() {
         </div>
         <button
           ref={rightArrowRef}
-          className="z-10 left-1/1 h-full w-max right-arrow-shadow bg-white flex items-center transition-all"
+          className={`z-10 left-1/1 h-full w-max right-arrow-shadow bg-white flex items-center transition-all ${
+            !displayRightArrow ? "opacity-0 pointer-events-none invisible" : ""
+          }`}
         >
           <a className="min-h-max min-w-max p-2 bg-white border border-gray-300 rounded-full">
             <img src={rightArrow} alt="right arrow" className="w-3" />
