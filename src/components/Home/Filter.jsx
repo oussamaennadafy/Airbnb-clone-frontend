@@ -1,10 +1,16 @@
-import Type from "../utilities/filter/Type";
+/* component */
+import Type from "../../utilities/filter/Type";
+/* hook */
 import { useEffect, useState, useRef } from "react";
-import leftArrow from "../assets/left-arrow.svg";
-import rightArrow from "../assets/right-arrow.svg";
-import filterIcon from "../assets/filter-icon.svg";
-import closeIcon from "../assets/close-icon.svg";
-import useSlider from "../hooks/useSlider";
+/* custom hook */
+import useSlider from "../../hooks/useSlider";
+/* assets */
+import leftArrow from "../../assets/left-arrow.svg";
+import rightArrow from "../../assets/right-arrow.svg";
+import filterIcon from "../../assets/filter-icon.svg";
+import closeIcon from "../../assets/close-icon.svg";
+/* static types */
+import types from "./../../static/Types";
 
 function Filter() {
   const [scroll, SetScroll] = useState(false);
@@ -99,91 +105,16 @@ function Filter() {
           ref={scrollRef}
           className="flex items-center grow gap-14 h-full overflow-x-auto scrollbar-hide"
         >
-          <Type
-            name="Trending"
-            active={true}
-            img="https://a0.muscache.com/pictures/3726d94b-534a-42b8-bca0-a0304d912260.jpg"
-          />
-          <Type
-            name="Riads"
-            img="https://a0.muscache.com/pictures/7ff6e4a1-51b4-4671-bc9a-6f523f196c61.jpg"
-          />
-          <Type
-            name="Iconic cities"
-            img="https://a0.muscache.com/pictures/ed8b9e47-609b-44c2-9768-33e6a22eccb2.jpg"
-          />
-          <Type
-            name="Beachfont"
-            img="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-          />
-          <Type
-            name="Amazing pools"
-            img="https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg"
-          />
-          <Type
-            name="Islands"
-            img="https://a0.muscache.com/pictures/8e507f16-4943-4be9-b707-59bd38d56309.jpg"
-          />
-          <Type
-            name="Riads"
-            img="https://a0.muscache.com/pictures/7ff6e4a1-51b4-4671-bc9a-6f523f196c61.jpg"
-          />
-          <Type
-            name="Iconic cities"
-            img="https://a0.muscache.com/pictures/ed8b9e47-609b-44c2-9768-33e6a22eccb2.jpg"
-          />
-          <Type
-            name="Beachfont"
-            img="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-          />
-          <Type
-            name="Amazing pools"
-            img="https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg"
-          />
-          <Type
-            name="Islands"
-            img="https://a0.muscache.com/pictures/8e507f16-4943-4be9-b707-59bd38d56309.jpg"
-          />
-          <Type
-            name="Riads"
-            img="https://a0.muscache.com/pictures/7ff6e4a1-51b4-4671-bc9a-6f523f196c61.jpg"
-          />
-          <Type
-            name="Iconic cities"
-            img="https://a0.muscache.com/pictures/ed8b9e47-609b-44c2-9768-33e6a22eccb2.jpg"
-          />
-          <Type
-            name="Beachfont"
-            img="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-          />
-          <Type
-            name="Amazing pools"
-            img="https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg"
-          />
-          <Type
-            name="Islands"
-            img="https://a0.muscache.com/pictures/8e507f16-4943-4be9-b707-59bd38d56309.jpg"
-          />
-          <Type
-            name="Riads"
-            img="https://a0.muscache.com/pictures/7ff6e4a1-51b4-4671-bc9a-6f523f196c61.jpg"
-          />
-          <Type
-            name="Iconic cities"
-            img="https://a0.muscache.com/pictures/ed8b9e47-609b-44c2-9768-33e6a22eccb2.jpg"
-          />
-          <Type
-            name="Beachfont"
-            img="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
-          />
-          <Type
-            name="Amazing pools"
-            img="https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg"
-          />
-          <Type
-            name="Islands"
-            img="https://a0.muscache.com/pictures/8e507f16-4943-4be9-b707-59bd38d56309.jpg"
-          />
+          {types.map((type) => {
+            return (
+              <Type
+                key={type.name}
+                name={type.name}
+                active={type.active}
+                img={type.img}
+              />
+            );
+          })}
         </div>
         <button
           ref={rightArrowRef}

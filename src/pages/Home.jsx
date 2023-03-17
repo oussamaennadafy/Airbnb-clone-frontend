@@ -1,7 +1,7 @@
-import AboveHeader from "../components/AboveHeader";
-import Filter from "../components/Filter";
-import Header from "../components/Header";
-import Main from "../components/Main";
+import AboveHeader from "../components/Home/AboveHeader";
+import Filter from "../components/Home/Filter";
+import Header from "../components/Home/Header";
+import Main from "../components/Home/Main";
 
 function Home() {
   return (
