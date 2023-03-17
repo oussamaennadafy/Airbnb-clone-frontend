@@ -1,6 +1,4 @@
-import earthIcon from "../../../assets/earth-icon.svg";
-import menuIcon from "../../../assets/menu-icon.svg";
-import userIcon from "../../../assets/user-icon.svg";
+import { earthIcon, menuIcon, userIcon } from "../../../assets/icons";
 
 function UserDetails() {
   return (

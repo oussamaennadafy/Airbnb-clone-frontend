@@ -1,7 +1,9 @@
-import starIcon from "../../../assets/star-icon.svg";
-import leftArrow from "../../../assets/left-arrow.svg";
-import rightArrow from "../../../assets/right-arrow.svg";
-import heartIcon from "../../../assets/heart-icon.svg";
+import {
+  starIcon,
+  leftArrow,
+  rightArrow,
+  heartIcon,
+} from "../../../assets/icons";
 
 const Item = (props) => {
   // desctructer props

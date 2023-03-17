@@ -5,10 +5,13 @@ import { useEffect, useState, useRef } from "react";
 /* custom hook */
 import useSlider from "../../../hooks/useSlider";
 /* assets */
-import leftArrow from "../../../assets/left-arrow.svg";
-import rightArrow from "../../../assets/right-arrow.svg";
-import filterIcon from "../../../assets/filter-icon.svg";
-import closeIcon from "../../../assets/close-icon.svg";
+import {
+  leftArrow,
+  rightArrow,
+  filterIcon,
+  closeIcon,
+} from "../../../assets/icons";
+
 /* static types */
 import types from "../../../static/Types";
 
