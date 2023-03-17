@@ -4,7 +4,7 @@ export default function Main() {
   return (
     <section
       id="Main"
-      className="min-h-screen max-w-screen p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-x-5 gap-y-10 mt-1"
+      className="min-h-screen max-w-screen p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 gap-x-5 gap-y-10 mt-1"
     >
       <Item
         photos={[
