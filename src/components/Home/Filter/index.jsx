@@ -16,8 +16,8 @@ import {
 import types from "../../../static/Types";
 
 function Filter() {
-  const [scroll, SetScroll] = useState(false);
-  const filterRef = useRef();
+  const [scroll, setScroll] = useState(false);
+  const [displayFilter, setdisplayFilter] = useState(true);
   const scrollRef = useRef();
   const leftArrowRef = useRef();
   const rightArrowRef = useRef();
@@ -35,11 +35,12 @@ function Filter() {
   useEffect(() => {
     const homeObserverOptions = {
       root: null,
-      threshold: 0.1,
+      threshold: 0,
     };
     const homeObserverFunction = (entries) => {
       const entry = entries[0];
-      SetScroll(!entry.isIntersecting);
+      if (entry.isIntersecting) setdisplayFilter(true);
+      setScroll(!entry.isIntersecting);
     };
     new IntersectionObserver(homeObserverFunction, homeObserverOptions).observe(
       document.querySelector("#aboveHeader")
@@ -80,19 +81,17 @@ function Filter() {
   }, []);
 
   const hideFilter = () => {
-    filterRef.current.classList.add(
-      "opacity-0",
-      "-translate-y-full",
-      "pointer-events-none",
-      "invisible"
-    );
+    setdisplayFilter(false);
   };
 
   return (
     <section
-      ref={filterRef}
       className={`flex items-center transition-all px-8 pt-[16px] h-[86px] sticky md:top-[66px] -top-4 bg-white gap-5 overflow-y-hidden ${
         scroll ? "shadow-md" : ""
+      } ${
+        displayFilter
+          ? ""
+          : "opacity-0 -translate-y-full pointer-events-none invisible"
       }`}
     >
       <div className="flex items-center grow h-full overflow-x-auto scrollbar-hide relative">
