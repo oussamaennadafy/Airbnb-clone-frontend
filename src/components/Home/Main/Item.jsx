@@ -16,11 +16,18 @@ const Item = (props) => {
 
   return (
     <figure onClick={handleClick} className="group cursor-pointer font-normal">
-      <div className="h-[300px] w-full relative">
-        <img
-          className="h-full w-full object-cover rounded-lg"
-          src={photos[0]}
-        />
+      <div className="h-[300px] w-full relative overflow-auto">
+        <div className="flex h-full w-full">
+          {photos.map((photo) => {
+            return (
+              <img
+                className="min-h-full min-w-full object-cover rounded-lg"
+                key={photo}
+                src={photo}
+              />
+            );
+          })}
+        </div>
         <button className="absolute w-6 h-6 top-4 right-4 rounded-full">
           <img className="w-full h-full" src={heartIcon} alt="heart icon" />
         </button>
