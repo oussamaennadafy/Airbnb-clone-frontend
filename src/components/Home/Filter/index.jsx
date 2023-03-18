@@ -18,8 +18,6 @@ import types from "../../../static/Types";
 function Filter() {
   const [scroll, setScroll] = useState(false);
   const [displayFilter, setdisplayFilter] = useState(true);
-  const [displayLeftArrow, setDisplayLeftArrow] = useState(false);
-  const [displayRightArrow, setDisplayRightArrow] = useState(true);
   const scrollRef = useRef();
   const leftArrowRef = useRef();
   const rightArrowRef = useRef();
@@ -32,35 +30,6 @@ function Filter() {
       rightArrowRef.current,
       100
     );
-  }, []);
-
-  useEffect(() => {
-    const parentElement = scrollRef.current;
-    const firstElementChild = parentElement.firstElementChild;
-    const lastElementChild = parentElement.lastElementChild;
-
-    const filterObserverOptions = {
-      root: parentElement,
-      threshold: 0.1,
-    };
-    const filterObserverFunction = (entries) => {
-      // get rid of the first initial entries
-      if (entries.length > 1) return;
-      // check for the left arrow
-      if (entries[0].target === firstElementChild) {
-        setDisplayLeftArrow((prevState) => !prevState);
-      }
-      // check for the left arrow
-      if (entries[0].target === lastElementChild) {
-        setDisplayRightArrow((prevState) => !prevState);
-      }
-    };
-    const filterObserver = new IntersectionObserver(
-      filterObserverFunction,
-      filterObserverOptions
-    );
-    filterObserver.observe(firstElementChild);
-    filterObserver.observe(lastElementChild);
   }, []);
 
   // handle the diplay of filter
@@ -95,9 +64,7 @@ function Filter() {
       <div className="flex items-center grow h-full overflow-x-auto hide-scrollbar relative">
         <button
           ref={leftArrowRef}
-          className={`absolute z-10 left-1/1 h-full w-8 left-arrow-shadow bg-white flex items-center transition-all ${
-            !displayLeftArrow ? "opacity-0 pointer-events-none invisible" : ""
-          }`}
+          className="absolute z-10 left-1/1 h-full w-8 left-arrow-shadow bg-white flex items-center transition-all"
         >
           <a className="z-10 left-1/1 min-h-max min-w-max p-2 bg-white border border-gray-300 rounded-full">
             <img src={leftArrow} alt="left arrow" className="w-3" />
@@ -120,9 +87,7 @@ function Filter() {
         </div>
         <button
           ref={rightArrowRef}
-          className={`z-10 left-1/1 h-full w-max right-arrow-shadow bg-white flex items-center transition-all ${
-            !displayRightArrow ? "opacity-0 pointer-events-none invisible" : ""
-          }`}
+          className="z-10 left-1/1 h-full w-max right-arrow-shadow bg-white flex items-center transition-all"
         >
           <a className="min-h-max min-w-max p-2 bg-white border border-gray-300 rounded-full">
             <img src={rightArrow} alt="right arrow" className="w-3" />

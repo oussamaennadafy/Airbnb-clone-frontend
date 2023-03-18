@@ -11,10 +11,6 @@ const Item = (props) => {
   // desctructer props
   const { id, photos, location, rating, views, period, price } = props;
 
-  //states
-  const [displayLeftArrow, setDisplayLeftArrow] = useState(false);
-  const [displayRightArrow, setDisplayRightArrow] = useState(true);
-
   // refs
   const scrollElementRef = useRef(null);
   const leftArrowRef = useRef(null);
@@ -28,36 +24,6 @@ const Item = (props) => {
       leftArrowRef.current,
       rightArrowRef.current
     );
-  }, []);
-
-  // logic of arrows display
-  useEffect(() => {
-    const parentElement = scrollElementRef.current;
-    const firstElementChild = parentElement.firstElementChild.firstElementChild;
-    const lastElementChild = parentElement.lastElementChild.lastElementChild;
-
-    const filterObserverOptions = {
-      root: parentElement,
-      threshold: 0.1,
-    };
-    const filterObserverFunction = (entries) => {
-      // get rid of the first initial entries
-      if (entries.length > 1) return;
-      // check for the left arrow
-      if (entries[0].target === firstElementChild) {
-        setDisplayLeftArrow((prevState) => !prevState);
-      }
-      // check for the left arrow
-      if (entries[0].target === lastElementChild) {
-        setDisplayRightArrow((prevState) => !prevState);
-      }
-    };
-    const filterObserver = new IntersectionObserver(
-      filterObserverFunction,
-      filterObserverOptions
-    );
-    filterObserver.observe(firstElementChild);
-    filterObserver.observe(lastElementChild);
   }, []);
 
   return (
@@ -84,22 +50,14 @@ const Item = (props) => {
         </button>
         <button
           ref={leftArrowRef}
-          className={`absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 left-4 rounded-full bg-gray-100 hover:scale-105 hover:shadow-sm ${
-            displayLeftArrow
-              ? "opacity-100 pointer-events-auto visible"
-              : "opacity-0 pointer-events-none invisible"
-          }`}
+          className="absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 left-4 rounded-full bg-gray-100 hover:scale-105 hover:shadow-sm"
         >
           <img className="w-2/4 h-2/4" src={leftArrow} alt="left arrow" />
         </button>
 
         <button
           ref={rightArrowRef}
-          className={`absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 right-4 rounded-full bg-gray-100 hover:scale-105 hover:shadow-sm ${
-            displayRightArrow
-              ? "opacity-100 pointer-events-auto visible"
-              : "opacity-0 pointer-events-none invisible"
-          }`}
+          className="absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 right-4 rounded-full bg-gray-100 hover:scale-105 hover:shadow-sm"
         >
           <img className="w-2/4 h-2/4" src={rightArrow} alt="right arrow" />
         </button>

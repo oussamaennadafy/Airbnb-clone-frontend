@@ -17,6 +17,10 @@ function useSlider(
       behavior: "smooth",
     });
   });
+  element.addEventListener("scroll", (event) => {
+    if (event.target.scrollLeft >= viewportElement.clientWidth) {
+    }
+  });
 }
 
 export default useSlider;
