@@ -24,7 +24,7 @@ export default function Main() {
         period="Feb 26 - Mar 4"
         price={379}
       />
-      <Item
+      {/* <Item
         id={2}
         photos={[
           "https://a0.muscache.com/im/pictures/92b865b8-b2bf-4a4e-ae7f-5cb975e2e3e9.jpg?im_w=720",
@@ -71,7 +71,7 @@ export default function Main() {
         views={4800}
         period="Feb 26 - Mar 4"
         price={379}
-      />
+      /> */}
     </main>
   );
 }

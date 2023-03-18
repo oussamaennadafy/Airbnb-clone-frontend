@@ -35,23 +35,6 @@ function Filter() {
   }, []);
 
   useEffect(() => {
-    const homeObserverOptions = {
-      root: null,
-      threshold: 0,
-    };
-    const homeObserverFunction = (entries) => {
-      const entry = entries[0];
-      if (entry.isIntersecting) {
-        setdisplayFilter(true);
-      }
-      setScroll(!entry.isIntersecting);
-    };
-    new IntersectionObserver(homeObserverFunction, homeObserverOptions).observe(
-      document.querySelector("#aboveHeader")
-    );
-  }, []);
-
-  useEffect(() => {
     const parentElement = scrollRef.current;
     const firstElementChild = parentElement.firstElementChild;
     const lastElementChild = parentElement.lastElementChild;
@@ -78,6 +61,25 @@ function Filter() {
     );
     filterObserver.observe(firstElementChild);
     filterObserver.observe(lastElementChild);
+  }, []);
+
+  // handle the diplay of filter
+
+  useEffect(() => {
+    const homeObserverOptions = {
+      root: null,
+      threshold: 0,
+    };
+    const homeObserverFunction = (entries) => {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        setdisplayFilter(true);
+      }
+      setScroll(!entry.isIntersecting);
+    };
+    new IntersectionObserver(homeObserverFunction, homeObserverOptions).observe(
+      document.querySelector("#aboveHeader")
+    );
   }, []);
 
   return (
