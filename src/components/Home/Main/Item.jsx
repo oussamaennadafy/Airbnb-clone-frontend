@@ -24,10 +24,10 @@ const Item = (props) => {
         <button className="absolute w-6 h-6 top-4 right-4 rounded-full">
           <img className="w-full h-full" src={heartIcon} alt="heart icon" />
         </button>
-        <button className="absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-7 h-7 top-1/2 -translate-y-1/2 left-4 rounded-full bg-gray-100 hover:bg-gray-700">
+        <button className="absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 left-4 rounded-full bg-gray-100 hover:scale-105 hover:shadow-sm">
           <img className="w-2/4 h-2/4" src={leftArrow} alt="left arrow" />
         </button>
-        <button className="absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-7 h-7 top-1/2 -translate-y-1/2 right-4 rounded-full bg-gray-100 hover:bg-gray-700">
+        <button className="absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 right-4 rounded-full bg-gray-100 hover:scale-105 hover:shadow-sm">
           <img className="w-2/4 h-2/4" src={rightArrow} alt="right arrow" />
         </button>
       </div>
