@@ -85,20 +85,24 @@ const Item = (props) => {
         <button
           ref={leftArrowRef}
           className={`absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 left-4 rounded-full bg-gray-100 hover:scale-105 hover:shadow-sm ${
-            displayLeftArrow ? "" : "opacity-0 pointer-events-none invisible"
+            displayLeftArrow
+              ? "opacity-100 pointer-events-auto visible"
+              : "opacity-0 pointer-events-none invisible"
           }`}
         >
           <img className="w-2/4 h-2/4" src={leftArrow} alt="left arrow" />
         </button>
 
-        {displayRightArrow && (
-          <button
-            ref={rightArrowRef}
-            className="absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 right-4 rounded-full bg-gray-100 hover:scale-105 hover:shadow-sm"
-          >
-            <img className="w-2/4 h-2/4" src={rightArrow} alt="right arrow" />
-          </button>
-        )}
+        <button
+          ref={rightArrowRef}
+          className={`absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 right-4 rounded-full bg-gray-100 hover:scale-105 hover:shadow-sm ${
+            displayRightArrow
+              ? "opacity-100 pointer-events-auto visible"
+              : "opacity-0 pointer-events-none invisible"
+          }`}
+        >
+          <img className="w-2/4 h-2/4" src={rightArrow} alt="right arrow" />
+        </button>
       </div>
       <figcaption>
         <div className="flex justify-between pt-1">
