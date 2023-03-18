@@ -1,22 +1,37 @@
+import { useEffect, useRef } from "react";
 import {
   starIcon,
   leftArrow,
   rightArrow,
   heartIcon,
 } from "../../../assets/icons";
+import useSlider from "../../../hooks/useSlider";
 
 const Item = (props) => {
   // desctructer props
   const { id, photos, location, rating, views, period, price } = props;
 
-  // handle click of the item
-  const handleClick = (e) => {
-    console.log(e.target);
-  };
+  // refs
+  const scrollElementRef = useRef(null);
+  const leftArrowRef = useRef(null);
+  const rightArrowRef = useRef(null);
+
+  // impliment the useSlider custom hook
+  useEffect(() => {
+    useSlider(
+      scrollElementRef.current,
+      scrollElementRef.current.parentElement,
+      leftArrowRef.current,
+      rightArrowRef.current
+    );
+  });
 
   return (
     <figure onClick={handleClick} className="group cursor-pointer font-normal">
-      <div className="h-[300px] w-full relative overflow-auto">
+      <div
+        ref={scrollElementRef}
+        className="h-[300px] w-full relative overflow-auto hide-scrollbar"
+      >
         <div className="flex h-full w-full">
           {photos.map((photo) => {
             return (
@@ -31,10 +46,16 @@ const Item = (props) => {
         <button className="absolute w-6 h-6 top-4 right-4 rounded-full">
           <img className="w-full h-full" src={heartIcon} alt="heart icon" />
         </button>
-        <button className="absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 left-4 rounded-full bg-gray-100 hover:scale-105 hover:shadow-sm">
+        <button
+          ref={leftArrowRef}
+          className="absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 left-4 rounded-full bg-gray-100 hover:scale-105 hover:shadow-sm"
+        >
           <img className="w-2/4 h-2/4" src={leftArrow} alt="left arrow" />
         </button>
-        <button className="absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 right-4 rounded-full bg-gray-100 hover:scale-105 hover:shadow-sm">
+        <button
+          ref={rightArrowRef}
+          className="absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 right-4 rounded-full bg-gray-100 hover:scale-105 hover:shadow-sm"
+        >
           <img className="w-2/4 h-2/4" src={rightArrow} alt="right arrow" />
         </button>
       </div>

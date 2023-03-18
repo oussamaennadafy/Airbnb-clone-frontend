@@ -90,7 +90,7 @@ function Filter() {
           : "opacity-0 -translate-y-full pointer-events-none invisible"
       }`}
     >
-      <div className="flex items-center grow h-full overflow-x-auto scrollbar-hide relative">
+      <div className="flex items-center grow h-full overflow-x-auto hide-scrollbar relative">
         <button
           ref={leftArrowRef}
           className={`absolute z-10 left-1/1 h-full w-8 left-arrow-shadow bg-white flex items-center transition-all ${
@@ -103,7 +103,7 @@ function Filter() {
         </button>
         <div
           ref={scrollRef}
-          className="flex items-center grow gap-14 h-full overflow-x-auto scrollbar-hide"
+          className="flex items-center grow gap-14 h-full overflow-x-auto hide-scrollbar"
         >
           {types.map((type) => {
             return (
