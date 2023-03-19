@@ -19,8 +19,8 @@ const Item = (props) => {
   // impliment the useSlider custom hook
   useEffect(() => {
     useSlider(
-      scrollElementRef.current,
       scrollElementRef.current.parentElement,
+      scrollElementRef.current,
       leftArrowRef.current,
       rightArrowRef.current
     );

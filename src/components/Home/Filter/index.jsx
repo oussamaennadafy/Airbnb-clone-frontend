@@ -24,8 +24,8 @@ function Filter() {
 
   useEffect(() => {
     useSlider(
-      scrollRef.current,
       scrollRef.current.parentElement,
+      scrollRef.current,
       leftArrowRef.current,
       rightArrowRef.current,
       100
@@ -61,7 +61,7 @@ function Filter() {
           : "opacity-0 -translate-y-full pointer-events-none invisible"
       }`}
     >
-      <div className="flex items-center grow h-full overflow-x-auto hide-scrollbar relative">
+      <div className="flex items-center grow h-full overflow-x-auto relative">
         <button
           ref={leftArrowRef}
           className="absolute z-10 left-1/1 h-full w-8 left-arrow-shadow bg-white flex items-center transition-all"
