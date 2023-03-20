@@ -5,7 +5,7 @@ import UserDetails from "./UserDetails";
 
 function Header() {
   return (
-    <header className="hidden md:flex items-center z-20 justify-between px-8 py-4 border-b border-gray-300 sticky top-0 bg-white">
+    <header className="hidden md:flex justify-between z-20 px-12 py-4 border-b border-gray-300 sticky top-0 bg-white">
       <Link to="/">
         <Logo />
       </Link>

@@ -55,7 +55,7 @@ function Filter() {
 
   return (
     <section
-      className={`flex items-center transition-all px-8 pt-[16px] h-[86px] sticky md:top-[66px] -top-4 bg-white gap-5 overflow-y-hidden z-10 ${
+      className={`flex items-center transition-all px-12 pt-[16px] h-[86px] sticky md:top-[66px] -top-4 bg-white gap-5 overflow-y-hidden z-10 ${
         scroll ? "shadow-md" : ""
       } ${
         displayFilter
