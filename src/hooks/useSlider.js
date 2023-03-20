@@ -38,9 +38,6 @@ function useSlider(
     )
       rightArrow.classList.remove("hidden");
     else rightArrow.classList.add("hidden");
-
-    // clear the scroll
-    const remainder = event.target.scrollLeft % viewportElement.clientWidth;
   });
 }
 
