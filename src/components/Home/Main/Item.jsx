@@ -15,6 +15,7 @@ const Item = (props) => {
   const scrollElementRef = useRef(null);
   const leftArrowRef = useRef(null);
   const rightArrowRef = useRef(null);
+  const lastElementRef = useRef(null);
 
   // impliment the useSlider custom hook
   useEffect(() => {
@@ -22,22 +23,24 @@ const Item = (props) => {
       scrollElementRef.current.parentElement,
       scrollElementRef.current,
       leftArrowRef.current,
-      rightArrowRef.current
+      rightArrowRef.current,
+      lastElementRef.current
     );
   }, []);
 
   return (
     <figure className="group cursor-pointer font-normal">
-      <div className="relative w-full">
+      <div className="relative min-w-full">
         <div
           ref={scrollElementRef}
-          className="h-[300px] w-full relative overflow-auto hide-scrollbar"
+          className="h-[300px] min-w-full relative overflow-auto hide-scrollbar rounded-lg"
         >
-          <div className="flex h-full w-full">
+          <div className="flex h-full min-w-full">
             {photos.map((photo) => {
               return (
                 <img
-                  className="min-h-full min-w-full object-cover rounded-lg"
+                  ref={lastElementRef}
+                  className="min-h-full min-w-full object-cover"
                   key={photo}
                   src={photo}
                 />

@@ -1,6 +1,9 @@
-const Type = ({ img, name, active }) => {
+import { forwardRef } from "react";
+
+const Type = forwardRef(({ img, name, active }, forwardedRef) => {
   return (
     <button
+      ref={forwardedRef}
       className={`h-full hover:opacity-100 transition-all cursor-pointer after:content-[''] relative after:bottom-0 after:left-0 after:w-full after:h-[2px] ${
         active
           ? "opacity-100 after:bg-black after:absolute"
@@ -11,6 +14,6 @@ const Type = ({ img, name, active }) => {
       <p className="text-xs text-center whitespace-nowrap">{name}</p>
     </button>
   );
-};
+});
 
 export default Type;

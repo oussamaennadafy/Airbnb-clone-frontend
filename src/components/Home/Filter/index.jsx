@@ -21,6 +21,7 @@ function Filter() {
   const scrollRef = useRef();
   const leftArrowRef = useRef();
   const rightArrowRef = useRef();
+  const lastElementRef = useRef();
 
   useEffect(() => {
     useSlider(
@@ -28,6 +29,7 @@ function Filter() {
       scrollRef.current,
       leftArrowRef.current,
       rightArrowRef.current,
+      lastElementRef.current,
       100
     );
   }, []);
@@ -77,6 +79,7 @@ function Filter() {
           {types.map((type) => {
             return (
               <Type
+                ref={lastElementRef}
                 key={type.name}
                 name={type.name}
                 active={type.active}
