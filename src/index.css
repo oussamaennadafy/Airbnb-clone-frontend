@@ -30,3 +30,10 @@ body {
 .right-arrow-shadow {
   box-shadow: -20px 0px 15px 0px rgb(255, 255, 255);
 }
+
+footer a {
+  border-bottom: 1px solid transparent;
+}
+footer a:hover {
+  border-color: #b6b6b6;
+}

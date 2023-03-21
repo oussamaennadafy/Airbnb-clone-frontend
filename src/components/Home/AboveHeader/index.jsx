@@ -2,7 +2,7 @@ function AboveHeader() {
   return (
     <section
       id="aboveHeader"
-      className="w-full bg-gray-100 h-16 flex items-center justify-center border-b border-gray-300"
+      className="w-full bg-gray-100 h-16 flex items-center justify-center border-b border-gray-200"
     >
       <p>
         Show total prices up front
