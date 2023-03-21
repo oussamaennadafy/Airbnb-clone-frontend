@@ -9,7 +9,7 @@ import searchIcon from "./search-icon.svg";
 import starIcon from "./star-icon.svg";
 import userIcon from "./user-icon.svg";
 import upArrow from "./up-arrow.svg";
-import choices from "../icons/choices-icon.svg";
+import ChoicesIcon from "./ChoicesIcon.jsx";
 
 export {
   closeIcon,
@@ -23,5 +23,5 @@ export {
   starIcon,
   userIcon,
   upArrow,
-  choices,
+  ChoicesIcon,
 };

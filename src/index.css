@@ -37,3 +37,7 @@ footer a {
 footer a:hover {
   border-color: #b6b6b6;
 }
+
+footer span {
+  max-height: min-content;
+}
