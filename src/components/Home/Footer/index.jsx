@@ -2,7 +2,7 @@ import { earthIcon, upArrow, ChoicesIcon } from "../../../assets/icons";
 
 const Footer = () => {
   return (
-    <footer className="flex justify-between items-center flex-wrap px-12 py-3 w-full border-t border-gray-200 bg-white sticky bottom-0 font-light text-[15px]">
+    <footer className="hidden sm:flex justify-between items-center flex-wrap px-12 py-3 w-full border-t border-gray-200 bg-white sticky bottom-0 font-light text-[15px]">
       <div className="flex gap-1 flex-wrap">
         <p>&copy; 2023 Airbnb, Inc.</p>
         <span className="px-1">.</span>
