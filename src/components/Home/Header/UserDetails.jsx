@@ -1,11 +1,7 @@
 import { useState } from "react";
 import { earthIcon, menuIcon, userIcon } from "../../../assets/icons";
 
-function UserDetails() {
-  const [displayMenu, setDisplayMenu] = useState(false);
-  const toggleMenu = () => {
-    setDisplayMenu((previousMenuState) => !previousMenuState);
-  };
+function UserDetails({ displayMenu, toggleMenu }) {
   return (
     <div className="flex items-center justify-between relative">
       <a className="py-3 px-5 hover:bg-gray-100 rounded-full" href="">
@@ -24,7 +20,7 @@ function UserDetails() {
         </div>
       </button>
       {displayMenu && (
-        <nav className="absolute top-[115%] shadow-md right-0 rounded-md border border-gray-200 bg-white font-normal py-4 min-w-[80%]">
+        <nav className="absolute transition-all top-[115%] shadow-md right-0 rounded-md border border-gray-200 bg-white font-normal py-4 min-w-[80%]">
           <ul className="flex flex-col border-b border-gray-200 w-full pb-4">
             <li className="py-3 px-4 hover:bg-gray-50 cursor-pointer">
               <a href="./">Log in</a>
