@@ -10,6 +10,7 @@ import starIcon from "./star-icon.svg";
 import userIcon from "./user-icon.svg";
 import upArrow from "./up-arrow.svg";
 import ChoicesIcon from "./ChoicesIcon.jsx";
+import downArrow from "./down-arrow.svg";
 
 export {
   closeIcon,
@@ -24,4 +25,5 @@ export {
   userIcon,
   upArrow,
   ChoicesIcon,
+  downArrow,
 };

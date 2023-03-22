@@ -11,6 +11,7 @@ import { useState } from "react";
 
 function Home() {
   const [displayMenu, setDisplayMenu] = useState(false);
+  const [displayAuthModal, setDisplayAuthModal] = useState(false);
   const toggleMenu = () => {
     setDisplayMenu((previousMenuState) => !previousMenuState);
   };
@@ -19,9 +20,15 @@ function Home() {
   };
   return (
     <div onClick={hideModal} className="max-w-screen font-medium">
-      <AuthModal />
+      {displayAuthModal && (
+        <AuthModal setDisplayAuthModal={setDisplayAuthModal} />
+      )}
       <AboveHeader />
-      <Header displayMenu={displayMenu} toggleMenu={toggleMenu} />
+      <Header
+        setDisplayAuthModal={setDisplayAuthModal}
+        displayMenu={displayMenu}
+        toggleMenu={toggleMenu}
+      />
       <Filter />
       <Main />
       <Footer />

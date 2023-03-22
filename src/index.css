@@ -31,6 +31,16 @@ body {
 .right-arrow-shadow {
   box-shadow: -20px 0px 15px 0px rgb(255, 255, 255);
 }
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield !important;
+}
 
 footer a {
   border-bottom: 1px solid transparent;

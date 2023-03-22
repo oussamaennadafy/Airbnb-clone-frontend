@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { earthIcon, menuIcon, userIcon } from "../../../assets/icons";
 
-function UserDetails({ displayMenu, toggleMenu }) {
+function UserDetails({ displayMenu, toggleMenu, setDisplayAuthModal }) {
   return (
     <div className="flex items-center justify-between relative">
       <a className="py-3 px-5 hover:bg-gray-100 rounded-full" href="">
@@ -22,10 +22,16 @@ function UserDetails({ displayMenu, toggleMenu }) {
       {displayMenu && (
         <nav className="absolute transition-all top-[115%] shadow-md right-0 rounded-md border border-gray-200 bg-white font-normal py-4 min-w-[80%]">
           <ul className="flex flex-col border-b border-gray-200 w-full pb-4">
-            <li className="py-3 px-4 hover:bg-gray-50 cursor-pointer font-medium">
+            <li
+              onClick={() => setDisplayAuthModal(true)}
+              className="py-3 px-4 hover:bg-gray-50 cursor-pointer font-medium"
+            >
               <a href="./">Log in</a>
             </li>
-            <li className="py-3 px-4 hover:bg-gray-50 cursor-pointer">
+            <li
+              onClick={() => setDisplayAuthModal(true)}
+              className="py-3 px-4 hover:bg-gray-50 cursor-pointer"
+            >
               <a href="./">Sign Up</a>
             </li>
           </ul>
