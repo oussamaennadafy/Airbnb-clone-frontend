@@ -22,7 +22,7 @@ function UserDetails({ displayMenu, toggleMenu }) {
       {displayMenu && (
         <nav className="absolute transition-all top-[115%] shadow-md right-0 rounded-md border border-gray-200 bg-white font-normal py-4 min-w-[80%]">
           <ul className="flex flex-col border-b border-gray-200 w-full pb-4">
-            <li className="py-3 px-4 hover:bg-gray-50 cursor-pointer">
+            <li className="py-3 px-4 hover:bg-gray-50 cursor-pointer font-medium">
               <a href="./">Log in</a>
             </li>
             <li className="py-3 px-4 hover:bg-gray-50 cursor-pointer">

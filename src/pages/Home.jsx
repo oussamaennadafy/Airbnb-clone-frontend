@@ -1,3 +1,6 @@
+// dynamic content
+import AuthModal from "../components/Home/AuthModal";
+// static content
 import AboveHeader from "../components/Home/AboveHeader";
 import Filter from "../components/Home/Filter";
 import Header from "../components/Home/Header";
@@ -11,11 +14,12 @@ function Home() {
   const toggleMenu = () => {
     setDisplayMenu((previousMenuState) => !previousMenuState);
   };
-  const hideOverlay = () => {
+  const hideModal = () => {
     if (displayMenu) setDisplayMenu(false);
   };
   return (
-    <div onClick={hideOverlay} className="max-w-screen font-medium">
+    <div onClick={hideModal} className="max-w-screen font-medium">
+      <AuthModal />
       <AboveHeader />
       <Header displayMenu={displayMenu} toggleMenu={toggleMenu} />
       <Filter />

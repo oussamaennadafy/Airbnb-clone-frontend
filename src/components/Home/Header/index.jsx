@@ -6,7 +6,7 @@ import UserDetails from "./UserDetails";
 function Header({ displayMenu, toggleMenu }) {
   return (
     <header className="hidden md:flex justify-between z-20 px-12 py-4 border-b border-gray-200 sticky top-0 bg-white">
-      <Link to="/">
+      <Link className="flex items-center" to="/">
         <Logo />
       </Link>
       <Search />
