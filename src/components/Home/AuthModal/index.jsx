@@ -8,8 +8,8 @@ function AuthModal({ setDisplayAuthModal }) {
   return (
     <>
       <div
-        onClick={() => setDisplayAuthModal(false)}
-        className="absolute top left-0 w-screen h-screen bg-black opacity-50 z-30"
+        onClick={() => setDisplayAuthModal((previousState) => !previousState)}
+        className="absolute top-0 left-0 w-screen h-screen bg-black opacity-50 z-30"
       />
       <section className="absolute z-30 bg-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] overflow-hidden rounded-xl shadow-lg border border-gray-200">
         <Header setDisplayAuthModal={setDisplayAuthModal} />

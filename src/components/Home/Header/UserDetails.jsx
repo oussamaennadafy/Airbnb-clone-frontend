@@ -1,7 +1,11 @@
-import { useState } from "react";
+import { useState, forwardRef } from "react";
 import { earthIcon, menuIcon, userIcon } from "../../../assets/icons";
 
-function UserDetails({ displayMenu, toggleMenu, setDisplayAuthModal }) {
+const UserDetails = ({ displayMenu, toggleMenu, setDisplayAuthModal }) => {
+  const showAuthModal = () => {
+    toggleMenu();
+    setDisplayAuthModal((prevModalState) => !prevModalState);
+  };
   return (
     <div className="flex items-center justify-between relative">
       <a className="py-3 px-5 hover:bg-gray-100 rounded-full" href="">
@@ -11,7 +15,10 @@ function UserDetails({ displayMenu, toggleMenu, setDisplayAuthModal }) {
         <img className="w-4" src={earthIcon} alt="earth icon" />
       </button>
       <button
-        onClick={toggleMenu}
+        onClick={(e) => {
+          e.stopPropagation();
+          toggleMenu();
+        }}
         className="flex items-center justify-center gap-3 border border-gray-300 rounded-full p-[6px] hover:shadow-md transition"
       >
         <img className="w-4 m-[2px] ml-1" src={menuIcon} alt="menu icon" />
@@ -20,19 +27,24 @@ function UserDetails({ displayMenu, toggleMenu, setDisplayAuthModal }) {
         </div>
       </button>
       {displayMenu && (
-        <nav className="absolute transition-all top-[115%] shadow-md right-0 rounded-md border border-gray-200 bg-white font-normal py-4 min-w-[80%]">
+        <nav
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          className="absolute transition-all top-[115%] shadow-md right-0 rounded-md border border-gray-200 bg-white font-normal py-4 min-w-[80%]"
+        >
           <ul className="flex flex-col border-b border-gray-200 w-full pb-4">
             <li
-              onClick={() => setDisplayAuthModal(true)}
+              onClick={showAuthModal}
               className="py-3 px-4 hover:bg-gray-50 cursor-pointer font-medium"
             >
-              <a href="./">Log in</a>
+              <a>Log in</a>
             </li>
             <li
-              onClick={() => setDisplayAuthModal(true)}
+              onClick={showAuthModal}
               className="py-3 px-4 hover:bg-gray-50 cursor-pointer"
             >
-              <a href="./">Sign Up</a>
+              <a>Sign Up</a>
             </li>
           </ul>
           <ul className="flex flex-col w-full pt-4">
@@ -50,6 +62,6 @@ function UserDetails({ displayMenu, toggleMenu, setDisplayAuthModal }) {
       )}
     </div>
   );
-}
+};
 
 export default UserDetails;

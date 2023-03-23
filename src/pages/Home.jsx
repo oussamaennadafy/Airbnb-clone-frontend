@@ -7,7 +7,7 @@ import Header from "../components/Home/Header";
 import Main from "../components/Home/Main";
 import Footer from "../components/Home/Footer";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 function Home() {
   const [displayMenu, setDisplayMenu] = useState(false);
@@ -16,7 +16,7 @@ function Home() {
     setDisplayMenu((previousMenuState) => !previousMenuState);
   };
   const hideModal = () => {
-    if (displayMenu) setDisplayMenu(false);
+    if (displayMenu) toggleMenu();
   };
   return (
     <div onClick={hideModal} className="max-w-screen font-medium">

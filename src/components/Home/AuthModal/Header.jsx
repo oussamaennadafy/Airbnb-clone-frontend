@@ -6,7 +6,7 @@ function Header({ setDisplayAuthModal }) {
   return (
     <header className="border-b p-3 bg-white border-gray-200 flex items-center sticky top-0">
       <div
-        onClick={() => setDisplayAuthModal(false)}
+        onClick={() => setDisplayAuthModal((previousState) => !previousState)}
         className="rounded-full p-2 hover:bg-gray-100 cursor-pointer transition"
       >
         <img src={closeIcon} alt="close window" />
