@@ -9,7 +9,7 @@ import {
 
 function OtherAuthOptions() {
   return (
-    <div className="m-4 text-center">
+    <div className="mx-4 mb-4 text-center">
       <div className="relative">
         <span
           className="text-xs h-full text-gray-500 inline-block pb-2

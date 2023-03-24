@@ -16,7 +16,7 @@ function Form() {
             htmlFor="country"
           >
             <span className="text-xs text-gray-400">Country/Region</span>
-            <p>{country}</p>
+            <p className="-mt-1">{country}</p>
             <img
               className="w-5 h-5 absolute top-1/2 -translate-y-1/2 right-3"
               src={downArrow}
