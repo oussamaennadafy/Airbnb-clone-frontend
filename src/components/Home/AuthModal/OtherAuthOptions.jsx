@@ -22,25 +22,25 @@ function OtherAuthOptions() {
       </div>
       <ul className="flex flex-col gap-3 py-3">
         <li className="w-full rounded-xl border-[1px] border-black hover:bg-gray-50">
-          <button className="w-full flex p-3 items-center">
+          <button className="w-full flex py-3 px-5 items-center">
             <img className="w-5" src={facebookIcon} alt="facebook logo" />
             <p className="flex-1 font-normal">Continue with Facebook</p>
           </button>
         </li>
         <li className="w-full rounded-xl border-[1px] border-black hover:bg-gray-50">
-          <button className="w-full flex p-3 items-center">
+          <button className="w-full flex py-3 px-5 items-center">
             <img className="w-5" src={googleIcon} alt="google logo" />
             <p className="flex-1 font-normal">Continue with Google</p>
           </button>
         </li>
         <li className="w-full rounded-xl border-[1px] border-black hover:bg-gray-50">
-          <button className="w-full flex p-3 items-center">
+          <button className="w-full flex py-3 px-5 items-center">
             <img className="w-5" src={AppleIcon} alt="apple logo" />
             <p className="flex-1 font-normal">Continue with Apple</p>
           </button>
         </li>
         <li className="w-full rounded-xl border-[1px] border-black hover:bg-gray-50">
-          <button className="w-full flex p-3 items-center">
+          <button className="w-full flex py-3 px-5 items-center">
             <img className="w-5" src={mailIcon} alt="mail logo" />
             <p className="flex-1 font-normal">Continue with Mail</p>
           </button>

@@ -52,3 +52,11 @@ footer a:hover {
 footer span {
   max-height: min-content;
 }
+
+#root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
