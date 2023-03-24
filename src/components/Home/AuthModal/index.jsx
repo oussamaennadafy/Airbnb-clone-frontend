@@ -20,7 +20,7 @@ function AuthModal({ setDisplayAuthModal, displayAuthModal }) {
           displayAuthModal
             ? "transition-all duration-500 opacity-100 -translate-y-1/2 pointer-events-auto visible"
             : "opacity-0 translate-y-full pointer-events-none invisible"
-        } -translate-x-1/2 z-30 bg-white w-[560px] overflow-hidden rounded-xl shadow-lg border border-gray-200`}
+        } -translate-x-1/2 z-30 bg-white w-full h-full sm:h-[90%] 2xl:h-[80%] sm:w-[560px] overflow-hidden rounded-xl shadow-lg border border-gray-200`}
       >
         <Header setDisplayAuthModal={setDisplayAuthModal} />
         <div className="overflow-auto h-[80vh]">
