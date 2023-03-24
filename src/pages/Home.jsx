@@ -18,16 +18,17 @@ function Home() {
   const hideModal = () => {
     if (displayMenu) toggleMenu();
   };
-  // useEffect(() => {
-  //   if (displayAuthModal)
-  //     document.querySelector("body").classList.add("overflow-y-hidden");
-  //   else document.querySelector("body").classList.remove("overflow-y-hidden");
-  // }, [displayAuthModal]);
+  useEffect(() => {
+    if (displayAuthModal)
+      document.querySelector("body").classList.add("overflow-y-hidden");
+    else document.querySelector("body").classList.remove("overflow-y-hidden");
+  }, [displayAuthModal]);
   return (
     <div onClick={hideModal} className="max-w-screen font-medium">
-      {displayAuthModal && (
-        <AuthModal setDisplayAuthModal={setDisplayAuthModal} />
-      )}
+      <AuthModal
+        displayAuthModal={displayAuthModal}
+        setDisplayAuthModal={setDisplayAuthModal}
+      />
       <AboveHeader />
       <Header
         setDisplayAuthModal={setDisplayAuthModal}
