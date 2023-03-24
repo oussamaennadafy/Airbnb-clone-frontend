@@ -12,6 +12,11 @@ import upArrow from "./up-arrow.svg";
 import ChoicesIcon from "./ChoicesIcon.jsx";
 import downArrow from "./down-arrow.svg";
 
+import facebookIcon from "./facebook-icon.svg";
+import googleIcon from "./google-icon.svg";
+import AppleIcon from "./apple-Icon.svg";
+import mailIcon from "./mail-icon.svg";
+
 export {
   closeIcon,
   earthIcon,
@@ -26,4 +31,8 @@ export {
   upArrow,
   ChoicesIcon,
   downArrow,
+  facebookIcon,
+  googleIcon,
+  AppleIcon,
+  mailIcon,
 };
