@@ -4,7 +4,7 @@ import { closeIcon } from "../../../assets/icons";
 
 function Header({ setDisplayAuthModal }) {
   return (
-    <header className="border-b p-3 bg-white border-gray-200 flex items-center sticky top-0">
+    <header className="sticky top-0 border-b p-3 border-gray-200 flex items-center">
       <div
         onClick={() => setDisplayAuthModal((previousState) => !previousState)}
         className="rounded-full p-2 hover:bg-gray-100 cursor-pointer transition"

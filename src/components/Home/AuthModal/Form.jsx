@@ -51,7 +51,7 @@ function Form() {
         </div>
         <button
           type="submit"
-          className="w-full rounded-lg py-3 text-white font-semibold bg-violet-400"
+          className="w-full rounded-lg py-3 text-white font-semibold bg-gradient-to-r from-pink-500 via-red-500 to-rose-500"
         >
           Continue
         </button>
