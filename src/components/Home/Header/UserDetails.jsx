@@ -1,5 +1,6 @@
 import { useState, forwardRef } from "react";
 import { earthIcon, menuIcon, userIcon } from "../../../assets/icons";
+import { Link } from "react-router-dom";
 
 const UserDetails = ({ displayMenu, toggleMenu, setDisplayAuthModal }) => {
   const showAuthModal = () => {
@@ -8,9 +9,9 @@ const UserDetails = ({ displayMenu, toggleMenu, setDisplayAuthModal }) => {
   };
   return (
     <div className="flex items-center justify-between relative">
-      <a className="py-3 px-5 hover:bg-gray-100 rounded-full" href="">
+      <Link to="/host" className="py-3 px-5 hover:bg-gray-100 rounded-full">
         Airbnb your home
-      </a>
+      </Link>
       <button className="p-3 hover:bg-gray-100 rounded-full mr-2">
         <img className="w-4" src={earthIcon} alt="earth icon" />
       </button>

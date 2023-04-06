@@ -9,7 +9,7 @@ import useSlider from "../../../hooks/useSlider";
 
 const Item = (props) => {
   // desctructer props
-  const { id, photos, location, rating, views, period, price } = props;
+  const { photos, location, rating, views, availability, price } = props;
 
   // refs
   const scrollElementRef = useRef(null);
@@ -76,7 +76,7 @@ const Item = (props) => {
         <p className="text-gray-800 opacity-80">
           Viewed {views} times last week
         </p>
-        <p className="text-gray-800 opacity-80">{period}</p>
+        <p className="text-gray-800 opacity-80">{availability}</p>
         <p>
           <strong>MAD {price}</strong> <span>night</span>
         </p>
