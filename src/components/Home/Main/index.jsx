@@ -6,10 +6,7 @@ export default function Main() {
   useEffect(() => {
     fetch("http://localhost:8000/api/v1/places")
       .then((response) => response.json())
-      .then((response) => {
-        setPlaces(response.body.places);
-        console.log(response.body.places[0]);
-      });
+      .then((response) => setPlaces(response.body.places));
   }, []);
   return (
     <main
@@ -19,6 +16,7 @@ export default function Main() {
       {places.map((place) => (
         <Item
           key={place._id}
+          id={place._id}
           photos={place.images}
           location={place.location}
           rating={place.ratingAverage}

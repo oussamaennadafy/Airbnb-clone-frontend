@@ -6,10 +6,11 @@ import {
   heartIcon,
 } from "../../../assets/icons";
 import useSlider from "../../../hooks/useSlider";
+import { Link } from "react-router-dom";
 
 const Item = (props) => {
   // desctructer props
-  const { photos, location, rating, views, availability, price } = props;
+  const { id, photos, location, rating, views, availability, price } = props;
 
   // refs
   const scrollElementRef = useRef(null);
@@ -28,9 +29,20 @@ const Item = (props) => {
     );
   }, []);
 
+  // handle Click Arrows
+  const handleClickArrows = (e) => {
+    // e.preventDefault();
+    e.stopPropagation();
+    // console.log(e.target);
+  };
+
   return (
     <figure className="group cursor-pointer font-normal">
-      <div className="relative min-w-full">
+      <Link
+        target="_blanc"
+        to={`/places/${id}`}
+        className="relative min-w-full"
+      >
         <div
           ref={scrollElementRef}
           className="h-[300px] min-w-full relative overflow-auto hide-scrollbar rounded-lg"
@@ -52,6 +64,7 @@ const Item = (props) => {
           <img className="w-full h-full" src={heartIcon} alt="heart icon" />
         </button>
         <button
+          onClick={handleClickArrows}
           ref={leftArrowRef}
           className="absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 left-4 rounded-full bg-gray-100 hover:scale-105 hover:shadow-sm"
         >
@@ -60,11 +73,12 @@ const Item = (props) => {
 
         <button
           ref={rightArrowRef}
+          onClick={handleClickArrows}
           className="absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 right-4 rounded-full bg-gray-100 hover:scale-105 hover:shadow-sm"
         >
           <img className="w-2/4 h-2/4" src={rightArrow} alt="right arrow" />
         </button>
-      </div>
+      </Link>
       <figcaption>
         <div className="flex justify-between pt-1">
           <strong className="font-semibold">{location}</strong>
