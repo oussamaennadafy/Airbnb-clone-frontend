@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../components/Home/Header";
+import ReserveCard from "./../components/Place/ReserveCard";
 import {
   shareIcon,
   starIcon,
@@ -25,8 +26,8 @@ function Place() {
   return (
     <>
       <Header />
-      <section className="px-12">
-        <figure className="my-5">
+      <section className="px-28">
+        <figure className="mt-5 mb-12">
           <figcaption className="mb-4">
             <h1 className="font-medium text-2xl">{place.title}</h1>
             <div className="mt-4 flex justify-between">
@@ -60,8 +61,8 @@ function Place() {
             ))}
           </div>
         </figure>
-        <div className="grid grid-cols-[60%,auto] gap-10">
-          <div className="pt-5 col-span-[60%]">
+        <div className="grid grid-cols-[60%,auto] gap-24">
+          <div className="col-span-[60%]">
             <div className="flex justify-between items-center border-b border-gray-300 pb-5">
               <div>
                 <h2 className="font-medium text-xl text-gray-900">
@@ -79,7 +80,7 @@ function Place() {
               <div className="flex items-start gap-4 pb-4">
                 <img className="w-7" src={superHostIcon} alt="superHost Icon" />
                 <div>
-                  <strong className="text-gray-900">
+                  <strong className="text-gray-900 font-semibold">
                     Natura is a Superhost
                   </strong>
                   <p className="text-gray-600">
@@ -91,7 +92,7 @@ function Place() {
               <div className="flex items-start gap-4 pb-4">
                 <img className="w-7" src={locationIcon} alt="superHost Icon" />
                 <div>
-                  <strong className="text-gray-900">
+                  <strong className="text-gray-900 font-semibold">
                     Natura is a Superhost
                   </strong>
                   <p className="text-gray-600">
@@ -107,7 +108,7 @@ function Place() {
                   alt="superHost Icon"
                 />
                 <div>
-                  <strong className="text-gray-900">
+                  <strong className="text-gray-900 font-semibold">
                     Natura is a Superhost
                   </strong>
                   <p className="text-gray-600">
@@ -123,13 +124,14 @@ function Place() {
                 className="w-36 mb-3"
                 alt=""
               />
-              <p>
+              <p className="mb-2">
                 Every booking includes free protection from Host cancellations,
                 listing inaccuracies, and other issues like trouble checking in.
               </p>
+              <p className="font-semibold underline">Learn more</p>
             </div>
           </div>
-          <aside></aside>
+          <ReserveCard />
         </div>
       </section>
     </>

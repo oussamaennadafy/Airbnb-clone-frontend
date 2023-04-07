@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 //assets
 import { downArrow } from "./../../../assets/icons";
+import MainButton from "../../../utilities/MainButton";
 
 function Form() {
   const [country, setCountry] = useState("United State (+1)");
@@ -49,12 +50,7 @@ function Form() {
             Privacy Policy
           </a>
         </div>
-        <button
-          type="submit"
-          className="w-full rounded-lg py-3 text-white font-semibold bg-gradient-to-r from-pink-500 via-red-500 to-rose-500"
-        >
-          Continue
-        </button>
+        <MainButton label="Continue" />
       </form>
     </div>
   );
