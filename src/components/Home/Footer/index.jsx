@@ -1,4 +1,5 @@
-import { earthIcon, upArrow, ChoicesIcon } from "../../../assets/icons";
+import { earthIcon, upArrow } from "../../../assets/icons";
+import { ChoicesIcon } from "../../../assets/configurable-icons";
 
 const Footer = () => {
   return (

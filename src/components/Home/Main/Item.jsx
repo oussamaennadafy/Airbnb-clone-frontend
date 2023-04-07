@@ -1,10 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import {
-  starIcon,
-  leftArrow,
-  rightArrow,
-  heartIcon,
-} from "../../../assets/icons";
+import { starIcon, leftArrow, rightArrow } from "../../../assets/icons";
+import { HeartIcon } from "./../../../assets/configurable-icons";
 import useSlider from "../../../hooks/useSlider";
 import { Link } from "react-router-dom";
 
@@ -61,7 +57,7 @@ const Item = (props) => {
           </div>
         </div>
         <button className="absolute w-6 h-6 top-4 right-4 rounded-full">
-          <img className="w-full h-full" src={heartIcon} alt="heart icon" />
+          <HeartIcon stroke="white" fill="#00000080" />
         </button>
         <button
           onClick={handleClickArrows}
