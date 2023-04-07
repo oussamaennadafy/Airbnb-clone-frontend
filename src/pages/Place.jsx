@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../components/Home/Header";
-import { shareIcon, starIcon } from "../assets/icons";
+import {
+  shareIcon,
+  starIcon,
+  superHostIcon,
+  locationIcon,
+  freeCancelationIcon,
+} from "../assets/icons";
 import { HeartIcon } from "../assets/configurable-icons";
 
 function Place() {
@@ -21,7 +27,7 @@ function Place() {
       <Header />
       <section className="px-12">
         <figure className="my-5">
-          <figcaption>
+          <figcaption className="mb-4">
             <h1 className="font-medium text-2xl">{place.title}</h1>
             <div className="mt-4 flex justify-between">
               <div className="flex gap-2 items-center">
@@ -42,7 +48,89 @@ function Place() {
               </div>
             </div>
           </figcaption>
+          <div className="grid grid-cols-4 grid-rows-2 gap-2 rounded-md overflow-hidden h-96">
+            {place.images?.map((image) => (
+              <div
+                key={image}
+                className="first-of-type:col-span-2 first-of-type:row-span-2 cursor-pointer relative"
+              >
+                <div className="absolute top-0 left-0 w-full h-full bg-black hover:opacity-20 opacity-0 transition" />
+                <img className="object-cover h-full w-full" src={image} />
+              </div>
+            ))}
+          </div>
         </figure>
+        <div className="grid grid-cols-[60%,auto] gap-10">
+          <div className="pt-5 col-span-[60%]">
+            <div className="flex justify-between items-center border-b border-gray-300 pb-5">
+              <div>
+                <h2 className="font-medium text-xl text-gray-900">
+                  Dome hosted by Natura
+                </h2>
+                <p>2 guests . 1 bedroom . 1 bed . 1 bath</p>
+              </div>
+              <img
+                className="rounded-full w-10 h-10"
+                src={place.images?.[0]}
+                alt="avatar"
+              />
+            </div>
+            <div className="pt-5 border-b border-gray-300">
+              <div className="flex items-start gap-4 pb-4">
+                <img className="w-7" src={superHostIcon} alt="superHost Icon" />
+                <div>
+                  <strong className="text-gray-900">
+                    Natura is a Superhost
+                  </strong>
+                  <p className="text-gray-600">
+                    Superhosts are experienced, highly rated hosts who are
+                    committed to providing great stays for guests.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 pb-4">
+                <img className="w-7" src={locationIcon} alt="superHost Icon" />
+                <div>
+                  <strong className="text-gray-900">
+                    Natura is a Superhost
+                  </strong>
+                  <p className="text-gray-600">
+                    Superhosts are experienced, highly rated hosts who are
+                    committed to providing great stays for guests.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4 pb-5">
+                <img
+                  className="w-7"
+                  src={freeCancelationIcon}
+                  alt="superHost Icon"
+                />
+                <div>
+                  <strong className="text-gray-900">
+                    Natura is a Superhost
+                  </strong>
+                  <p className="text-gray-600">
+                    Superhosts are experienced, highly rated hosts who are
+                    committed to providing great stays for guests.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="py-5">
+              <img
+                src="https://a0.muscache.com/im/pictures/54e427bb-9cb7-4a81-94cf-78f19156faad.jpg"
+                className="w-36 mb-3"
+                alt=""
+              />
+              <p>
+                Every booking includes free protection from Host cancellations,
+                listing inaccuracies, and other issues like trouble checking in.
+              </p>
+            </div>
+          </div>
+          <aside></aside>
+        </div>
       </section>
     </>
   );

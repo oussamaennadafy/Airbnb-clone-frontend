@@ -10,6 +10,9 @@ import userIcon from "./user-icon.svg";
 import upArrow from "./up-arrow.svg";
 import downArrow from "./down-arrow.svg";
 import shareIcon from "./share-icon.svg";
+import superHostIcon from "./superHost-icon.svg";
+import locationIcon from "./location-icon.svg";
+import freeCancelationIcon from "./freeCancelation-icon.svg";
 
 import facebookIcon from "./facebook-icon.svg";
 import googleIcon from "./google-icon.svg";
@@ -30,6 +33,9 @@ export
   upArrow,
   downArrow,
   shareIcon,
+  superHostIcon,
+  locationIcon,
+  freeCancelationIcon,
   facebookIcon,
   googleIcon,
   AppleIcon,
