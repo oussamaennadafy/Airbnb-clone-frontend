@@ -131,7 +131,7 @@ function Place() {
               <p className="font-semibold underline">Learn more</p>
             </div>
           </div>
-          <ReserveCard />
+          <ReserveCard place={place} />
         </div>
       </section>
     </>
