@@ -10,6 +10,7 @@ import {
   freeCancelationIcon,
 } from "../assets/icons";
 import { HeartIcon } from "../assets/configurable-icons";
+import useformatPrice from "../helpers/useformatPrice";
 
 function Place() {
   const { id } = useParams();
@@ -19,7 +20,10 @@ function Place() {
   useEffect(() => {
     fetch(`http://localhost:8000/api/v1/places/${id}`)
       .then((response) => response.json())
-      .then((data) => setPlace(data.body.place))
+      .then((data) => {
+        data.body.place.price = useformatPrice(data.body.place.price);
+        setPlace(data.body.place);
+      })
       .catch(() => setError("something went wrong"))
       .finally(() => setLoader(false));
   }, []);

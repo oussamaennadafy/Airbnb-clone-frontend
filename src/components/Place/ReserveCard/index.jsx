@@ -16,10 +16,12 @@ function ReserveCard({ place }) {
             <strong className="text-2xl font-medium">{place.price}</strong>
             <span className="text-gray-800 text-lg">night</span>
           </div>
-          <div className="flex items-center gap-2">
-            <img className="w-4" src={starIcon} alt="star icon" />
-            <strong>4.6</strong>.
-            <p className="text-gray-600 underline">86 reviews</p>
+          <div className="flex items-center gap-1">
+            <img className="w-3" src={starIcon} alt="star icon" />
+            <strong>{place.ratingAverage}</strong>.
+            <p className="text-gray-600 underline cursor-pointer">
+              {place.ratingsCount} reviews
+            </p>
           </div>
         </div>
         <div className="grid grid-cols-2 grid-rows-2 rounded-md mb-4 h-[106px]">
