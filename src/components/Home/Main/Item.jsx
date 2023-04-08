@@ -27,7 +27,7 @@ const Item = (props) => {
 
   // handle Click Arrows
   const handleClickArrows = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     e.stopPropagation();
     // console.log(e.target);
   };
@@ -60,13 +60,12 @@ const Item = (props) => {
           <HeartIcon stroke="white" fill="#00000080" />
         </button>
         <button
-          onClick={handleClickArrows}
           ref={leftArrowRef}
+          onClick={handleClickArrows}
           className="absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 left-4 rounded-full bg-gray-100 hover:scale-105 hover:shadow-sm"
         >
           <img className="w-2/4 h-2/4" src={leftArrow} alt="left arrow" />
         </button>
-
         <button
           ref={rightArrowRef}
           onClick={handleClickArrows}

@@ -10,7 +10,7 @@ function ReserveCard({ place }) {
   };
   return (
     <aside>
-      <div className="p-5 border border-gray-300 shadow-md rounded-xl w-full">
+      <div className="p-5 mb-14 border border-gray-300 shadow-md rounded-xl w-full">
         <div className="flex justify-between items-end mb-4">
           <div className="flex items-end gap-1">
             <strong className="text-2xl font-medium">{place.price}</strong>

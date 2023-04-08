@@ -97,11 +97,10 @@ function Place() {
                 <img className="w-7" src={locationIcon} alt="superHost Icon" />
                 <div>
                   <strong className="text-gray-900 font-semibold">
-                    Natura is a Superhost
+                    Great location
                   </strong>
                   <p className="text-gray-600">
-                    Superhosts are experienced, highly rated hosts who are
-                    committed to providing great stays for guests.
+                    recent guests gave the location good rating.
                   </p>
                 </div>
               </div>
@@ -113,11 +112,11 @@ function Place() {
                 />
                 <div>
                   <strong className="text-gray-900 font-semibold">
-                    Natura is a Superhost
+                    Free Cancelation
                   </strong>
                   <p className="text-gray-600">
-                    Superhosts are experienced, highly rated hosts who are
-                    committed to providing great stays for guests.
+                    you can cancel your reservation any time as soon as your not
+                    in the house, feel free and take your time
                   </p>
                 </div>
               </div>
