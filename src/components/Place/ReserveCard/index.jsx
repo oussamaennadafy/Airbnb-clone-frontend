@@ -5,6 +5,12 @@ import GuestsCount from "./GuestsCount";
 
 function ReserveCard({ place }) {
   const [displayMenu, setDisplayMenu] = useState(false);
+  const [checkIn, setCheckIn] = useState(
+    new Date(place.from).toISOString().substring(0, 10)
+  );
+  const [checkOut, setCheckOut] = useState(
+    new Date(place.to).toISOString().substring(0, 10)
+  );
   const toggleMenu = () => {
     setDisplayMenu((prevState) => !prevState);
   };
@@ -33,13 +39,22 @@ function ReserveCard({ place }) {
               check-In
             </span>
             <span className="text-sm absolute top-6 left-3 uppercase">
-              4/7/2023
+              {checkIn}
             </span>
             <input
               className="w-full h-full absolute open-calendar cursor-pointer opacity-0"
               type="date"
               name="checkIn"
               id="checkIn"
+              onChange={(e) => setCheckIn(e.target.value)}
+              value={checkIn}
+              min={
+                place.from &&
+                new Date(place.from).toISOString().substring(0, 10)
+              }
+              max={
+                place.to && new Date(place.to).toISOString().substring(0, 10)
+              }
             />
           </label>
           <label
@@ -50,13 +65,22 @@ function ReserveCard({ place }) {
               check-Out
             </span>
             <span className="text-sm absolute top-6 left-3 uppercase">
-              4/7/2023
+              {checkOut}
             </span>
             <input
               className="w-full h-full absolute cursor-pointer open-calendar opacity-0"
               type="date"
-              name="checkIn"
-              id="checkIn"
+              name="checkOut"
+              id="checkOut"
+              value={checkOut}
+              onChange={(e) => setCheckOut(e.target.value)}
+              min={
+                place.from &&
+                new Date(place.from).toISOString().substring(0, 10)
+              }
+              max={
+                place.to && new Date(place.to).toISOString().substring(0, 10)
+              }
             />
           </label>
           <label

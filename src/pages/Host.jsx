@@ -76,6 +76,8 @@ function Host() {
         fileinputRef.current.value = null;
         setLocation("");
         setDescription("");
+        setFrom("");
+        setTo("");
         // hide loader
         setLoader(false);
       })
@@ -184,6 +186,7 @@ function Host() {
                     type="date"
                     name="from"
                     id="from"
+                    value={from}
                     onChange={(e) => setFrom(e.target.value)}
                     className="shadow appearance-none mt-2 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   />
@@ -193,6 +196,7 @@ function Host() {
                   <input
                     type="date"
                     name="from"
+                    value={to}
                     onChange={(e) => setTo(e.target.value)}
                     id="from"
                     className="shadow appearance-none mt-2 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
