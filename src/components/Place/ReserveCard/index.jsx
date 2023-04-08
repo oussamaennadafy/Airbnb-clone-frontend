@@ -1,6 +1,7 @@
 import React from "react";
-import MainButton from "./../../utilities/MainButton";
-import { starIcon, downArrow } from "./../../assets/icons";
+import MainButton from "../../../utilities/MainButton";
+import { starIcon, downArrow } from "../../../assets/icons";
+import GuestsCount from "./GuestsCount";
 
 function ReserveCard() {
   return (
@@ -53,7 +54,7 @@ function ReserveCard() {
             />
           </label>
           <label
-            className="border border-gray-400 col-span-2 relative rounded-es-md rounded-ee-md"
+            className="border relative border-gray-400 col-span-2 rounded-es-md rounded-ee-md"
             htmlFor="guests"
           >
             <span className="text-[11px] font-medium absolute top-2 left-3 uppercase">
@@ -67,6 +68,14 @@ function ReserveCard() {
               src={downArrow}
               alt="down arrow"
             />
+            <div className="absolute shadow-md top-full bg-white left-0 w-full border border-gray-500 rounded-md">
+              <ul className="p-4 flex flex-col gap-3">
+                <GuestsCount />
+                <GuestsCount />
+                <GuestsCount />
+                <GuestsCount />
+              </ul>
+            </div>
           </label>
         </div>
         <MainButton label="Reserve" />
