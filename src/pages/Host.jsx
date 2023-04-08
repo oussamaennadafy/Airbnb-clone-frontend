@@ -9,6 +9,8 @@ function Host() {
   const [images, setImages] = useState([]);
   const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
+  const [from, setFrom] = useState(null);
+  const [to, setTo] = useState(null);
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState("");
   const fileinputRef = useRef(null);
@@ -39,11 +41,11 @@ function Host() {
       setError("Price must be a number");
       return;
     }
-    // check if images are uploaded
-    if (images.length < 5) {
-      setError("Please upload at least 5 images");
-      return;
-    }
+    // // check if images are uploaded
+    // if (images.length < 5) {
+    //   setError("Please upload at least 5 images");
+    //   return;
+    // }
     // reset error
     setError(false);
     // send data to the server
@@ -54,6 +56,8 @@ function Host() {
     formData.append("host", "oussama");
     formData.append("location", location);
     formData.append("description", description);
+    formData.append("from", from);
+    formData.append("to", to);
     for (let i = 0; i < images.length; i++) {
       formData.append("images", images[i]);
     }
@@ -64,7 +68,7 @@ function Host() {
         },
       })
       .then((res) => {
-        console.log(res.data.body.createdPlace.images);
+        console.log(res.data.body.createdPlace);
         // reset form
         setTitle("");
         setPrice("");
@@ -77,7 +81,7 @@ function Host() {
       })
       .catch((err) => {
         setLoader(false);
-        setError(true);
+        setError("something went wrong");
       });
   };
   return (
@@ -88,10 +92,8 @@ function Host() {
         toggleMenu={toggleMenu}
       />
       <section className="min-h-[calc(100vh-132px)] flex items-center justify-center bg-gray-50">
-        <div className="max-w-3xl mx-auto my-8 bg-white p-8 rounded-lg shadow-lg">
-          <h2 className="text-2xl font-bold mb-4">
-            Add a new place to host on Airbnb
-          </h2>
+        <div className="w-5/12 mx-auto my-8 bg-white p-8 rounded-lg shadow-lg">
+          <h2 className="text-2xl font-bold mb-4">host your home on Airbnb</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <label
@@ -164,10 +166,39 @@ function Host() {
                 multiple
                 id="images"
                 ref={fileinputRef}
-                // value={images}
                 onChange={(e) => setImages(e.target.files)}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               />
+            </div>
+            <div className="mb-4">
+              <label
+                htmlFor="images"
+                className="block text-gray-700 font-bold mb-2"
+              >
+                Availability
+              </label>
+              <div className="flex justify-between gap-8">
+                <div className="w-1/2">
+                  <label htmlFor="from">From</label>
+                  <input
+                    type="date"
+                    name="from"
+                    id="from"
+                    onChange={(e) => setFrom(e.target.value)}
+                    className="shadow appearance-none mt-2 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  />
+                </div>
+                <div className="w-1/2">
+                  <label htmlFor="from">To</label>
+                  <input
+                    type="date"
+                    name="from"
+                    onChange={(e) => setTo(e.target.value)}
+                    id="from"
+                    className="shadow appearance-none mt-2 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  />
+                </div>
+              </div>
             </div>
             <div className="text-center">
               {error && (
@@ -186,7 +217,7 @@ function Host() {
               ) : (
                 <button
                   type="submit"
-                  className="bg-red-500 transition w-28 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                  className="bg-red-500 transition mt-3 w-28 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                 >
                   Add Place
                 </button>

@@ -5,27 +5,31 @@ function useSlider(
   rightArrow,
   lastChild,
   margine = 0
-) {
-  const middleOfChild = Math.round(lastChild.clientWidth / 2);
+)
+{
+  const middleOfChild = Math.round(lastChild?.clientWidth / 2);
   // hide the left arrow at first time
   leftArrow.classList.add("hidden");
 
   // add the scroll event
-  leftArrow.addEventListener("click", () => {
+  leftArrow.addEventListener("click", () =>
+  {
     elementToScroll.scrollTo({
-      left: elementToScroll.scrollLeft - viewportElement.clientWidth + margine,
+      left: elementToScroll.scrollLeft - viewportElement?.clientWidth + margine,
       behavior: "smooth",
     });
   });
-  rightArrow.addEventListener("click", () => {
+  rightArrow.addEventListener("click", () =>
+  {
     elementToScroll.scrollTo({
-      left: elementToScroll.scrollLeft + viewportElement.clientWidth - margine,
+      left: elementToScroll.scrollLeft + viewportElement?.clientWidth - margine,
       behavior: "smooth",
     });
   });
 
   // logic to show or hide arrows
-  elementToScroll.addEventListener("scroll", (event) => {
+  elementToScroll.addEventListener("scroll", (event) =>
+  {
     // left arrow
     if (event.target.scrollLeft > middleOfChild)
       leftArrow.classList.remove("hidden");
@@ -33,7 +37,7 @@ function useSlider(
 
     // right arrow
     if (
-      event.target.scrollLeft + viewportElement.clientWidth + middleOfChild <=
+      event.target.scrollLeft + viewportElement?.clientWidth + middleOfChild <=
       event.target.scrollWidth
     )
       rightArrow.classList.remove("hidden");

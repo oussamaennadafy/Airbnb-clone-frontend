@@ -6,7 +6,17 @@ import { Link } from "react-router-dom";
 
 const Item = (props) => {
   // desctructer props
-  const { id, photos, location, rating, views, availability, price } = props;
+  const {
+    _id,
+    images,
+    location,
+    ratingAverage: rating,
+    viewedTimesLastWeek: views,
+    availability,
+    price,
+    from,
+    to,
+  } = props.place;
 
   // refs
   const scrollElementRef = useRef(null);
@@ -27,16 +37,24 @@ const Item = (props) => {
 
   // handle Click Arrows
   const handleClickArrows = (e) => {
-    e.preventDefault();
     e.stopPropagation();
-    // console.log(e.target);
+  };
+
+  const formatDate = (from, to) => {
+    const fromMonth = from?.split(" ")[1];
+    const fromDay = from?.split(" ")[2];
+    const toMonth = to?.split(" ")[1];
+    const toDay = to?.split(" ")[2];
+    return `${fromMonth} ${fromDay} - ${
+      toMonth !== fromMonth ? toMonth : ""
+    } ${toDay}`;
   };
 
   return (
     <figure className="group cursor-pointer font-normal">
       <Link
         target="_blanc"
-        to={`/places/${id}`}
+        to={`/places/${_id}`}
         className="relative min-w-full"
       >
         <div
@@ -44,13 +62,13 @@ const Item = (props) => {
           className="h-[300px] min-w-full relative overflow-auto hide-scrollbar rounded-lg"
         >
           <div className="flex h-full min-w-full">
-            {photos.map((photo) => {
+            {images.map((image) => {
               return (
                 <img
                   ref={lastElementRef}
                   className="min-h-full min-w-full object-cover"
-                  key={photo}
-                  src={photo}
+                  key={image}
+                  src={image}
                 />
               );
             })}
@@ -85,7 +103,7 @@ const Item = (props) => {
         <p className="text-gray-800 opacity-80">
           Viewed {views} times last week
         </p>
-        <p className="text-gray-800 opacity-80">{availability}</p>
+        <p className="text-gray-800 opacity-80">{formatDate(from, to)}</p>
         <p>
           <strong>MAD {price}</strong> <span>night</span>
         </p>
