@@ -34,7 +34,11 @@ const Item = (props) => {
 
   // handle Click Arrows
   const handleClickArrows = (e) => {
-    // e.stopPropagation();
+    e.preventDefault();
+  };
+  // handle Click Arrows
+  const handleClickHeart = (e) => {
+    e.preventDefault();
   };
 
   const formatDate = (from, to) => {
@@ -49,7 +53,11 @@ const Item = (props) => {
 
   return (
     <figure className="group cursor-pointer font-normal">
-      <a target="_blanc" to={`/places/${_id}`} className="relative min-w-full">
+      <Link
+        target="_blanc"
+        to={`/places/${_id}`}
+        className="relative min-w-full"
+      >
         <div
           ref={containerRef}
           className="h-[300px] flex min-w-full relative overflow-auto rounded-lg hide-scrollbar"
@@ -65,7 +73,10 @@ const Item = (props) => {
             );
           })}
         </div>
-        <button className="absolute w-6 h-6 top-4 right-4 rounded-full">
+        <button
+          onClick={handleClickHeart}
+          className="absolute w-6 h-6 top-4 right-4 rounded-full"
+        >
           <HeartIcon stroke="white" fill="#00000080" />
         </button>
         <button
@@ -82,7 +93,7 @@ const Item = (props) => {
         >
           <img className="w-2/4 h-2/4" src={rightArrow} alt="right arrow" />
         </button>
-      </a>
+      </Link>
       <figcaption>
         <div className="flex justify-between pt-1">
           <strong className="font-semibold">{location}</strong>
