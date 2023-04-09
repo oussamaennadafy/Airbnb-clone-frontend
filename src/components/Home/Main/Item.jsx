@@ -12,7 +12,6 @@ const Item = (props) => {
     location,
     ratingAverage: rating,
     viewedTimesLastWeek: views,
-    availability,
     price,
     from,
     to,

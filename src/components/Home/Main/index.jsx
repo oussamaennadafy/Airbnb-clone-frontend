@@ -3,7 +3,6 @@ import Item from "./Item";
 
 export default function Main() {
   const [places, setPlaces] = useState([]);
-  console.log(places);
   useEffect(() => {
     fetch("http://localhost:8000/api/v1/places")
       .then((response) => response.json())
