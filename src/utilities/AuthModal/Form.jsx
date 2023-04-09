@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 //assets
-import { downArrow } from "./../../../assets/icons";
-import MainButton from "../../../utilities/MainButton";
+import { downArrow } from "./../../assets/icons";
+import MainButton from "./../MainButton";
 
 function Form() {
   const [country, setCountry] = useState("United State (+1)");

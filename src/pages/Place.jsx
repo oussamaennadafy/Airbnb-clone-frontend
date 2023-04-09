@@ -30,7 +30,7 @@ function Place() {
     <>
       <Header />
       {Object.keys(place).length && (
-        <section className="px-28">
+        <section className="md:px-28 sm:px-10 px-1">
           <figure className="mt-5 mb-12">
             <figcaption className="mb-4">
               <h1 className="font-medium text-2xl">{place.title}</h1>
@@ -53,7 +53,7 @@ function Place() {
                 </div>
               </div>
             </figcaption>
-            <div className="grid grid-cols-4 grid-rows-2 gap-2 rounded-md overflow-hidden h-96">
+            <div className="grid grid-cols-2 grid-rows-1 md:grid-cols-4 md:grid-rows-2 gap-2 rounded-md overflow-hidden md:h-96">
               {place.images?.map((image) => (
                 <div
                   key={image}
@@ -65,7 +65,7 @@ function Place() {
               ))}
             </div>
           </figure>
-          <div className="grid grid-cols-[60%,auto] gap-24">
+          <div className="grid md:grid-cols-[60%,auto] grid-cols-1 gap-24">
             <div className="col-span-[60%]">
               <div className="flex justify-between items-center border-b border-gray-300 pb-5">
                 <div>

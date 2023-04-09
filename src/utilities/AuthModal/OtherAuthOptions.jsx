@@ -5,7 +5,7 @@ import {
   googleIcon,
   AppleIcon,
   mailIcon,
-} from "./../../../assets/icons";
+} from "./../../assets/icons";
 
 function OtherAuthOptions() {
   return (
