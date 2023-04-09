@@ -11,6 +11,13 @@ function ReserveCard({ place }) {
   const [checkOut, setCheckOut] = useState(
     new Date(place.to).toISOString().substring(0, 10)
   );
+  const datediff = (first, second) => {
+    return Math.round(
+      (new Date(second).getTime() - new Date(first).getTime()) /
+        (1000 * 60 * 60 * 24)
+    );
+  };
+  const [days, setDays] = useState(datediff(checkIn, checkOut));
   const toggleMenu = () => {
     setDisplayMenu((prevState) => !prevState);
   };
@@ -46,7 +53,10 @@ function ReserveCard({ place }) {
               type="date"
               name="checkIn"
               id="checkIn"
-              onChange={(e) => setCheckIn(e.target.value)}
+              onChange={(e) => {
+                setCheckIn(() => e.target.value);
+                setDays(() => datediff(checkIn, checkOut));
+              }}
               value={checkIn}
               min={
                 place.from &&
@@ -73,7 +83,10 @@ function ReserveCard({ place }) {
               name="checkOut"
               id="checkOut"
               value={checkOut}
-              onChange={(e) => setCheckOut(e.target.value)}
+              onChange={(e) => {
+                setCheckOut(() => e.target.value);
+                setDays(() => datediff(checkIn, checkOut));
+              }}
               min={
                 place.from &&
                 new Date(place.from).toISOString().substring(0, 10)
@@ -105,13 +118,29 @@ function ReserveCard({ place }) {
                 className="absolute p-4 flex flex-col shadow-md top-full bg-white left-0 w-full border border-gray-300 rounded-md"
               >
                 <ul className="flex flex-col gap-3">
-                  <GuestsCount label="Adults" age="Age 13+" defaultValue={1} />
-                  <GuestsCount label="kids" age="Ages 2-12" defaultValue={0} />
-                  <GuestsCount label="Infants" age="Under 2" defaultValue={0} />
+                  <GuestsCount
+                    label="Adults"
+                    age="Age 13+"
+                    defaultValue={1}
+                    maxValue={place.maxAdults}
+                  />
+                  <GuestsCount
+                    label="kids"
+                    age="Ages 2-12"
+                    defaultValue={0}
+                    maxValue={place.maxChildren}
+                  />
+                  <GuestsCount
+                    label="Infants"
+                    age="Under 2"
+                    defaultValue={0}
+                    maxValue={place.maxInfants}
+                  />
                   <GuestsCount
                     label="Pets"
                     age="Bringing a service animal?"
                     defaultValue={0}
+                    maxValue={place.maxPets}
                   />
                 </ul>
                 <p className="mt-3 text-xs">

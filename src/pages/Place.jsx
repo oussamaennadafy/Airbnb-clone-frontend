@@ -21,7 +21,7 @@ function Place() {
     fetch(`http://localhost:8000/api/v1/places/${id}`)
       .then((response) => response.json())
       .then((data) => {
-        data.body.place.price = useformatPrice(data.body.place.price);
+        // console.log(data.body.place);
         setPlace(data.body.place);
       })
       .catch(() => setError("something went wrong"))
