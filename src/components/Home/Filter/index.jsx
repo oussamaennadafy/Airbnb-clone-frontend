@@ -13,10 +13,11 @@ import {
 } from "../../../assets/icons";
 
 /* static types */
-import types from "../../../static/Types";
+// import types from "../../../static/Types";
 
 function Filter() {
   const [scroll, setScroll] = useState(false);
+  const [types, setTypes] = useState([]);
   const [displayFilter, setdisplayFilter] = useState(true);
   const scrollRef = useRef();
   const leftArrowRef = useRef();
@@ -35,7 +36,6 @@ function Filter() {
   }, []);
 
   // handle the diplay of filter
-
   useEffect(() => {
     const homeObserverOptions = {
       root: null,
@@ -51,6 +51,13 @@ function Filter() {
     new IntersectionObserver(homeObserverFunction, homeObserverOptions).observe(
       document.querySelector("#aboveHeader")
     );
+  }, []);
+  // get categories
+  useEffect(() => {
+    fetch("http://localhost:8000/api/v1/categories")
+      .then((res) => res.json())
+      .then((data) => setTypes(data.body.categories))
+      .catch(() => console.log("error accure"));
   }, []);
 
   return (
@@ -76,14 +83,14 @@ function Filter() {
           ref={scrollRef}
           className="flex items-center grow gap-14 h-full overflow-x-auto hide-scrollbar"
         >
-          {types.map((type) => {
+          {types?.map((type) => {
             return (
               <Type
                 ref={lastElementRef}
-                key={type.name}
-                name={type.name}
-                active={type.active}
-                img={type.img}
+                key={type.label}
+                label={type.label}
+                active={false}
+                src={type.src}
               />
             );
           })}

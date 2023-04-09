@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 
-const Type = forwardRef(({ img, name, active }, forwardedRef) => {
+const Type = forwardRef(({ src, label, active }, forwardedRef) => {
   return (
     <button
       ref={forwardedRef}
@@ -10,8 +10,8 @@ const Type = forwardRef(({ img, name, active }, forwardedRef) => {
           : "opacity-50 hover:after:absolute after:bg-gray-300"
       }`}
     >
-      <img className="w-7 mx-auto mb-1 text-gray" src={img} alt={name} />
-      <p className="text-xs text-center whitespace-nowrap">{name}</p>
+      <img className="w-7 mx-auto mb-1 text-gray" src={src} alt={label} />
+      <p className="text-xs text-center whitespace-nowrap">{label}</p>
     </button>
   );
 });

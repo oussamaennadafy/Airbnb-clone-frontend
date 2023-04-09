@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import { minusIcon, plusIcon } from "../../../assets/icons";
 
-function GuestsCount({ label, age, defaultValue, maxValue }) {
-  const [counter, setCounter] = useState(defaultValue);
+function GuestsCount({ label, age, value, setValue, minValue, maxValue }) {
   const increment = () => {
-    if (counter < maxValue) {
-      setCounter((prevCount) => prevCount + 1);
+    if (value < maxValue) {
+      setValue((prevCount) => prevCount + 1);
     }
   };
   const decrement = () => {
-    if (counter > defaultValue) {
-      setCounter((prevCount) => prevCount - 1);
+    if (value > (minValue || 0)) {
+      setValue((prevCount) => prevCount - 1);
     }
   };
   return (
@@ -23,16 +22,16 @@ function GuestsCount({ label, age, defaultValue, maxValue }) {
         <button
           onClick={decrement}
           className={`w-9 h-9 border border-gray-300 flex items-center justify-center rounded-full ${
-            counter === defaultValue ? "opacity-50 cursor-not-allowed" : ""
+            value === (minValue || 0) ? "opacity-50 cursor-not-allowed" : ""
           }`}
         >
           <img className="w-3" src={minusIcon} alt="minus" />
         </button>
-        <p>{counter}</p>
+        <p>{value}</p>
         <button
           onClick={increment}
           className={`w-9 h-9 border border-gray-300 flex items-center justify-center rounded-full ${
-            counter === maxValue ? "opacity-50 cursor-not-allowed" : ""
+            value === maxValue ? "opacity-50 cursor-not-allowed" : ""
           }`}
         >
           <img className="w-3" src={plusIcon} alt="plus" />

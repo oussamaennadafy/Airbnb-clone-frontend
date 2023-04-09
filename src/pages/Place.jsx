@@ -10,7 +10,6 @@ import {
   freeCancelationIcon,
 } from "../assets/icons";
 import { HeartIcon } from "../assets/configurable-icons";
-import useformatPrice from "../helpers/useformatPrice";
 
 function Place() {
   const { id } = useParams();

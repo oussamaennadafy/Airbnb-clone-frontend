@@ -21,6 +21,10 @@ function ReserveCard({ place }) {
   const toggleMenu = () => {
     setDisplayMenu((prevState) => !prevState);
   };
+  const [adults, setAdults] = useState(1);
+  const [children, setChildren] = useState(0);
+  const [infants, setInfants] = useState(0);
+  const [pets, setPets] = useState(0);
   return (
     <aside>
       <div className="p-5 mb-14 border border-gray-300 shadow-md rounded-xl w-full">
@@ -104,8 +108,8 @@ function ReserveCard({ place }) {
             <span className="text-[11px] font-medium absolute top-2 left-3 uppercase">
               guests
             </span>
-            <span className="text-sm absolute top-6 left-3 uppercase">
-              1 guest
+            <span className="text-sm absolute top-6 left-3">
+              {adults + children} guests {infants ? `, ${infants} Infants` : ""}
             </span>
             <img
               className="absolute top-1/2 -translate-y-1/2 right-3 w-5"
@@ -121,25 +125,30 @@ function ReserveCard({ place }) {
                   <GuestsCount
                     label="Adults"
                     age="Age 13+"
-                    defaultValue={1}
+                    value={adults}
+                    setValue={setAdults}
+                    minValue={1}
                     maxValue={place.maxAdults}
                   />
                   <GuestsCount
-                    label="kids"
+                    label="Children"
                     age="Ages 2-12"
-                    defaultValue={0}
+                    value={children}
+                    setValue={setChildren}
                     maxValue={place.maxChildren}
                   />
                   <GuestsCount
                     label="Infants"
                     age="Under 2"
-                    defaultValue={0}
+                    value={infants}
+                    setValue={setInfants}
                     maxValue={place.maxInfants}
                   />
                   <GuestsCount
                     label="Pets"
                     age="Bringing a service animal?"
-                    defaultValue={0}
+                    value={pets}
+                    setValue={setPets}
                     maxValue={place.maxPets}
                   />
                 </ul>
@@ -164,15 +173,30 @@ function ReserveCard({ place }) {
           <p className="underline">
             MAD {place.price} x {days > 0 ? days : 0} nights
           </p>
-          <p>MAD {Math.round(place.price * days)}</p>
+          <p>
+            MAD{" "}
+            {Math.round(place.price * days) >= 0
+              ? Math.round(place.price * days)
+              : 0}
+          </p>
         </div>
         <div className="flex justify-between items-center pb-5 border-b border-gray-300">
           <p className="underline">Airbnb service fee</p>
-          <p>MAD {Math.round(place.price * days * 0.2)}</p>
+          <p>
+            MAD{" "}
+            {Math.round(place.price * days * 0.2) >= 0
+              ? Math.round(place.price * days * 0.2)
+              : 0}
+          </p>
         </div>
         <div className="flex justify-between items-center pt-6 pb-3 font-semibold text-base">
           <p>Total before taxes</p>
-          <p>MAD {Math.round(place.price * days * 1.2)}</p>
+          <p>
+            MAD{" "}
+            {Math.round(place.price * days * 1.2) >= 0
+              ? Math.round(place.price * days * 1.2)
+              : 0}
+          </p>
         </div>
       </div>
     </aside>
