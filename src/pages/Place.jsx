@@ -30,7 +30,7 @@ function Place() {
     <>
       <Header />
       {Object.keys(place).length && (
-        <section className="md:px-28 sm:px-10 px-1">
+        <section className="lg:px-28 md:px-12 sm:px-6 px-1">
           <figure className="mt-5 mb-12">
             <figcaption className="mb-4">
               <h1 className="font-medium text-2xl">{place.title}</h1>
@@ -53,11 +53,11 @@ function Place() {
                 </div>
               </div>
             </figcaption>
-            <div className="grid grid-cols-2 grid-rows-1 md:grid-cols-4 md:grid-rows-2 gap-2 rounded-md overflow-hidden md:h-96">
+            <div className="grid grid-cols-1 lg:grid-cols-4 lg:grid-rows-2 gap-2 lg:h-96 rounded-md overflow-hidden">
               {place.images?.map((image) => (
                 <div
                   key={image}
-                  className="first-of-type:col-span-2 first-of-type:row-span-2 cursor-pointer relative"
+                  className="lg:first-of-type:col-span-2 lg:first-of-type:row-span-2 h-96 lg:h-full cursor-pointer relative"
                 >
                   <div className="absolute top-0 left-0 w-full h-full bg-black hover:opacity-20 opacity-0 transition" />
                   <img className="object-cover h-full w-full" src={image} />
@@ -65,8 +65,8 @@ function Place() {
               ))}
             </div>
           </figure>
-          <div className="grid md:grid-cols-[60%,auto] grid-cols-1 gap-24">
-            <div className="col-span-[60%]">
+          <div className="grid grid-cols-[1fr-1fr] lg:grid-cols-[auto,40%] gap-10 lg:gap-24">
+            <div>
               <div className="flex justify-between items-center border-b border-gray-300 pb-5">
                 <div>
                   <h2 className="font-medium text-xl text-gray-900">
