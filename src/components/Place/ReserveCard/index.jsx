@@ -54,8 +54,8 @@ function ReserveCard({ place }) {
               name="checkIn"
               id="checkIn"
               onChange={(e) => {
-                setCheckIn(() => e.target.value);
-                setDays(() => datediff(checkIn, checkOut));
+                setCheckIn(e.target.value);
+                setDays(datediff(e.target.value, checkOut));
               }}
               value={checkIn}
               min={
@@ -84,8 +84,8 @@ function ReserveCard({ place }) {
               id="checkOut"
               value={checkOut}
               onChange={(e) => {
-                setCheckOut(() => e.target.value);
-                setDays(() => datediff(checkIn, checkOut));
+                setCheckOut(e.target.value);
+                setDays(datediff(checkIn, e.target.value));
               }}
               min={
                 place.from &&
@@ -161,16 +161,18 @@ function ReserveCard({ place }) {
           You won't be charged yet
         </p>
         <div className="flex justify-between items-center mb-4">
-          <p className="underline">MAD2,443 x 5 nights</p>
-          <p>MAD12,214</p>
+          <p className="underline">
+            MAD {place.price} x {days > 0 ? days : 0} nights
+          </p>
+          <p>MAD {Math.round(place.price * days)}</p>
         </div>
         <div className="flex justify-between items-center pb-5 border-b border-gray-300">
           <p className="underline">Airbnb service fee</p>
-          <p>MAD1,724</p>
+          <p>MAD {Math.round(place.price * days * 0.2)}</p>
         </div>
         <div className="flex justify-between items-center pt-6 pb-3 font-semibold text-base">
           <p>Total before taxes</p>
-          <p>MAD1,724</p>
+          <p>MAD {Math.round(place.price * days * 1.2)}</p>
         </div>
       </div>
     </aside>

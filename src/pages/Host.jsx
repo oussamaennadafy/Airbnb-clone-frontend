@@ -271,9 +271,7 @@ function Host() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="maxPets">
-                    maximium number of Pets (we don't allow wild animals btw)
-                  </label>
+                  <label htmlFor="maxPets">maximium number of Pets</label>
                   <input
                     type="number"
                     name="maxPets"
