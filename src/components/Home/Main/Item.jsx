@@ -18,7 +18,7 @@ const Item = (props) => {
   } = props.place;
 
   // refs
-  const scrollElementRef = useRef(null);
+  const containerRef = useRef(null);
   const leftArrowRef = useRef(null);
   const rightArrowRef = useRef(null);
   const lastElementRef = useRef(null);
@@ -26,17 +26,15 @@ const Item = (props) => {
   // impliment the useSlider custom hook
   useEffect(() => {
     useSlider(
-      scrollElementRef.current.parentElement,
-      scrollElementRef.current,
+      containerRef.current,
       leftArrowRef.current,
-      rightArrowRef.current,
-      lastElementRef.current
+      rightArrowRef.current
     );
   }, []);
 
   // handle Click Arrows
   const handleClickArrows = (e) => {
-    e.stopPropagation();
+    // e.stopPropagation();
   };
 
   const formatDate = (from, to) => {
@@ -51,27 +49,21 @@ const Item = (props) => {
 
   return (
     <figure className="group cursor-pointer font-normal">
-      <Link
-        target="_blanc"
-        to={`/places/${_id}`}
-        className="relative min-w-full"
-      >
+      <a target="_blanc" to={`/places/${_id}`} className="relative min-w-full">
         <div
-          ref={scrollElementRef}
-          className="h-[300px] min-w-full relative overflow-auto hide-scrollbar rounded-lg"
+          ref={containerRef}
+          className="h-[300px] flex min-w-full relative overflow-auto rounded-lg hide-scrollbar"
         >
-          <div className="flex h-full min-w-full">
-            {images.map((image) => {
-              return (
-                <img
-                  ref={lastElementRef}
-                  className="min-h-full min-w-full object-cover"
-                  key={image}
-                  src={image}
-                />
-              );
-            })}
-          </div>
+          {images.map((image) => {
+            return (
+              <img
+                ref={lastElementRef}
+                className="min-h-full min-w-full object-cover"
+                key={image}
+                src={image}
+              />
+            );
+          })}
         </div>
         <button className="absolute w-6 h-6 top-4 right-4 rounded-full">
           <HeartIcon stroke="white" fill="#00000080" />
@@ -90,7 +82,7 @@ const Item = (props) => {
         >
           <img className="w-2/4 h-2/4" src={rightArrow} alt="right arrow" />
         </button>
-      </Link>
+      </a>
       <figcaption>
         <div className="flex justify-between pt-1">
           <strong className="font-semibold">{location}</strong>

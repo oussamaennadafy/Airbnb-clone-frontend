@@ -19,19 +19,15 @@ function Filter() {
   const [scroll, setScroll] = useState(false);
   const [types, setTypes] = useState([]);
   const [displayFilter, setdisplayFilter] = useState(true);
-  const scrollRef = useRef();
+  const containerRef = useRef();
   const leftArrowRef = useRef();
   const rightArrowRef = useRef();
-  const lastElementRef = useRef();
 
   useEffect(() => {
     useSlider(
-      scrollRef.current.parentElement,
-      scrollRef.current,
+      containerRef.current,
       leftArrowRef.current,
-      rightArrowRef.current,
-      lastElementRef.current,
-      100
+      rightArrowRef.current
     );
   }, []);
 
@@ -80,13 +76,12 @@ function Filter() {
           </a>
         </button>
         <div
-          ref={scrollRef}
+          ref={containerRef}
           className="flex items-center grow gap-14 h-full overflow-x-auto hide-scrollbar"
         >
           {types?.map((type) => {
             return (
               <Type
-                ref={lastElementRef}
                 key={type.label}
                 label={type.label}
                 active={false}
