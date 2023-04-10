@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import Header from "../components/Home/Header";
 import Footer from "../components/Home/Footer";
+import AuthModal from "../utilities/AuthModal";
 import axios from "axios";
 
 function Host() {
@@ -100,6 +101,10 @@ function Host() {
   };
   return (
     <>
+      <AuthModal
+        displayAuthModal={displayAuthModal}
+        setDisplayAuthModal={setDisplayAuthModal}
+      />
       <Header
         setDisplayAuthModal={setDisplayAuthModal}
         displayMenu={displayMenu}

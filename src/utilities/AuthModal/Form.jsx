@@ -5,7 +5,16 @@ import { downArrow } from "./../../assets/icons";
 import MainButton from "./../MainButton";
 
 function Form() {
-  const [country, setCountry] = useState("United State (+1)");
+  const [countries, setCountries] = useState([]);
+  const [country, setCountry] = useState();
+  useEffect(() => {
+    fetch("http://localhost:8000/api/v1/countries/phonePrefixs")
+      .then((res) => res.json())
+      .then((data) => {
+        setCountries(data.body.phonePrefixes);
+        setCountry(countries[0].name);
+      });
+  }, []);
   return (
     <div className="p-4">
       <h3 className="py-4 text-2xl">Welcome to Airbnb</h3>
@@ -30,15 +39,24 @@ function Form() {
               value={country}
               onChange={(e) => setCountry(e.target.value)}
             >
-              <option value="morocco (+212)">morocco (+212)</option>
-              <option value="Algeria (+112)">Algeria (+212)</option>
+              {countries.map((country) => (
+                <option value={country.phonePrefixe} key={country.name}>
+                  {country.name}
+                </option>
+              ))}
             </select>
           </label>
           <input
-            className="border border-gray-400 px-4 py-3 h-14 rounded-b-md"
+            className="border border-gray-400 px-4 py-3 h-14 border-b-0"
             type="number"
             name="phone number"
             placeholder="Phone number"
+          />
+          <input
+            className="border border-gray-400 px-4 py-3 h-14 rounded-b-md"
+            type="password"
+            name="password"
+            placeholder="password"
           />
         </div>
         <div>

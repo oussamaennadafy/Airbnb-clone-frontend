@@ -10,12 +10,21 @@ import {
   freeCancelationIcon,
 } from "../assets/icons";
 import { HeartIcon } from "../assets/configurable-icons";
+import AuthModal from "../utilities/AuthModal";
 
 function Place() {
   const { id } = useParams();
   const [place, setPlace] = useState({});
   const [error, setError] = useState("");
   const [loader, setLoader] = useState(true);
+  //
+  const [displayMenu, setDisplayMenu] = useState(false);
+  const [displayAuthModal, setDisplayAuthModal] = useState(false);
+
+  const toggleMenu = () => {
+    setDisplayMenu((previousMenuState) => !previousMenuState);
+  };
+  //
   useEffect(() => {
     fetch(`http://localhost:8000/api/v1/places/${id}`)
       .then((response) => response.json())
@@ -28,9 +37,17 @@ function Place() {
   }, []);
   return (
     <>
-      <Header />
+      <AuthModal
+        displayAuthModal={displayAuthModal}
+        setDisplayAuthModal={setDisplayAuthModal}
+      />
+      <Header
+        setDisplayAuthModal={setDisplayAuthModal}
+        displayMenu={displayMenu}
+        toggleMenu={toggleMenu}
+      />
       {Object.keys(place).length && (
-        <section className="lg:px-28 md:px-12 sm:px-6 px-1">
+        <section className="lg:px-28 md:px-12 sm:px-6 px-4">
           <figure className="mt-5 mb-12">
             <figcaption className="mb-4">
               <h1 className="font-medium text-2xl">{place.title}</h1>
@@ -53,7 +70,7 @@ function Place() {
                 </div>
               </div>
             </figcaption>
-            <div className="grid grid-cols-1 lg:grid-cols-4 lg:grid-rows-2 gap-2 lg:h-96 rounded-md overflow-hidden">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-2 lg:h-[21rem] rounded-md overflow-hidden">
               {place.images?.map((image) => (
                 <div
                   key={image}
