@@ -162,7 +162,7 @@ function Place() {
           </div>
         </section>
       ) : (
-        <div className="lg:px-28 md:px-12 sm:px-6 px-4">
+        <div className="lg:px-28 md:px-12 sm:px-6 px-4 animate-pulse">
           <figure className="mt-7 mb-12">
             <figcaption className="mb-5">
               <div className="h-8 w-5/12 bg-gray-200"></div>

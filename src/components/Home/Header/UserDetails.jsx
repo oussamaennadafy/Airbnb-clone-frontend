@@ -27,42 +27,40 @@ const UserDetails = ({ displayMenu, toggleMenu, setDisplayAuthModal }) => {
           <img className="w-8 h-8" src={userIcon} alt="user icon" />
         </div>
       </button>
-      <nav
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
-        className={`absolute transition-all top-[140%] ${
-          displayMenu
-            ? "-translate-y-3 opacity-100 pointer-events-auto visible"
-            : "opacity-0 pointer-events-none invisible"
-        } shadow-md right-0 rounded-md border border-gray-200 bg-white font-normal py-4 min-w-[80%]`}
-      >
-        <ul className="flex flex-col border-b border-gray-200 w-full pb-4">
-          <li
-            onClick={showAuthModal}
-            className="py-3 px-4 hover:bg-gray-50 cursor-pointer font-medium"
-          >
-            <a>Log in</a>
-          </li>
-          <li
-            onClick={showAuthModal}
-            className="py-3 px-4 hover:bg-gray-50 cursor-pointer"
-          >
-            <a>Sign Up</a>
-          </li>
-        </ul>
-        <ul className="flex flex-col w-full pt-4">
-          <li className="py-3 px-4 hover:bg-gray-50 cursor-pointer">
-            <a href="./">Airbnb your home</a>
-          </li>
-          <li className="py-3 px-4 hover:bg-gray-50 cursor-pointer">
-            <a href="./">host an experience</a>
-          </li>
-          <li className="py-3 px-4 hover:bg-gray-50 cursor-pointer">
-            <a href="./">help</a>
-          </li>
-        </ul>
-      </nav>
+      {displayMenu && (
+        <nav
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          className="absolute transition top-[140%] moveUp shadow-md right-0 rounded-md border border-gray-200 bg-white font-normal py-4 min-w-[80%]"
+        >
+          <ul className="flex flex-col border-b border-gray-200 w-full pb-4">
+            <li
+              onClick={showAuthModal}
+              className="py-3 px-4 hover:bg-gray-50 cursor-pointer font-medium"
+            >
+              <a>Log in</a>
+            </li>
+            <li
+              onClick={showAuthModal}
+              className="py-3 px-4 hover:bg-gray-50 cursor-pointer"
+            >
+              <a>Sign Up</a>
+            </li>
+          </ul>
+          <ul className="flex flex-col w-full pt-4">
+            <li className="py-3 px-4 hover:bg-gray-50 cursor-pointer">
+              <a href="./">Airbnb your home</a>
+            </li>
+            <li className="py-3 px-4 hover:bg-gray-50 cursor-pointer">
+              <a href="./">host an experience</a>
+            </li>
+            <li className="py-3 px-4 hover:bg-gray-50 cursor-pointer">
+              <a href="./">help</a>
+            </li>
+          </ul>
+        </nav>
+      )}
     </div>
   );
 };
