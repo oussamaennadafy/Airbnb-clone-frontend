@@ -10,7 +10,7 @@ import {
   freeCancelationIcon,
 } from "../assets/icons";
 import { HeartIcon } from "../assets/configurable-icons";
-import AuthModal from "../utilities/AuthModal";
+import AuthModal from "../utilities/components/AuthModal";
 
 function Place() {
   const { id } = useParams();
@@ -28,7 +28,6 @@ function Place() {
     fetch(`http://localhost:8000/api/v1/places/${id}`)
       .then((response) => response.json())
       .then((data) => {
-        // console.log(data.body.place);
         setPlace(data.body.place);
       })
       .catch(() => setError("something went wrong"));

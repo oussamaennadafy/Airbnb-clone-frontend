@@ -1,10 +1,10 @@
 import React, { useRef, useState, useEffect } from "react";
 import Header from "../components/Home/Header";
 import Footer from "../components/Home/Footer";
-import AuthModal from "../utilities/AuthModal";
-import Loader from "../utilities/Loader";
+import AuthModal from "../utilities/components/AuthModal";
+import Loader from "../utilities/components/Loader";
 import axios from "axios";
-import MainButton from "../utilities/MainButton";
+import MainButton from "../utilities/components/MainButton";
 
 function Host() {
   const [title, setTitle] = useState("");
@@ -298,7 +298,7 @@ function Host() {
                 <p className="text-red-400 mb-3 font-medium">{error}</p>
               )}
             </div>
-            <div className="flex justify-center">
+            <div className="flex justify-center mt-5">
               <MainButton label="Add place" loading={loader} />
             </div>
           </form>
