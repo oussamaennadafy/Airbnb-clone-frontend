@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Header from "../components/Home/Header";
 import ReserveCard from "./../components/Place/ReserveCard";
 import Gallery from "./../components/Place/Gallery";
-import PlaceLoaderTemplate from "./../utilities/LoadingTmplates/place";
+import PlaceLoaderTemplate from "./../utilities/LoadingTmplates/PlaceLoader";
 import {
   shareIcon,
   starIcon,

@@ -1,13 +1,20 @@
 import { useEffect, useState } from "react";
 import Item from "./Item";
+import MainLoader from "./../../../utilities/LoadingTmplates/MainLoader";
 
 export default function Main() {
   const [places, setPlaces] = useState([]);
+  const [loader, setLoader] = useState(true);
   useEffect(() => {
     fetch("http://localhost:8000/api/v1/places")
       .then((response) => response.json())
-      .then((response) => setPlaces(response.body.places));
+      .then((response) => setPlaces(response.body.places))
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setLoader(false);
+      });
   }, []);
+  if (loader) return <MainLoader />;
   return (
     <main
       id="Main"

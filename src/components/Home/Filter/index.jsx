@@ -1,5 +1,5 @@
 /* components */
-import Type from "./Type";
+import Category from "./Category";
 /* hook */
 import { useEffect, useState, useRef } from "react";
 /* custom hook */
@@ -11,13 +11,15 @@ import {
   filterIcon,
   closeIcon,
 } from "../../../assets/icons";
+import CategoryLoader from "../../../utilities/LoadingTmplates/CategoryLoader";
 
-/* static types */
-// import types from "../../../static/Types";
+/* static Categories */
+// import Categories from "../../../static/Categories";
 
 function Filter() {
   const [scroll, setScroll] = useState(false);
-  const [types, setTypes] = useState([]);
+  const [Categories, setCategories] = useState([]);
+  const [selectedCategory, setSetselectedCategory] = useState("beachfront");
   const [displayFilter, setdisplayFilter] = useState(true);
   const containerRef = useRef();
   const leftArrowRef = useRef();
@@ -52,7 +54,7 @@ function Filter() {
   useEffect(() => {
     fetch("http://localhost:8000/api/v1/categories")
       .then((res) => res.json())
-      .then((data) => setTypes(data.body.categories))
+      .then((data) => setCategories(data.body.categories))
       .catch(() => console.log("error accure"));
   }, []);
 
@@ -79,16 +81,18 @@ function Filter() {
           ref={containerRef}
           className="flex items-center grow gap-14 h-full overflow-x-auto hide-scrollbar"
         >
-          {types?.map((type) => {
-            return (
-              <Type
-                key={type.label}
-                label={type.label}
-                active={false}
-                src={type.src}
-              />
-            );
-          })}
+          {Categories.length
+            ? Categories.map((type) => {
+                return (
+                  <Category
+                    key={type.label}
+                    label={type.label}
+                    active={false}
+                    src={type.src}
+                  />
+                );
+              })
+            : new Array(30).fill(null).map(() => <CategoryLoader />)}
         </div>
         <button
           ref={rightArrowRef}
