@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MainButton from "../../../utilities/MainButton";
+import MainButton from "../../../utilities/components/MainButton";
 import { starIcon, downArrow } from "../../../assets/icons";
 import GuestsCount from "./GuestsCount";
 

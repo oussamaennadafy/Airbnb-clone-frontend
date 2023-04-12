@@ -7,7 +7,7 @@ function useSlider(
   // hide the left arrow at first time
   leftArrow.classList.add("hidden");
 
-  // add the scroll event
+  // add the functionality to scroll left and right
   leftArrow.addEventListener("click", () =>
   {
     container.scrollTo({

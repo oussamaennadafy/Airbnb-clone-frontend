@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 //assets
-import { downArrow } from "./../../assets/icons";
+import { downArrow } from "./../../../assets/icons";
 import MainButton from "./../MainButton";
 
 function Form() {

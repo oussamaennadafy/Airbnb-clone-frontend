@@ -1,5 +1,5 @@
 // dynamic content
-import AuthModal from "../utilities/AuthModal";
+import AuthModal from "./../utilities/components/AuthModal";
 // static content
 import AboveHeader from "../components/Home/AboveHeader";
 import Filter from "../components/Home/Filter";

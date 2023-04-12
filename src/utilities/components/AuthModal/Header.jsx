@@ -1,6 +1,6 @@
 import React from "react";
 
-import { closeIcon } from "../../assets/icons";
+import { closeIcon } from "./../../../assets/icons";
 
 function Header({ setDisplayAuthModal }) {
   return (
