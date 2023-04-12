@@ -93,7 +93,7 @@ const Item = (props) => {
           </button>
         </div>
         <figcaption>
-          <div className="flex justify-between pt-1">
+          <div className="flex justify-between items-start pt-1">
             <strong className="font-semibold">{location}</strong>
             <div className="flex items-center">
               <img className="w-3" src={starIcon} alt="star icon" />
