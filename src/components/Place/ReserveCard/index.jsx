@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import MainButton from "../../../utilities/components/MainButton";
 import { starIcon, downArrow } from "../../../assets/icons";
 import GuestsCount from "./GuestsCount";
+import useformatPrice from "./../../../helpers/useformatPrice";
 
 function ReserveCard({ place }) {
   const [displayMenu, setDisplayMenu] = useState(false);
@@ -30,7 +31,9 @@ function ReserveCard({ place }) {
       <div className="p-5 mb-14 border border-gray-300 shadow-md rounded-xl w-full">
         <div className="flex justify-between items-end mb-4">
           <div className="flex items-end gap-1">
-            <strong className="text-2xl font-medium">{place.price}</strong>
+            <strong className="text-2xl font-medium">
+              {useformatPrice(place.price)}
+            </strong>
             <span className="text-gray-800 text-lg">night</span>
           </div>
           <div className="flex items-center gap-1">
@@ -171,12 +174,12 @@ function ReserveCard({ place }) {
         </p>
         <div className="flex justify-between items-center mb-4">
           <p className="underline">
-            MAD {place.price} x {days > 0 ? days : 0} nights
+            {useformatPrice(place.price)} x {days > 0 ? days : 0} nights
           </p>
           <p>
             MAD{" "}
             {Math.round(place.price * days) >= 0
-              ? Math.round(place.price * days)
+              ? useformatPrice(Math.round(place.price * days))
               : 0}
           </p>
         </div>
@@ -185,7 +188,7 @@ function ReserveCard({ place }) {
           <p>
             MAD{" "}
             {Math.round(place.price * days * 0.2) >= 0
-              ? Math.round(place.price * days * 0.2)
+              ? useformatPrice(Math.round(place.price * days * 0.2))
               : 0}
           </p>
         </div>
@@ -194,7 +197,7 @@ function ReserveCard({ place }) {
           <p>
             MAD{" "}
             {Math.round(place.price * days * 1.2) >= 0
-              ? Math.round(place.price * days * 1.2)
+              ? useformatPrice(Math.round(place.price * days * 1.2))
               : 0}
           </p>
         </div>

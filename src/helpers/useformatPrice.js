@@ -1,5 +1,6 @@
-function useformatPrice(price) {
-  return new Intl.NumberFormat("en-ma", {
+function useformatPrice(price)
+{
+  return new Intl.NumberFormat("us-en", {
     style: "currency",
     currency: "MAD",
   })

@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Header from "../components/Home/Header";
 import ReserveCard from "./../components/Place/ReserveCard";
+import Gallery from "./../components/Place/Gallery";
 import {
   shareIcon,
   starIcon,
   superHostIcon,
   locationIcon,
   freeCancelationIcon,
+  gridIcon,
 } from "../assets/icons";
 import { HeartIcon } from "../assets/configurable-icons";
 import AuthModal from "../utilities/components/AuthModal";
@@ -23,6 +25,16 @@ function Place() {
   const toggleMenu = () => {
     setDisplayMenu((previousMenuState) => !previousMenuState);
   };
+  //
+  const [displayGallery, setDisplayGallery] = useState(false);
+  const toggleGallery = () => {
+    setDisplayGallery((prevState) => !prevState);
+  };
+  useEffect(() => {
+    if (displayGallery)
+      document.getElementById("root").classList.add("overflow-hidden");
+    else document.getElementById("root").classList.remove("overflow-hidden");
+  }, [displayGallery]);
   //
   useEffect(() => {
     fetch(`http://localhost:8000/api/v1/places/${id}`)
@@ -43,8 +55,9 @@ function Place() {
         displayMenu={displayMenu}
         toggleMenu={toggleMenu}
       />
+      {displayGallery && <Gallery toggleGallery={toggleGallery} />}
       {Object.keys(place).length ? (
-        <section className="lg:px-28 md:px-12 sm:px-6 px-4">
+        <section className={`lg:px-28 md:px-12 sm:px-6 px-4`}>
           <figure className="mt-5 mb-12">
             <figcaption className="mb-4">
               <h1 className="font-medium text-2xl">{place.title}</h1>
@@ -67,8 +80,8 @@ function Place() {
                 </div>
               </div>
             </figcaption>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-2 lg:h-[21rem] rounded-md overflow-hidden">
-              {place.images?.map((image) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-2 lg:h-[21rem] rounded-md overflow-hidden relative">
+              {place.images.slice(0, 5).map((image) => (
                 <div
                   key={image}
                   className="lg:first-of-type:col-span-2 lg:first-of-type:row-span-2 h-96 lg:h-full cursor-pointer relative"
@@ -77,6 +90,13 @@ function Place() {
                   <img className="object-cover h-full w-full" src={image} />
                 </div>
               ))}
+              <button
+                onClick={toggleGallery}
+                className="absolute bottom-3 right-3 px-2 py-1 border border-gray-700 bg-white rounded-md flex justify-between items-center gap-2 active:scale-95 transition-all"
+              >
+                <img className="w-4" src={gridIcon} alt="grid icon" />
+                <span>Show all photos</span>
+              </button>
             </div>
           </figure>
           <div className="grid grid-cols-[1fr-1fr] lg:grid-cols-[auto,40%] gap-10 lg:gap-24">

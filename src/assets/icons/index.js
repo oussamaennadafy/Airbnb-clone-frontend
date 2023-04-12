@@ -15,6 +15,7 @@ import locationIcon from "./location-icon.svg";
 import freeCancelationIcon from "./freeCancelation-icon.svg";
 import plusIcon from "./plus-icon.svg";
 import minusIcon from "./minus-icon.svg";
+import gridIcon from "./grid-icon.svg";
 
 import facebookIcon from "./facebook-icon.svg";
 import googleIcon from "./google-icon.svg";
@@ -40,6 +41,7 @@ export
   freeCancelationIcon,
   plusIcon,
   minusIcon,
+  gridIcon,
   facebookIcon,
   googleIcon,
   AppleIcon,

@@ -19,12 +19,11 @@ function Home() {
     if (displayMenu) toggleMenu();
   };
   useEffect(() => {
-    if (displayAuthModal)
-      document.querySelector("body").classList.add("overflow-y-hidden");
-    else document.querySelector("body").classList.remove("overflow-y-hidden");
+    if (displayAuthModal) document.body.classList.add("overflow-y-hidden");
+    else document.body.classList.remove("overflow-y-hidden");
   }, [displayAuthModal]);
   return (
-    <div onClick={hideModal} className="max-w-screen font-medium">
+    <div className="max-w-screen font-medium">
       <AuthModal
         displayAuthModal={displayAuthModal}
         setDisplayAuthModal={setDisplayAuthModal}

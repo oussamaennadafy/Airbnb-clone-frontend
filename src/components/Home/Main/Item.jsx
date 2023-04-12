@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { starIcon, leftArrow, rightArrow } from "../../../assets/icons";
 import { HeartIcon } from "./../../../assets/configurable-icons";
 import useSlider from "../../../hooks/useSlider";
+import useformatPrice from "./../../../helpers/useformatPrice";
 import { Link } from "react-router-dom";
 
 const Item = (props) => {
@@ -104,7 +105,7 @@ const Item = (props) => {
           </p>
           <p className="text-gray-800 opacity-80">{formatDate(from, to)}</p>
           <p>
-            <strong>MAD {price}</strong> <span>night</span>
+            <strong>{useformatPrice(price)}</strong> <span>night</span>
           </p>
         </figcaption>
       </Link>
