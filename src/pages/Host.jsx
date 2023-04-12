@@ -2,7 +2,9 @@ import React, { useRef, useState, useEffect } from "react";
 import Header from "../components/Home/Header";
 import Footer from "../components/Home/Footer";
 import AuthModal from "../utilities/AuthModal";
+import Loader from "../utilities/Loader";
 import axios from "axios";
+import MainButton from "../utilities/MainButton";
 
 function Host() {
   const [title, setTitle] = useState("");
@@ -70,34 +72,36 @@ function Host() {
     for (let i = 0; i < images.length; i++) {
       formData.append("images", images[i]);
     }
-    axios
-      .post("http://localhost:8000/api/v1/places", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      })
-      .then((res) => {
-        console.log(res.data.body.createdPlace);
-        // reset form
-        setTitle("");
-        setPrice("");
-        setImages([]);
-        fileinputRef.current.value = null;
-        setLocation("");
-        setDescription("");
-        setFrom("");
-        setTo("");
-        setMaxAdults("");
-        setMaxChildren("");
-        setMaxInfants("");
-        setMaxPets("");
-        // hide loader
-        setLoader(false);
-      })
-      .catch((err) => {
-        setLoader(false);
-        setError("something went wrong");
-      });
+    setTimeout(() => {
+      axios
+        .post("http://localhost:8000/api/v1/places", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((res) => {
+          console.log(res.data.body.createdPlace);
+          // reset form
+          setTitle("");
+          setPrice("");
+          setImages([]);
+          fileinputRef.current.value = null;
+          setLocation("");
+          setDescription("");
+          setFrom("");
+          setTo("");
+          setMaxAdults("");
+          setMaxChildren("");
+          setMaxInfants("");
+          setMaxPets("");
+          // hide loader
+          setLoader(false);
+        })
+        .catch((err) => {
+          setLoader(false);
+          setError("something went wrong");
+        });
+    }, 2000);
   };
   return (
     <>
@@ -295,22 +299,7 @@ function Host() {
               )}
             </div>
             <div className="flex justify-center">
-              {loader ? (
-                <button
-                  type="submit"
-                  disabled
-                  className="bg-red-700 transition w-28 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                >
-                  ...
-                </button>
-              ) : (
-                <button
-                  type="submit"
-                  className="bg-red-500 transition mt-3 w-28 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                >
-                  Add Place
-                </button>
-              )}
+              <MainButton label="Add place" loading={loader} />
             </div>
           </form>
         </div>
