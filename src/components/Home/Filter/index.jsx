@@ -24,7 +24,8 @@ function Filter({ selectedCategory, setSetselectedCategory }) {
     useSlider(
       containerRef.current,
       leftArrowRef.current,
-      rightArrowRef.current
+      rightArrowRef.current,
+      100
     );
   }, []);
 

@@ -2,6 +2,7 @@ function useSlider(
   container,
   leftArrow,
   rightArrow,
+  margin = 0
 )
 {
   // hide the left arrow at first time
@@ -11,14 +12,14 @@ function useSlider(
   leftArrow.addEventListener("click", () =>
   {
     container.scrollTo({
-      left: container.scrollLeft - container?.clientWidth,
+      left: container.scrollLeft - container?.clientWidth + margin,
       behavior: "smooth",
     });
   });
   rightArrow.addEventListener("click", () =>
   {
     container.scrollTo({
-      left: container.scrollLeft + container?.clientWidth,
+      left: container.scrollLeft + container?.clientWidth - margin,
       behavior: "smooth",
     });
   });
