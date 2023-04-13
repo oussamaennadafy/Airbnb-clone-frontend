@@ -16,10 +16,9 @@ import CategoryLoader from "../../../utilities/LoadingTmplates/CategoryLoader";
 /* static Categories */
 // import Categories from "../../../static/Categories";
 
-function Filter() {
+function Filter({ selectedCategory, setSetselectedCategory }) {
   const [scroll, setScroll] = useState(false);
   const [Categories, setCategories] = useState([]);
-  const [selectedCategory, setSetselectedCategory] = useState("beachfront");
   const [displayFilter, setdisplayFilter] = useState(true);
   const containerRef = useRef();
   const leftArrowRef = useRef();
@@ -87,12 +86,15 @@ function Filter() {
                   <Category
                     key={type.label}
                     label={type.label}
-                    active={false}
+                    setSetselectedCategory={setSetselectedCategory}
+                    active={type.label === selectedCategory}
                     src={type.src}
                   />
                 );
               })
-            : new Array(30).fill(null).map(() => <CategoryLoader />)}
+            : new Array(30)
+                .fill(null)
+                .map((_, index) => <CategoryLoader key={index} />)}
         </div>
         <button
           ref={rightArrowRef}

@@ -12,11 +12,9 @@ import { useState, useRef, useEffect } from "react";
 function Home() {
   const [displayMenu, setDisplayMenu] = useState(false);
   const [displayAuthModal, setDisplayAuthModal] = useState(false);
+  const [selectedCategory, setSetselectedCategory] = useState("standard");
   const toggleMenu = () => {
     setDisplayMenu((previousMenuState) => !previousMenuState);
-  };
-  const hideModal = () => {
-    if (displayMenu) toggleMenu();
   };
   useEffect(() => {
     if (displayAuthModal) document.body.classList.add("overflow-y-hidden");
@@ -34,8 +32,11 @@ function Home() {
         displayMenu={displayMenu}
         toggleMenu={toggleMenu}
       />
-      <Filter />
-      <Main />
+      <Filter
+        selectedCategory={selectedCategory}
+        setSetselectedCategory={setSetselectedCategory}
+      />
+      <Main selectedCategory={selectedCategory} />
       <Footer />
     </div>
   );

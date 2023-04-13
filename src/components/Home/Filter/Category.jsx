@@ -1,6 +1,7 @@
-const Type = ({ src, label, active }) => {
+const Type = ({ src, label, active, setSetselectedCategory }) => {
   return (
     <button
+      onClick={() => setSetselectedCategory(label)}
       className={`h-full hover:opacity-100 transition-all cursor-pointer after:content-[''] relative after:bottom-0 after:left-0 after:w-full after:h-[2px] ${
         active
           ? "opacity-100 after:bg-black after:absolute"

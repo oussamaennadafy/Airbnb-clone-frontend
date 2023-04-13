@@ -2,18 +2,24 @@ import { useEffect, useState } from "react";
 import Item from "./Item";
 import MainLoader from "./../../../utilities/LoadingTmplates/MainLoader";
 
-export default function Main() {
+export default function Main({ selectedCategory: category }) {
   const [places, setPlaces] = useState([]);
   const [loader, setLoader] = useState(true);
   useEffect(() => {
-    fetch("http://localhost:8000/api/v1/places")
-      .then((response) => response.json())
-      .then((response) => setPlaces(response.body.places))
-      .catch((err) => console.log(err))
-      .finally(() => {
-        setLoader(false);
-      });
-  }, []);
+    setLoader(true);
+    setTimeout(() => {
+      fetch(`http://localhost:8000/api/v1/places/categories/${category}`)
+        .then((response) => response.json())
+        .then((response) => {
+          // console.log(response.body.places);
+          setPlaces(response.body.places);
+        })
+        .catch((err) => console.log(err))
+        .finally(() => {
+          setLoader(false);
+        });
+    }, 1000);
+  }, [category]);
   if (loader) return <MainLoader />;
   return (
     <main
