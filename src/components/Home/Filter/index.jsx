@@ -109,14 +109,18 @@ function Filter({ selectedCategory, setSetselectedCategory }) {
         <img src={filterIcon} alt="filter icon" className="h-3" />
         <span>Filter</span>
       </button>
-      <button
-        onClick={() => setdisplayFilter(false)}
-        className={`${
-          scroll ? "block" : "hidden"
-        } p-3 rounded-full min-w-max bg-gray-50 hover:bg-gray-100`}
-      >
-        <img className="min-w-5 md:min-w-9" src={closeIcon} alt="close icon" />
-      </button>
+      {scroll && (
+        <button
+          onClick={() => setdisplayFilter(false)}
+          className={`p-3 rounded-full min-w-max bg-gray-50 hover:bg-gray-100`}
+        >
+          <img
+            className="min-w-5 md:min-w-9"
+            src={closeIcon}
+            alt="close icon"
+          />
+        </button>
+      )}
     </section>
   );
 }
