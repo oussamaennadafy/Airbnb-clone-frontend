@@ -21,15 +21,11 @@ body {
   scrollbar-width: none; /* Firefox */
 }
 
-.active-type {
-  @apply opacity-100;
-}
-
 .left-arrow-shadow {
-  box-shadow: 10px 0px 10px 5px rgb(255 255 255);
+  box-shadow: 10px 0px 10px 4px rgb(255 255 255);
 }
 .right-arrow-shadow {
-  box-shadow: -20px 0px 15px 0px rgb(255, 255, 255);
+  box-shadow: -10px 0px 10px 4px rgb(255, 255, 255);
 }
 /* For Webkit-based browsers (Chrome, Safari and Opera) */
 input[type="number"]::-webkit-inner-spin-button,

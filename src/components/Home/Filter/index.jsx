@@ -5,12 +5,8 @@ import { useEffect, useState, useRef } from "react";
 /* custom hook */
 import useSlider from "../../../hooks/useSlider";
 /* assets */
-import {
-  leftArrow,
-  rightArrow,
-  filterIcon,
-  closeIcon,
-} from "../../../assets/icons";
+import { filterIcon, closeIcon } from "../../../assets/icons";
+import { LeftArrow, RightArrow } from "../../../assets/configurable-icons";
 import CategoryLoader from "../../../utilities/LoadingTmplates/CategoryLoader";
 
 /* static Categories */
@@ -70,11 +66,11 @@ function Filter({ selectedCategory, setSetselectedCategory }) {
       <div className="flex items-center grow h-full overflow-x-auto relative">
         <button
           ref={leftArrowRef}
-          className="absolute z-10 left-1/1 h-full w-8 left-arrow-shadow bg-white flex items-center transition-all"
+          className="h-full bg-white z-10 w-9 transition-all absolute top-1/2 flex items-center justify-center -translate-y-1/2 left-0 left-btn left-arrow-shadow"
         >
-          <a className="z-10 left-1/1 min-h-max min-w-max p-2 bg-white border border-gray-300 rounded-full">
-            <img src={leftArrow} alt="left arrow" className="w-3" />
-          </a>
+          <div className="bg-white hover:scale-105 transition-all hover:shadow-sm active:scale-100 w-max h-max p-2 rounded-full border border-gray-300">
+            <LeftArrow className="w-3 h-3 stroke-black stroke-[4]" />
+          </div>
         </button>
         <div
           ref={containerRef}
@@ -98,11 +94,11 @@ function Filter({ selectedCategory, setSetselectedCategory }) {
         </div>
         <button
           ref={rightArrowRef}
-          className="z-10 left-1/1 h-full w-max right-arrow-shadow bg-white flex items-center transition-all"
+          className="h-full bg-white w-9 absolute top-1/2 flex items-center justify-center -translate-y-1/2 right-0 right-btn transition-all right-arrow-shadow"
         >
-          <a className="min-h-max min-w-max p-2 bg-white border border-gray-300 rounded-full">
-            <img src={rightArrow} alt="right arrow" className="w-3" />
-          </a>
+          <div className="w-max h-max p-2 hover:scale-105 hover:shadow-sm active:scale-100 transition-all rounded-full border border-gray-300">
+            <RightArrow className="w-3 h-3 stroke-black stroke-[4]" />
+          </div>
         </button>
       </div>
       <button className="flex items-center gap-2 min-w-max px-4 py-3 border border-gray-300 rounded-xl">

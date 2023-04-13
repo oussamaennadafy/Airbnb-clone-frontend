@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from "react";
-import { starIcon, leftArrow, rightArrow } from "../../../assets/icons";
-import { HeartIcon } from "./../../../assets/configurable-icons";
+import { starIcon } from "../../../assets/icons";
+import {
+  HeartIcon,
+  LeftArrow,
+  RightArrow,
+} from "./../../../assets/configurable-icons";
 import useSlider from "../../../hooks/useSlider";
 import useformatPrice from "./../../../helpers/useformatPrice";
 import { Link } from "react-router-dom";
@@ -80,16 +84,16 @@ const Item = (props) => {
           <button
             ref={leftArrowRef}
             onClick={handleClickArrows}
-            className="absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 left-4 rounded-full bg-gray-100 hover:scale-105 hover:shadow-sm"
+            className="absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 left-4 active:scale-100 rounded-full bg-gray-100 hover:scale-105 hover:shadow-sm"
           >
-            <img className="w-2/4 h-2/4" src={leftArrow} alt="left arrow" />
+            <LeftArrow className="h-3 w-3 stroke-[4] stroke-black" />
           </button>
           <button
             ref={rightArrowRef}
             onClick={handleClickArrows}
-            className="absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 right-4 rounded-full bg-gray-100 hover:scale-105 hover:shadow-sm"
+            className="absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 right-4 rounded-full bg-gray-100 active:scale-100 hover:scale-105 hover:shadow-sm"
           >
-            <img className="w-2/4 h-2/4" src={rightArrow} alt="right arrow" />
+            <RightArrow className="h-3 w-3 stroke-[4] stroke-black" />
           </button>
         </div>
         <figcaption>

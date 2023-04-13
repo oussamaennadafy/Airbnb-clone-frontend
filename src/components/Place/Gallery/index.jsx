@@ -1,6 +1,6 @@
 import React from "react";
-import { leftArrow, shareIcon } from "../../../assets/icons";
-import { HeartIcon } from "./../../../assets/configurable-icons";
+import { shareIcon } from "./../../../assets/icons";
+import { HeartIcon, LeftArrow } from "./../../../assets/configurable-icons";
 
 function index({ toggleGallery }) {
   return (
@@ -10,7 +10,8 @@ function index({ toggleGallery }) {
           onClick={toggleGallery}
           className="p-2 rounded-full hover:bg-gray-200"
         >
-          <img className="w-3" src={leftArrow} alt="left arrow icon" />
+          {/* <img className="w-3" src={LeftArrow} alt="left arrow icon" /> */}
+          <LeftArrow className="w-3" />
         </button>
         <div className="flex justify-between items-center gap-2">
           <div className="flex justify-between items-center gap-2">
