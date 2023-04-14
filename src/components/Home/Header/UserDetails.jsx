@@ -50,7 +50,7 @@ const UserDetails = ({ displayMenu, toggleMenu, setDisplayAuthModal }) => {
           </ul>
           <ul className="flex flex-col w-full pt-4">
             <li className="py-3 px-4 hover:bg-gray-50 cursor-pointer">
-              <a href="./">Airbnb your home</a>
+              <Link to="/host">Airbnb your home</Link>
             </li>
             <li className="py-3 px-4 hover:bg-gray-50 cursor-pointer">
               <a href="./">host an experience</a>
