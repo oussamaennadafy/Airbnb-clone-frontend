@@ -21,6 +21,8 @@ function Host() {
   const [loader, setLoader] = useState(false);
   const [error, setError] = useState("");
   const fileinputRef = useRef(null);
+  const [categories, setCategories] = useState([]);
+  const [category, setCategory] = useState("");
   /// header code
   const [displayMenu, setDisplayMenu] = useState(false);
   const [displayAuthModal, setDisplayAuthModal] = useState(false);
@@ -35,6 +37,15 @@ function Host() {
       document.querySelector("body").classList.add("overflow-y-hidden");
     else document.querySelector("body").classList.remove("overflow-y-hidden");
   }, [displayAuthModal]);
+  ////
+  useEffect(() => {
+    fetch("http://localhost:8000/api/v1/categories")
+      .then((res) => res.json())
+      .then((data) => {
+        setCategories(data.body.categories);
+        setCategory(categories[0]);
+      });
+  }, []);
   ////
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -63,6 +74,7 @@ function Host() {
     formData.append("host", "oussama");
     formData.append("location", location);
     formData.append("description", description);
+    formData.append("category", category);
     formData.append("from", from);
     formData.append("to", to);
     formData.append("maxAdults", maxAdults);
@@ -94,6 +106,7 @@ function Host() {
           setMaxChildren("");
           setMaxInfants("");
           setMaxPets("");
+          setCategory("");
           // hide loader
           setLoader(false);
         })
@@ -199,7 +212,29 @@ function Host() {
             </div>
             <div className="mb-4">
               <label
-                htmlFor="images"
+                htmlFor="categories"
+                className="block text-gray-700 font-bold mb-2"
+              >
+                category
+              </label>
+              <select
+                className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                name="categories"
+                id="categories"
+                onChange={(e) => setCategory(e.target.value)}
+                value={category}
+              >
+                {categories.length &&
+                  categories.map((category) => (
+                    <option key={category.label} value={category.label}>
+                      {category.label}
+                    </option>
+                  ))}
+              </select>
+            </div>
+            <div className="mb-4">
+              <label
+                // htmlFor="images"
                 className="block text-gray-700 font-bold mb-2"
               >
                 Availability
@@ -231,7 +266,7 @@ function Host() {
             </div>
             <div className="mb-4">
               <label
-                htmlFor="images"
+                // htmlFor="images"
                 className="block text-gray-700 font-bold mb-2"
               >
                 Restrictions

@@ -79,7 +79,7 @@ const Item = (props) => {
             onClick={handleClickHeart}
             className="absolute w-6 h-6 top-4 right-4 rounded-full"
           >
-            <HeartIcon stroke="white" fill="#00000080" />
+            <HeartIcon className="w-6 h-6 fill-[rgba(0,0,0,0.5)] stroke-white stroke-2" />
           </button>
           <button
             ref={leftArrowRef}

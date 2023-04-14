@@ -31,11 +31,11 @@ function Place() {
   const toggleGallery = () => {
     setDisplayGallery((prevState) => !prevState);
   };
-  useEffect(() => {
-    if (displayGallery)
-      document.getElementById("root").classList.add("overflow-hidden");
-    else document.getElementById("root").classList.remove("overflow-hidden");
-  }, [displayGallery]);
+  // useEffect(() => {
+  //   if (displayGallery)
+  //     document.getElementById("root").classList.add("overflow-hidden");
+  //   else document.getElementById("root").classList.remove("overflow-hidden");
+  // }, [displayGallery]);
   //
   useEffect(() => {
     fetch(`http://localhost:8000/api/v1/places/${id}`)
@@ -56,7 +56,9 @@ function Place() {
         displayMenu={displayMenu}
         toggleMenu={toggleMenu}
       />
-      {displayGallery && <Gallery toggleGallery={toggleGallery} />}
+      {displayGallery && (
+        <Gallery images={place.images} toggleGallery={toggleGallery} />
+      )}
       {Object.keys(place).length ? (
         <section className={`lg:px-28 md:px-12 sm:px-6 px-4`}>
           <figure className="mt-5 mb-12">
@@ -87,7 +89,7 @@ function Place() {
                   key={image}
                   className="lg:first-of-type:col-span-2 lg:first-of-type:row-span-2 h-96 lg:h-full cursor-pointer relative"
                 >
-                  <div className="absolute top-0 left-0 w-full h-full bg-black hover:opacity-20 opacity-0 transition" />
+                  <div className="absolute top-0 left-0 w-full h-full bg-black hover:opacity-10 opacity-0 transition" />
                   <img className="object-cover h-full w-full" src={image} />
                 </div>
               ))}
