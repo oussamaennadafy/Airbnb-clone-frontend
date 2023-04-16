@@ -71,7 +71,7 @@ function Host() {
     const formData = new FormData();
     formData.append("title", title);
     formData.append("price", price);
-    formData.append("host", "oussama");
+    formData.append("host", "64348bd004588f8086779e56");
     formData.append("location", location);
     formData.append("description", description);
     formData.append("category", category);

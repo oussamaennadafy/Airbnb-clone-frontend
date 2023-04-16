@@ -28,7 +28,7 @@ function useSlider(
   container.addEventListener("scroll", (event) =>
   {
     // left arrow
-    if (event.target.scrollLeft > 10)
+    if (event.target.scrollLeft > 0)
       leftArrow.classList.remove("hidden");
     else leftArrow.classList.add("hidden");
 

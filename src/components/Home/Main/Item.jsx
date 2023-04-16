@@ -10,6 +10,7 @@ import useformatPrice from "./../../../helpers/useformatPrice";
 import { Link } from "react-router-dom";
 
 const Item = (props) => {
+  const [preventer, setPreventer] = useState(false);
   // desctructer props
   const {
     _id,
@@ -40,6 +41,7 @@ const Item = (props) => {
   // handle Click Arrows
   const handleClickArrows = (e) => {
     e.preventDefault();
+    setPreventer(true);
   };
   // handle Click Arrows
   const handleClickHeart = (e) => {
@@ -57,7 +59,10 @@ const Item = (props) => {
   };
 
   return (
-    <figure className="group cursor-pointer font-normal">
+    <figure
+      onMouseEnter={() => setPreventer(false)}
+      className="group cursor-pointer font-normal"
+    >
       <Link target="_blanc" to={`/places/${_id}`}>
         <div className="relative min-w-full">
           <div
@@ -81,10 +86,22 @@ const Item = (props) => {
           >
             <HeartIcon className="w-6 h-6 fill-[rgba(0,0,0,0.5)] stroke-white stroke-2" />
           </button>
+          {preventer && (
+            <>
+              <div
+                onClick={handleClickArrows}
+                className="absolute w-8 h-8 opacity-0 top-1/2 -translate-y-1/2 left-4 rounded-full"
+              />
+              <div
+                onClick={handleClickArrows}
+                className="absolute w-8 h-8 opacity-0 top-1/2 -translate-y-1/2 right-4 rounded-full"
+              />
+            </>
+          )}
           <button
             ref={leftArrowRef}
             onClick={handleClickArrows}
-            className="absolute flex items-center opacity-0 group-hover:opacity-100 duration-500 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 left-4 active:scale-100 rounded-full bg-gray-100 hover:scale-105 hover:shadow-sm"
+            className="absolute flex items-center opacity-0 group-hover:opacity-100 transition-all justify-center w-8 h-8 top-1/2 -translate-y-1/2 left-4 active:scale-100 rounded-full bg-gray-100 hover:scale-105 hover:shadow-sm"
           >
             <LeftArrowIcon className="h-3 w-3 stroke-[4] stroke-black" />
           </button>
