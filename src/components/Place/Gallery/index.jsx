@@ -4,7 +4,7 @@ import { HeartIcon, LeftArrowIcon } from "./../../../assets/configurable-icons";
 
 function index({ toggleGallery, images }) {
   return (
-    <section className="absolute top-0 left-0 w-screen h-screen moveUpSolw bg-white z-20">
+    <section className="absolute top-0 left-0 w-screen moveUpSolw bg-white z-20">
       <div className="w-full px-9 py-5 flex justify-between items-center">
         <button
           onClick={toggleGallery}
@@ -23,9 +23,13 @@ function index({ toggleGallery, images }) {
           </div>
         </div>
       </div>
-      <div>
+      <div className="w-8/12 grid grid-cols-2 gap-2 mx-auto">
         {images.map((image) => (
-          <img key={image} src={image} />
+          <img
+            className="w-full col-span-2 gallery-imgs"
+            key={image}
+            src={image}
+          />
         ))}
       </div>
     </section>

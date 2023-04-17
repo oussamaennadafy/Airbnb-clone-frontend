@@ -8,7 +8,7 @@ export default function Main({ selectedCategory: category }) {
   useEffect(() => {
     setLoader(true);
     setTimeout(() => {
-      fetch(`http://localhost:8000/api/v1/places/categories/${category}`)
+      fetch(`http://localhost:8000/api/v1/places?category=${category}`)
         .then((response) => response.json())
         .then((response) => {
           // console.log(response.body.places);

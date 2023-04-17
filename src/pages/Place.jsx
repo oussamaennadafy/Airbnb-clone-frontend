@@ -85,13 +85,14 @@ function Place() {
             </figcaption>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-2 lg:h-[21rem] rounded-md overflow-hidden relative">
               {place.images.slice(0, 5).map((image) => (
-                <div
+                <a
                   key={image}
+                  onClick={toggleGallery}
                   className="lg:first-of-type:col-span-2 lg:first-of-type:row-span-2 h-96 lg:h-full cursor-pointer relative"
                 >
                   <div className="absolute top-0 left-0 w-full h-full bg-black hover:opacity-10 opacity-0 transition" />
                   <img className="object-cover h-full w-full" src={image} />
-                </div>
+                </a>
               ))}
               <button
                 onClick={toggleGallery}
