@@ -59,7 +59,7 @@ function Place() {
       {displayGallery && (
         <Gallery images={place.images} toggleGallery={toggleGallery} />
       )}
-      {Object.keys(place).length ? (
+      {Object.keys(place).length && !displayGallery ? (
         <section className={`lg:px-28 md:px-12 sm:px-6 px-4`}>
           <figure className="mt-5 mb-12">
             <figcaption className="mb-4">
