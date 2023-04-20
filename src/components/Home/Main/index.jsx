@@ -7,21 +7,19 @@ export default function Main({ selectedCategory: category }) {
   const [loader, setLoader] = useState(true);
   useEffect(() => {
     setLoader(true);
-    setTimeout(() => {
-      fetch(
-        `http://localhost:8000/api/v1/places?category=${category}`
-        // to sort use sort=Field
-      )
-        .then((response) => response.json())
-        .then((response) => {
-          // console.log(response.body.places);
-          setPlaces(response.body.places);
-        })
-        .catch((err) => console.log(err))
-        .finally(() => {
-          setLoader(false);
-        });
-    }, 1000);
+    fetch(
+      `http://localhost:8000/api/v1/places?category=${category}`
+      // to sort use sort=Field
+    )
+      .then((response) => response.json())
+      .then((response) => {
+        // console.log(response.body.places);
+        setPlaces(response.body.places);
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setLoader(false);
+      });
   }, [category]);
   if (loader) return <MainLoader />;
   return (

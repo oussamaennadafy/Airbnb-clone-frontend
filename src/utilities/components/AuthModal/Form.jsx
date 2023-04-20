@@ -12,7 +12,7 @@ function Form() {
       .then((res) => res.json())
       .then((data) => {
         setCountries(data.body.phonePrefixes);
-        setCountry(countries[0]?.name);
+        setCountry(data.body.phonePrefixes[0]?.name);
       });
   }, []);
   return (
