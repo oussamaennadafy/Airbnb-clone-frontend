@@ -8,7 +8,7 @@ function place() {
           <div className="h-8 w-5/12 bg-gray-200"></div>
           <div className="h-5 mt-3 w-3/12 bg-gray-200"></div>
         </figcaption>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-2 lg:h-[21rem] rounded-md overflow-hidden">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-2 lg:h-[44vh] rounded-md overflow-hidden">
           <div className="bg-gray-200 col-span-2 row-span-2"></div>
           <div className="bg-gray-200"></div>
           <div className="bg-gray-200"></div>

@@ -38,7 +38,7 @@ function Place() {
   // }, [displayGallery]);
   //
   useEffect(() => {
-    fetch(`http://localhost:8000/api/v1/places/${id}`)
+    fetch(`http://192.168.1.111:8000/api/v1/places/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setPlace(data.body.place);
@@ -83,7 +83,7 @@ function Place() {
                 </div>
               </div>
             </figcaption>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-2 lg:h-[21rem] rounded-md overflow-hidden relative">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2 gap-2 lg:h-[44vh] rounded-md overflow-hidden relative">
               {place.images.slice(0, 5).map((image) => (
                 <a
                   key={image}

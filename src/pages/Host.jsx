@@ -39,16 +39,17 @@ function Host() {
   }, [displayAuthModal]);
   ////
   useEffect(() => {
-    fetch("http://localhost:8000/api/v1/categories")
+    fetch("http://192.168.1.111:8000/api/v1/categories")
       .then((res) => res.json())
       .then((data) => {
         setCategories(data.body.categories);
-        setCategory(categories[0]);
+        setCategory(data.body?.categories?.[0]?.label);
       });
   }, []);
   ////
   const handleSubmit = (e) => {
     e.preventDefault();
+
     // check if all fields are filled
     if (!title || !price || !images || !location || !description) {
       setError("Please fill all fields");
@@ -71,7 +72,7 @@ function Host() {
     const formData = new FormData();
     formData.append("title", title);
     formData.append("price", price);
-    formData.append("host", "64348bd004588f8086779e56");
+    formData.append("host", "oussama");
     formData.append("location", location);
     formData.append("description", description);
     formData.append("category", category);
@@ -86,13 +87,13 @@ function Host() {
     }
     setTimeout(() => {
       axios
-        .post("http://localhost:8000/api/v1/places", formData, {
+        .post("http://192.168.1.111:8000/api/v1/places", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         })
         .then((res) => {
-          console.log(res.data.body.createdPlace);
+          // console.log(res.data.body.createdPlace);
           // reset form
           setTitle("");
           setPrice("");
@@ -112,7 +113,7 @@ function Host() {
         })
         .catch((err) => {
           setLoader(false);
-          setError("something went wrong");
+          setError(err.message);
         });
     }, 2000);
   };

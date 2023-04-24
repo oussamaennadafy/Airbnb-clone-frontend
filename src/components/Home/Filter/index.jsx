@@ -52,7 +52,7 @@ function Filter({ selectedCategory, setSetselectedCategory }) {
   }, []);
   // get categories
   useEffect(() => {
-    fetch("http://localhost:8000/api/v1/categories")
+    fetch("http://192.168.1.111:8000/api/v1/categories")
       .then((res) => res.json())
       .then((data) => setCategories(data.body.categories))
       .catch(() => console.log("error accure"))

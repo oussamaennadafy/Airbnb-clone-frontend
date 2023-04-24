@@ -8,7 +8,7 @@ export default function Main({ selectedCategory: category }) {
   useEffect(() => {
     setLoader(true);
     fetch(
-      `http://localhost:8000/api/v1/places?category=${category}`
+      `http://192.168.1.111:8000/api/v1/places?category=${category}`
       // to sort use sort=Field
     )
       .then((response) => response.json())

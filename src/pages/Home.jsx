@@ -12,7 +12,7 @@ import { useState, useRef, useEffect } from "react";
 function Home() {
   const [displayMenu, setDisplayMenu] = useState(false);
   const [displayAuthModal, setDisplayAuthModal] = useState(false);
-  const [selectedCategory, setSetselectedCategory] = useState("standard");
+  const [selectedCategory, setSetselectedCategory] = useState("Amazing views");
   const toggleMenu = () => {
     setDisplayMenu((previousMenuState) => !previousMenuState);
   };

@@ -90,11 +90,11 @@ const Item = (props) => {
             <>
               <div
                 onClick={handleClickArrows}
-                className="absolute bg-green-600 w-8 h-8 opacity-100 top-1/2 -translate-y-1/2 left-4 rounded-full"
+                className="absolute w-8 h-8 opacity-0 top-1/2 -translate-y-1/2 left-4 rounded-full"
               />
               <div
                 onClick={handleClickArrows}
-                className="absolute bg-green-600 w-8 h-8 opacity-100 top-1/2 -translate-y-1/2 right-4 rounded-full"
+                className="absolute w-8 h-8 opacity-0 top-1/2 -translate-y-1/2 right-4 rounded-full"
               />
             </>
           )}
