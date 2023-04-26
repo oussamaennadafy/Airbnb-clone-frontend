@@ -39,12 +39,13 @@ function Host() {
   }, [displayAuthModal]);
   ////
   useEffect(() => {
-    fetch("http://192.168.1.111:8000/api/v1/categories")
+    fetch("http://192.168.8.160:8000/api/v1/categories")
       .then((res) => res.json())
       .then((data) => {
         setCategories(data.body.categories);
         setCategory(data.body?.categories?.[0]?.label);
-      });
+      })
+      .catch((err) => console.log(err));
   }, []);
   ////
   const handleSubmit = (e) => {
@@ -87,7 +88,7 @@ function Host() {
     }
     setTimeout(() => {
       axios
-        .post("http://192.168.1.111:8000/api/v1/places", formData, {
+        .post("http://192.168.8.160:8000/api/v1/places", formData, {
           headers: {
             "Content-Type": "multipart/form-data",
           },

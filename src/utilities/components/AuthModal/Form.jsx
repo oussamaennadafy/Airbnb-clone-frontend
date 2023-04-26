@@ -8,12 +8,13 @@ function Form() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState();
   useEffect(() => {
-    fetch("http://192.168.1.111:8000/api/v1/countries/phonePrefixs")
+    fetch("http://192.168.8.160:8000/api/v1/countries/phonePrefixs")
       .then((res) => res.json())
       .then((data) => {
         setCountries(data.body.phonePrefixes);
         setCountry(data.body.phonePrefixes[0]?.name);
-      });
+      })
+      .catch((err) => console.log(err));
   }, []);
   return (
     <div className="p-4">

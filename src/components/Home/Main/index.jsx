@@ -21,7 +21,7 @@ export default function Main({ selectedCategory: category }) {
     setLoader(true);
     console.log(page, limit);
     fetch(
-      `http://192.168.1.111:8000/api/v1/places?page=${page}&limit=${limit}`
+      `http://192.168.8.160:8000/api/v1/places?page=${page}&limit=${limit}`
       // to sort use sort=Field
     )
       .then((response) => response.json())

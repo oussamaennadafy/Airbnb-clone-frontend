@@ -38,7 +38,7 @@ function Place() {
   // }, [displayGallery]);
   //
   useEffect(() => {
-    fetch(`http://192.168.1.111:8000/api/v1/places/${id}`)
+    fetch(`http://192.168.8.160:8000/api/v1/places/${id}`)
       .then((response) => response.json())
       .then((data) => {
         setPlace(data.body.place);
