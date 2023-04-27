@@ -3,12 +3,15 @@ import React, { useEffect, useState } from "react";
 //assets
 import { downArrow } from "./../../../assets/icons";
 import MainButton from "./../MainButton";
+import context from "./../../../context";
 
 function Form() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState();
   useEffect(() => {
-    fetch("http://192.168.8.160:8000/api/v1/countries/phonePrefixs")
+    fetch(
+      `http://${context.SERVER_IP}:${context.SERVER_PORT}/api/v1/countries/phonePrefixs`
+    )
       .then((res) => res.json())
       .then((data) => {
         setCountries(data.body.phonePrefixes);

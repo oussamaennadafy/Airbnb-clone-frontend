@@ -11,6 +11,7 @@ import {
   RightArrowIcon,
 } from "../../../assets/configurable-icons";
 import CategoryLoader from "../../../utilities/LoadingTmplates/CategoryLoader";
+import context from "./../../../context";
 
 /* static Categories */
 // import Categories from "../../../static/Categories";
@@ -52,7 +53,9 @@ function Filter({ selectedCategory, setSetselectedCategory }) {
   }, []);
   // get categories
   useEffect(() => {
-    fetch("http://192.168.8.160:8000/api/v1/categories")
+    fetch(
+      `http://${context.SERVER_IP}:${context.SERVER_PORT}/api/v1/categories`
+    )
       .then((res) => res.json())
       .then((data) => setCategories(data.body.categories))
       .catch(() => console.log("error accure"))

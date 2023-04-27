@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import Item from "./Item";
 import MainLoader from "./../../../utilities/LoadingTmplates/MainLoader";
+import context from "./../../../context";
 
 export default function Main({ selectedCategory: category }) {
   const [places, setPlaces] = useState([]);
@@ -20,8 +21,9 @@ export default function Main({ selectedCategory: category }) {
   useEffect(() => {
     setLoader(true);
     console.log(page, limit);
+    console.log(context);
     fetch(
-      `http://192.168.8.160:8000/api/v1/places?page=${page}&limit=${limit}`
+      `http://${context.SERVER_IP}:${context.SERVER_PORT}/api/v1/places?page=${page}&limit=${limit}`
       // to sort use sort=Field
     )
       .then((response) => response.json())

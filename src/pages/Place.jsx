@@ -14,6 +14,7 @@ import {
 } from "../assets/icons";
 import { HeartIcon } from "../assets/configurable-icons";
 import AuthModal from "../utilities/components/AuthModal";
+import context from "./../context";
 
 function Place() {
   const { id } = useParams();
@@ -38,9 +39,12 @@ function Place() {
   // }, [displayGallery]);
   //
   useEffect(() => {
-    fetch(`http://192.168.8.160:8000/api/v1/places/${id}`)
+    fetch(
+      `http://${context.SERVER_IP}:${context.SERVER_PORT}/api/v1/places/${id}`
+    )
       .then((response) => response.json())
       .then((data) => {
+        document.title = data.body.place.title;
         setPlace(data.body.place);
       })
       .catch(() => setError("something went wrong"));

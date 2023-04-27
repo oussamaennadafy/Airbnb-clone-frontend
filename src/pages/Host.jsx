@@ -4,6 +4,7 @@ import Footer from "../components/Home/Footer";
 import AuthModal from "../utilities/components/AuthModal";
 import Loader from "../utilities/components/Loader";
 import axios from "axios";
+import context from "./../context";
 import MainButton from "../utilities/components/MainButton";
 
 function Host() {
@@ -39,7 +40,9 @@ function Host() {
   }, [displayAuthModal]);
   ////
   useEffect(() => {
-    fetch("http://192.168.8.160:8000/api/v1/categories")
+    fetch(
+      `http://${context.SERVER_IP}:${context.SERVER_PORT}/api/v1/categories`
+    )
       .then((res) => res.json())
       .then((data) => {
         setCategories(data.body.categories);
@@ -88,11 +91,15 @@ function Host() {
     }
     setTimeout(() => {
       axios
-        .post("http://192.168.8.160:8000/api/v1/places", formData, {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        })
+        .post(
+          `http://${context.SERVER_IP}:${context.SERVER_PORT}/api/v1/places`,
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        )
         .then((res) => {
           // console.log(res.data.body.createdPlace);
           // reset form
