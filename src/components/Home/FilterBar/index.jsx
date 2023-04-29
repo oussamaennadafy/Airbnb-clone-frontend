@@ -11,12 +11,16 @@ import {
   RightArrowIcon,
 } from "../../../assets/configurable-icons";
 import CategoryLoader from "../../../utilities/LoadingTmplates/CategoryLoader";
-import context from "./../../../context";
+import context from "../../../context";
 
 /* static Categories */
 // import Categories from "../../../static/Categories";
 
-function Filter({ selectedCategory, setSetselectedCategory }) {
+function Filter({
+  selectedCategory,
+  setSetselectedCategory,
+  setDisplayFilterModal,
+}) {
   const [scroll, setScroll] = useState(false);
   const [Categories, setCategories] = useState([]);
   const [loader, setLoader] = useState(true);
@@ -113,7 +117,10 @@ function Filter({ selectedCategory, setSetselectedCategory }) {
           </div>
         </button>
       </div>
-      <button className="flex items-center gap-2 min-w-max px-4 py-3 border border-gray-300 rounded-xl">
+      <button
+        onClick={() => setDisplayFilterModal((prevState) => !prevState)}
+        className="flex items-center gap-2 min-w-max px-4 py-3 border border-gray-300 rounded-xl"
+      >
         <img src={filterIcon} alt="filter icon" className="h-3" />
         <span>Filter</span>
       </button>
