@@ -1,6 +1,7 @@
 import React from "react";
 import ModalWrapper from "../../wrappers/ModalWrapper";
-import Header from "./Header";
+import HeaderModalWrapper from "../../wrappers/HeaderModalWrapper";
+
 import Form from "./Form";
 import OtherAuthOptions from "./OtherAuthOptions";
 
@@ -11,7 +12,9 @@ function AuthModal({ setDisplayAuthModal, displayAuthModal }) {
       setDisplayModal={setDisplayAuthModal}
       displayModal={displayAuthModal}
     >
-      <Header setDisplayAuthModal={setDisplayAuthModal} />
+      <HeaderModalWrapper setDisplayModal={setDisplayAuthModal}>
+        Log in or sign up
+      </HeaderModalWrapper>
       <div className="overflow-auto h-[80vh]">
         <Form />
         <OtherAuthOptions />

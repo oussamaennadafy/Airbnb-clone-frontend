@@ -1,5 +1,8 @@
 import React from "react";
 import ModalWrapper from "../../../utilities/wrappers/ModalWrapper";
+import HeaderModalWrapper from "../../../utilities/wrappers/HeaderModalWrapper";
+import Main from "./Main";
+import Footer from "./Footer";
 
 function index({ setDisplayFilterModal, displayFilterModal }) {
   if (!displayFilterModal) return null;
@@ -7,8 +10,13 @@ function index({ setDisplayFilterModal, displayFilterModal }) {
     <ModalWrapper
       setDisplayModal={setDisplayFilterModal}
       displayModal={displayFilterModal}
+      className="flex flex-col"
     >
-      something special in this modal
+      <HeaderModalWrapper setDisplayModal={setDisplayFilterModal}>
+        Filter
+      </HeaderModalWrapper>
+      <Main />
+      <Footer />
     </ModalWrapper>
   );
 }

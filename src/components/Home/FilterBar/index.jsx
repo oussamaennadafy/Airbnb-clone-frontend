@@ -5,10 +5,11 @@ import { useEffect, useState, useRef } from "react";
 /* custom hook */
 import useSlider from "../../../hooks/useSlider";
 /* assets */
-import { filterIcon, closeIcon } from "../../../assets/icons";
+import { filterIcon } from "../../../assets/icons";
 import {
   LeftArrowIcon,
   RightArrowIcon,
+  CloseIcon,
 } from "../../../assets/configurable-icons";
 import CategoryLoader from "../../../utilities/LoadingTmplates/CategoryLoader";
 import context from "../../../context";
@@ -129,11 +130,7 @@ function Filter({
           onClick={() => setdisplayFilter(false)}
           className={`p-3 rounded-full min-w-max bg-gray-50 hover:bg-gray-100`}
         >
-          <img
-            className="min-w-5 md:min-w-9"
-            src={closeIcon}
-            alt="close icon"
-          />
+          <CloseIcon className="min-w-5 md:min-w-9" />
         </button>
       )}
     </section>

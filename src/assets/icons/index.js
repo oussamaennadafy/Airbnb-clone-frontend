@@ -1,4 +1,3 @@
-import closeIcon from "./close-icon.svg";
 import earthIcon from "./earth-icon.svg";
 import filterIcon from "./filter-icon.svg";
 import menuIcon from "./menu-icon.svg";
@@ -20,9 +19,7 @@ import googleIcon from "./google-icon.svg";
 import AppleIcon from "./apple-Icon.svg";
 import mailIcon from "./mail-icon.svg";
 
-export
-{
-  closeIcon,
+export {
   earthIcon,
   filterIcon,
   menuIcon,
