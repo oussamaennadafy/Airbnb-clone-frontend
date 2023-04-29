@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { starIcon } from "../../../assets/icons";
+import { starIcon } from "./../../../../assets/icons";
 import {
   HeartIcon,
   LeftArrowIcon,
   RightArrowIcon,
-} from "./../../../assets/configurable-icons";
-import useSlider from "../../../hooks/useSlider";
-import useformatPrice from "./../../../helpers/useformatPrice";
+} from "./../../../../assets/configurable-icons";
+import useSlider from "./../../../../hooks/useSlider";
+import useformatPrice from "./../../../../helpers/useformatPrice";
 import { Link } from "react-router-dom";
 
 const Item = (props) => {

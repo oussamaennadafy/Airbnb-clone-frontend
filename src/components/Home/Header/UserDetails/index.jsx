@@ -1,5 +1,5 @@
 import { useState, forwardRef } from "react";
-import { earthIcon, menuIcon, userIcon } from "../../../assets/icons";
+import { earthIcon, menuIcon, userIcon } from "./../../../../assets/icons";
 import { Link } from "react-router-dom";
 
 const UserDetails = ({ displayMenu, toggleMenu, setDisplayAuthModal }) => {
