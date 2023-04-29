@@ -10,7 +10,7 @@ function index({ setDisplayFilterModal, displayFilterModal }) {
     <ModalWrapper
       setDisplayModal={setDisplayFilterModal}
       displayModal={displayFilterModal}
-      className="flex flex-col"
+      className="sm:w-[70%] flex flex-col"
     >
       <HeaderModalWrapper setDisplayModal={setDisplayFilterModal}>
         Filter

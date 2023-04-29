@@ -11,6 +11,7 @@ function AuthModal({ setDisplayAuthModal, displayAuthModal }) {
     <ModalWrapper
       setDisplayModal={setDisplayAuthModal}
       displayModal={displayAuthModal}
+      className="sm:w-[560px]"
     >
       <HeaderModalWrapper setDisplayModal={setDisplayAuthModal}>
         Log in or sign up

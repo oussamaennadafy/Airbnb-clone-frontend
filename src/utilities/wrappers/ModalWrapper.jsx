@@ -3,8 +3,10 @@ import React, { useEffect } from "react";
 function ModalWrapper({ setDisplayModal, displayModal, className, children }) {
   //
   useEffect(() => {
-    if (displayModal) document.body.classList.add("overflow-y-hidden");
-    else document.body.classList.remove("overflow-y-hidden");
+    document.body.classList.add("overflow-y-hidden");
+    return () => {
+      document.body.classList.remove("overflow-y-hidden");
+    };
   }, [displayModal]);
 
   if (!displayModal) return null;
@@ -16,7 +18,7 @@ function ModalWrapper({ setDisplayModal, displayModal, className, children }) {
         className="fixed top-0 w-screen h-screen bg-black opacity-50 z-30"
       />
       <section
-        className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 moveUpAbsoluteElement z-30 bg-white w-full h-full sm:h-[90%] 2xl:h-[80%] sm:w-[560px] overflow-hidden rounded-xl shadow-lg border border-gray-200 ${
+        className={`fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 moveUpAbsoluteElement z-30 bg-white w-full h-full sm:h-[80%] 2xl:h-[80%] overflow-hidden rounded-xl shadow-lg border border-gray-200 ${
           className || ""
         }`}
       >
