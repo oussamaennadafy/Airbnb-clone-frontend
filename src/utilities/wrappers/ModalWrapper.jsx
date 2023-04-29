@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 function ModalWrapper({ setDisplayModal, displayModal, className, children }) {
+  //
+  useEffect(() => {
+    if (displayModal) document.body.classList.add("overflow-y-hidden");
+    else document.body.classList.remove("overflow-y-hidden");
+  }, [displayModal]);
+
   if (!displayModal) return null;
 
   return (

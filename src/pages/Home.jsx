@@ -18,11 +18,6 @@ function Home() {
   const toggleMenu = () => {
     setDisplayMenu((previousMenuState) => !previousMenuState);
   };
-  useEffect(() => {
-    if (displayAuthModal || displayFilterModal)
-      document.body.classList.add("overflow-y-hidden");
-    else document.body.classList.remove("overflow-y-hidden");
-  }, [displayAuthModal, displayFilterModal]);
   return (
     <div className="max-w-screen font-medium">
       <AuthModal
