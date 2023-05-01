@@ -6,7 +6,11 @@ const main = forwardRef(({ limit }, ref) => {
   return (
     <>
       {statisData.map((_, index) => (
-        <figure ref={index === 0 ? ref : null} key={index}>
+        <figure
+          className="animate-pulse"
+          ref={index === 0 ? ref : null}
+          key={index}
+        >
           <div className="min-w-full">
             <div className="h-[300px] rounded-lg bg-gray-200"></div>
           </div>
