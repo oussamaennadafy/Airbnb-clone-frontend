@@ -11,13 +11,9 @@ import Footer from "../components/Home/Footer";
 import { useState, useRef, useEffect } from "react";
 
 function Home() {
-  const [displayMenu, setDisplayMenu] = useState(false);
   const [displayAuthModal, setDisplayAuthModal] = useState(false);
   const [displayFilterModal, setDisplayFilterModal] = useState(false);
   const [selectedCategory, setSetselectedCategory] = useState("Amazing views");
-  const toggleMenu = () => {
-    setDisplayMenu((previousMenuState) => !previousMenuState);
-  };
   return (
     <div className="max-w-screen font-medium">
       <AuthModal
@@ -29,11 +25,7 @@ function Home() {
         setDisplayFilterModal={setDisplayFilterModal}
       />
       <AboveHeader />
-      <Header
-        setDisplayAuthModal={setDisplayAuthModal}
-        displayMenu={displayMenu}
-        toggleMenu={toggleMenu}
-      />
+      <Header setDisplayAuthModal={setDisplayAuthModal} />
       <FilterBar
         selectedCategory={selectedCategory}
         setSetselectedCategory={setSetselectedCategory}

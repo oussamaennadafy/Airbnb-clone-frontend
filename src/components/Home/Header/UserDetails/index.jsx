@@ -2,7 +2,11 @@ import { useState, forwardRef } from "react";
 import { earthIcon, menuIcon, userIcon } from "./../../../../assets/icons";
 import { Link } from "react-router-dom";
 
-const UserDetails = ({ displayMenu, toggleMenu, setDisplayAuthModal }) => {
+const UserDetails = ({ setDisplayAuthModal }) => {
+  const [displayMenu, setDisplayMenu] = useState(false);
+  const toggleMenu = () => {
+    setDisplayMenu((previousMenuState) => !previousMenuState);
+  };
   const showAuthModal = () => {
     toggleMenu();
     setDisplayAuthModal((prevModalState) => !prevModalState);
