@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import LeftHandler from "./LeftHandler";
+import Line from "./Line";
+import RightHandler from "./RightHandler";
 
 function Slider() {
-  return <div className="absolute bottom-0 left-0">Slider</div>;
+  return (
+    <>
+      <LeftHandler />
+      <Line />
+      <RightHandler />
+    </>
+  );
 }
 
 export default Slider;
