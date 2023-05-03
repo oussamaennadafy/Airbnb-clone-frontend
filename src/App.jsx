@@ -4,17 +4,20 @@ import Home from "./pages/Home";
 import Eror404 from "./pages/Error404";
 import Host from "./pages/Host";
 import Place from "./pages/Place";
+import AuthContext from "./context/auth-context";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path="*" element={<Eror404 />} />
-        <Route path="/host" element={<Host />} />
-        <Route path="/places/:id" element={<Place />} />
-      </Routes>
-    </BrowserRouter>
+    <AuthContext.Provider>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="*" element={<Eror404 />} />
+          <Route path="/host" element={<Host />} />
+          <Route path="/places/:id" element={<Place />} />
+        </Routes>
+      </BrowserRouter>
+    </AuthContext.Provider>
   );
 }
 

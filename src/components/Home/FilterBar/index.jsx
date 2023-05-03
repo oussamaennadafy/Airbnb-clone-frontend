@@ -14,9 +14,6 @@ import {
 import CategoryLoader from "../../../utilities/LoadingTmplates/CategoryLoader";
 import context from "../../../context";
 
-/* static Categories */
-// import Categories from "../../../static/Categories";
-
 function Filter({
   selectedCategory,
   setSetselectedCategory,
@@ -56,6 +53,7 @@ function Filter({
       document.querySelector("#aboveHeader")
     );
   }, []);
+
   // get categories
   useEffect(() => {
     fetch(
