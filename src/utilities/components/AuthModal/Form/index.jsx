@@ -3,11 +3,14 @@ import React, { useEffect, useState } from "react";
 //assets
 import { downArrow } from "./../../../../assets/icons";
 import MainButton from "./../../MainButton";
-import context from "./../../../../context";
+import context from "../../../../context/serverData-context";
 
 function Form() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState();
+
+  //
+
   useEffect(() => {
     fetch(
       `http://${context.SERVER_IP}:${context.SERVER_PORT}/api/v1/countries/phonePrefixs`
@@ -19,10 +22,16 @@ function Form() {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  //
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="p-4">
       <h3 className="py-4 text-2xl">Welcome to Airbnb</h3>
-      <form className="flex flex-col gap-2 font-normal">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-2 font-normal">
         <div className="flex flex-col py-2">
           <label
             className="border h-14 relative border-b-transparent border-gray-400 px-2 py-1 rounded-t-md"
