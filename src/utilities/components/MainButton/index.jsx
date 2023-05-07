@@ -1,4 +1,4 @@
-import Loader from "./Loader";
+import Loader from "./../Loader";
 
 function MainButton({ label, loading, onClick }) {
   return (

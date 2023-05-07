@@ -5,18 +5,20 @@ import { useEffect, useState, useRef } from "react";
 /* custom hook */
 import useSlider from "../../../hooks/useSlider";
 /* assets */
-import { filterIcon, closeIcon } from "../../../assets/icons";
+import { filterIcon } from "../../../assets/icons";
 import {
   LeftArrowIcon,
   RightArrowIcon,
+  CloseIcon,
 } from "../../../assets/configurable-icons";
 import CategoryLoader from "../../../utilities/LoadingTmplates/CategoryLoader";
-import context from "./../../../context";
+import context from "../../../context";
 
-/* static Categories */
-// import Categories from "../../../static/Categories";
-
-function Filter({ selectedCategory, setSetselectedCategory }) {
+function Filter({
+  selectedCategory,
+  setSetselectedCategory,
+  setDisplayFilterModal,
+}) {
   const [scroll, setScroll] = useState(false);
   const [Categories, setCategories] = useState([]);
   const [loader, setLoader] = useState(true);
@@ -51,6 +53,7 @@ function Filter({ selectedCategory, setSetselectedCategory }) {
       document.querySelector("#aboveHeader")
     );
   }, []);
+
   // get categories
   useEffect(() => {
     fetch(
@@ -113,7 +116,10 @@ function Filter({ selectedCategory, setSetselectedCategory }) {
           </div>
         </button>
       </div>
-      <button className="flex items-center gap-2 min-w-max px-4 py-3 border border-gray-300 rounded-xl">
+      <button
+        onClick={() => setDisplayFilterModal((prevState) => !prevState)}
+        className="flex items-center gap-2 min-w-max px-4 py-3 border border-gray-300 rounded-xl"
+      >
         <img src={filterIcon} alt="filter icon" className="h-3" />
         <span>Filter</span>
       </button>
@@ -122,11 +128,7 @@ function Filter({ selectedCategory, setSetselectedCategory }) {
           onClick={() => setdisplayFilter(false)}
           className={`p-3 rounded-full min-w-max bg-gray-50 hover:bg-gray-100`}
         >
-          <img
-            className="min-w-5 md:min-w-9"
-            src={closeIcon}
-            alt="close icon"
-          />
+          <CloseIcon className="min-w-5 md:min-w-9" />
         </button>
       )}
     </section>

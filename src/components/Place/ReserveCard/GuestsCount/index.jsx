@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { minusIcon, plusIcon } from "../../../assets/icons";
+import { minusIcon, plusIcon } from "./../../../../assets/icons";
 
 function GuestsCount({ label, age, value, setValue, minValue, maxValue }) {
   const increment = () => {

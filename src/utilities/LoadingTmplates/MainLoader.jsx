@@ -1,16 +1,16 @@
 import { React, forwardRef } from "react";
 import { starIcon } from "./../../assets/icons";
 
-const main = forwardRef((props, ref) => {
-  const statisData = Array(12).fill(null);
+const main = forwardRef(({ limit }, ref) => {
+  const statisData = Array(limit).fill(null);
   return (
-    // <main
-    //   id="Main"
-    //   className="min-h-screen animate-pulse max-w-screen py-8 px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 gap-x-5 gap-y-10 mt-1 font-normal"
-    // >
     <>
       {statisData.map((_, index) => (
-        <figure ref={index === 0 ? ref : null} key={index}>
+        <figure
+          className="animate-pulse"
+          ref={index === 0 ? ref : null}
+          key={index}
+        >
           <div className="min-w-full">
             <div className="h-[300px] rounded-lg bg-gray-200"></div>
           </div>
@@ -26,7 +26,6 @@ const main = forwardRef((props, ref) => {
         </figure>
       ))}
     </>
-    /* </main> */
   );
 });
 

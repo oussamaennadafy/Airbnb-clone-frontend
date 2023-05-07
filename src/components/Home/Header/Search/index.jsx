@@ -1,4 +1,4 @@
-import { searchIcon } from "../../../assets/icons";
+import { searchIcon } from "./../../../../assets/icons";
 
 function Search() {
   return (
