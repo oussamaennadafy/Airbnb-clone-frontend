@@ -6,25 +6,23 @@ import context from "./../../../context";
 export default function Main({ selectedCategory: category }) {
   const [places, setPlaces] = useState([]);
   const [loader, setLoader] = useState(true);
-  const [page, setPage] = useState(1);
-  const mainRef = useRef(null);
+  const firstLoaderPlaceRef = useRef(null);
+  const [page, setPage] = useState(0);
   let limit = null;
-  const getColumns = () => {
-    if (mainRef.current) {
-      const columns = Math.floor(
-        mainRef.current.clientWidth / mainRef.current.firstChild.clientWidth
-      );
-      const ROWS = 5;
-      limit = columns * ROWS;
-    }
-  };
   useEffect(() => {
+    const columns = Math.floor(
+      document.getElementById("Main")?.clientWidth /
+        document.getElementById("Main")?.firstChild.clientWidth
+    );
+    const ROWS = 5;
+    limit = columns * ROWS;
+    // window.addEventListener("resize", getLimit);
+  }, []);
+  const fetchPlaces = () => {
     setLoader(true);
-    console.log(page, limit);
-    console.log(context);
+    console.log(`fetch ${page} page`);
     fetch(
       `http://${context.SERVER_IP}:${context.SERVER_PORT}/api/v1/places?page=${page}&limit=${limit}`
-      // to sort use sort=Field
     )
       .then((response) => response.json())
       .then((response) => {
@@ -35,19 +33,39 @@ export default function Main({ selectedCategory: category }) {
       .finally(() => {
         setLoader(false);
       });
-  }, [category]);
-  useEffect(getColumns);
-  window.addEventListener("resize", getColumns);
-  if (loader) return <MainLoader />;
+  };
+  useEffect(() => {
+    fetchPlaces();
+  }, [category, page]);
+
+  // event of intersecting with loader
+  useEffect(() => {
+    const loaderObserver = new IntersectionObserver(
+      (entries) => {
+        // If intersectionRatio is 0, the target is out of view
+        // and we do not need to do anything.
+        if (entries[0].intersectionRatio <= 0) return;
+        setPage((prevPage) => prevPage + 1);
+        fetchPlaces();
+      },
+      {
+        root: null,
+      }
+    );
+    loaderObserver.observe(firstLoaderPlaceRef.current);
+  }, []);
+
   return (
-    <main
-      id="Main"
-      ref={mainRef}
-      className="min-h-screen max-w-screen py-8 px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 gap-x-5 gap-y-10 mt-1"
-    >
-      {places.map((place) => (
-        <Item place={place} key={place.title} />
-      ))}
-    </main>
+    <>
+      <main
+        id="Main"
+        className="min-h-screen max-w-screen py-8 px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 3xl:grid-cols-6 gap-x-5 gap-y-10 mt-1"
+      >
+        {places.map((place) => (
+          <Item place={place} key={place.title} />
+        ))}
+        <MainLoader ref={firstLoaderPlaceRef} />
+      </main>
+    </>
   );
 }
