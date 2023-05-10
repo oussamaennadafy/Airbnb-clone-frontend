@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 //assets
 import { downArrow } from "./../../../../assets/icons";
 import MainButton from "./../../MainButton";
-import context from "../../../../context/serverData-context";
+import context from "../../../../context";
 
 function Form() {
   const [countries, setCountries] = useState([]);
