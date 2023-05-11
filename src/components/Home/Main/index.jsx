@@ -15,7 +15,7 @@ export default function Main({ selectedCategory: category }) {
     const columns = Math.floor(
       mainRef?.current?.clientWidth / mainRef?.current?.firstChild?.clientWidth
     );
-    const ROWS = 5;
+    const ROWS = 2;
     const limit = columns * ROWS;
     return limit;
   }, []);
@@ -39,6 +39,9 @@ export default function Main({ selectedCategory: category }) {
       );
       LoaderObserver.observe(firstLoadingFigureRef.current);
     }
+    return () => {
+      loaderObserver.disconnect();
+    };
   }, []);
 
   useEffect(() => {

@@ -138,7 +138,7 @@ function Host() {
         toggleMenu={toggleMenu}
       />
       <section className="min-h-[calc(100vh-132px)] flex items-center justify-center bg-gray-50">
-        <div className="w-11/12 sm:w-10/12 md:w-6/12 mx-auto my-8 bg-white p-8 rounded-lg shadow-lg">
+        <div className="w-11/12 sm:w-10/12 md:w-9/12 lg:w-8/12 xl:w-6/12 mx-auto my-8 bg-white p-8 rounded-lg shadow-lg">
           <h2 className="text-2xl font-bold mb-4">host your home on Airbnb</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
@@ -249,8 +249,8 @@ function Host() {
               >
                 Availability
               </label>
-              <div className="flex justify-between gap-8">
-                <div className="w-1/2">
+              <div className="grid lg:grid-cols-2 gap-4 lg:gap-8">
+                <div className="">
                   <label htmlFor="from">From</label>
                   <input
                     type="date"
@@ -261,7 +261,7 @@ function Host() {
                     className="shadow appearance-none mt-2 border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                   />
                 </div>
-                <div className="w-1/2">
+                <div className="">
                   <label htmlFor="to">To</label>
                   <input
                     type="date"
@@ -281,7 +281,7 @@ function Host() {
               >
                 Restrictions
               </label>
-              <div className="grid grid-cols-2 gap-x-10 gap-y-5">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-10 gap-y-5">
                 <div>
                   <label htmlFor="maxAdults">
                     maximium number of adults (13+)
