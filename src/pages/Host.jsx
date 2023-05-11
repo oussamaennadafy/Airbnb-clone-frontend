@@ -23,7 +23,7 @@ function Host() {
   const [error, setError] = useState("");
   const fileinputRef = useRef(null);
   const [categories, setCategories] = useState([]);
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("Amazing views");
   /// header code
   const [displayMenu, setDisplayMenu] = useState(false);
   const [displayAuthModal, setDisplayAuthModal] = useState(false);
@@ -122,6 +122,7 @@ function Host() {
         .catch((err) => {
           setLoader(false);
           setError(err.message);
+          console.log(err);
         });
     }, 2000);
   };
