@@ -9,7 +9,7 @@ function MinInput() {
 
   return (
     <label
-      className="border border-gray-400 outline outline-2 outline-transparent focus-within:outline-black rounded-lg px-3 pb-[6px] pt-[2px] w-full price-label"
+      className="cursor-text border border-gray-400 outline outline-2 outline-transparent focus-within:outline-black rounded-lg px-3 pb-[6px] pt-[2px] w-full price-label"
       htmlFor="min"
       onClick={() => inputRef.current.focus()}
     >

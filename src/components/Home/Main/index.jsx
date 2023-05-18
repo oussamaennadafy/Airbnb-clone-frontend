@@ -21,23 +21,23 @@ export default function Main({ selectedCategory: category }) {
   }, []);
 
   useEffect(() => {
+    const loaderObserverCallback = ([firstEntry], observer) => {
+      if (
+        firstEntry.intersectionRatio > 0 &&
+        firstEntry.intersectionRatio < 1
+      ) {
+        setPage((prevPage) => prevPage + 1);
+      }
+    };
+    const loaderObserverOptions = {
+      root: null,
+    };
+    const loaderObserver = new IntersectionObserver(
+      loaderObserverCallback,
+      loaderObserverOptions
+    );
     if (firstLoadingFigureRef) {
-      const LoaderObserverCallback = ([firstEntry], observer) => {
-        if (
-          firstEntry.intersectionRatio > 0 &&
-          firstEntry.intersectionRatio < 1
-        ) {
-          setPage((prevPage) => prevPage + 1);
-        }
-      };
-      const LoaderObserverOptions = {
-        root: null,
-      };
-      const LoaderObserver = new IntersectionObserver(
-        LoaderObserverCallback,
-        LoaderObserverOptions
-      );
-      LoaderObserver.observe(firstLoadingFigureRef.current);
+      loaderObserver.observe(firstLoadingFigureRef.current);
     }
     return () => {
       loaderObserver.disconnect();
