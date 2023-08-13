@@ -56,9 +56,7 @@ function Filter({
 
   // get categories
   useEffect(() => {
-    fetch(
-      `http://${context.SERVER_IP}:${context.SERVER_PORT}/api/v1/categories`
-    )
+    fetch(`${context.HOST_NAME}/api/v1/categories`)
       .then((res) => res.json())
       .then((data) => setCategories(data.body.categories))
       .catch(() => console.log("error accure"))

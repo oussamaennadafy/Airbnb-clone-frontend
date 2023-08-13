@@ -12,9 +12,7 @@ function Form() {
   //
 
   useEffect(() => {
-    fetch(
-      `http://${context.SERVER_IP}:${context.SERVER_PORT}/api/v1/countries/phonePrefixs`
-    )
+    fetch(`${context.HOST_NAME}/api/v1/countries/phonePrefixs`)
       .then((res) => res.json())
       .then((data) => {
         setCountries(data.body.phonePrefixes);

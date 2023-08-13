@@ -39,9 +39,7 @@ function Place() {
   // }, [displayGallery]);
   //
   useEffect(() => {
-    fetch(
-      `http://${context.SERVER_IP}:${context.SERVER_PORT}/api/v1/places/${id}`
-    )
+    fetch(`${context.HOST_NAME}/api/v1/places/${id}`)
       .then((response) => response.json())
       .then((data) => {
         document.title = data.body.place.title;

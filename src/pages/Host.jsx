@@ -40,9 +40,7 @@ function Host() {
   }, [displayAuthModal]);
   ////
   useEffect(() => {
-    fetch(
-      `http://${context.SERVER_IP}:${context.SERVER_PORT}/api/v1/categories`
-    )
+    fetch(`${context.HOST_NAME}/api/v1/categories`)
       .then((res) => res.json())
       .then((data) => {
         setCategories(data.body.categories);
@@ -91,15 +89,11 @@ function Host() {
     }
     setTimeout(() => {
       axios
-        .post(
-          `http://${context.SERVER_IP}:${context.SERVER_PORT}/api/v1/places`,
-          formData,
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-          }
-        )
+        .post(`${context.HOST_NAME}/api/v1/places`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
         .then((res) => {
           // console.log(res.data.body.createdPlace);
           // reset form
