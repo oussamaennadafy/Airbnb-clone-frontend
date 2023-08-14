@@ -9,8 +9,6 @@ function Form() {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState();
 
-  //
-
   useEffect(() => {
     fetch(`${context.HOST_NAME}/api/v1/countries/phonePrefixs`)
       .then((res) => res.json())

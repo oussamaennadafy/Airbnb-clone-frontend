@@ -64,7 +64,6 @@ export default function Main({ selectedCategory: category }) {
 
   useEffect(() => {
     setLoader(true);
-    console.log("re fetch");
     // const limit = getLimit();
     // console.log(`fetch page ${page}, with limit of ${limit} items`);
     const abortController = new AbortController();

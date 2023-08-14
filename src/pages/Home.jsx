@@ -9,11 +9,22 @@ import FilterModal from "./../components/Home/FilterModal";
 import Footer from "../components/Home/Footer";
 
 import { useState, useRef, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 function Home() {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const category = searchParams.get("category") || "Amazing views";
+
   const [displayAuthModal, setDisplayAuthModal] = useState(false);
   const [displayFilterModal, setDisplayFilterModal] = useState(false);
-  const [selectedCategory, setSetselectedCategory] = useState("Amazing views");
+  const [selectedCategory, setSetselectedCategory] = useState(category);
+
+  useEffect(() => {
+    searchParams.set("category", selectedCategory);
+    setSearchParams(searchParams);
+  }, [selectedCategory]);
+
   return (
     <div className="max-w-screen font-medium">
       <AuthModal
