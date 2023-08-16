@@ -16,7 +16,7 @@ import gridIcon from "./grid-icon.svg";
 
 import facebookIcon from "./facebook-icon.svg";
 import googleIcon from "./google-icon.svg";
-import AppleIcon from "./apple-Icon.svg";
+import AppleIcon from "./apple-icon.svg";
 import mailIcon from "./mail-icon.svg";
 
 export {
