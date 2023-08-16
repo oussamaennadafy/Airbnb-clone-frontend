@@ -15,6 +15,10 @@ const LeftHandler = forwardRef((props, ref) => {
     // console.log("mose down");
   };
 
+  const handleDoubleclick = (e) => {
+    setAbleToMove(true);
+  };
+
   //
   useEffect(() => {
     document.addEventListener("mouseup", (e) => {
@@ -45,9 +49,11 @@ const LeftHandler = forwardRef((props, ref) => {
     <button
       ref={leftHandlerRef}
       onMouseDown={handleMouseDown}
-      // onMouseUp={handleMouseUp}
+      onDoubleClick={handleDoubleclick}
       style={{ left: x }}
-      className={`absolute flex items-center justify-center gap-[3px] py-2 px-2 bottom-0 -translate-x-1/2 translate-y-1/2 w-[30px] h-[30px] rounded-full border border-gray-400 bg-white z-10`}
+      className={`absolute flex items-center justify-center gap-[3px] py-2 px-2 bottom-0 -translate-x-1/2 translate-y-1/2 w-[30px] h-[30px] rounded-full border border-gray-400 bg-white z-10 ${
+        ableToMove ? "scale-110" : "scale-100"
+      }`}
     >
       <div className="w-[1px] h-full bg-gray-400"></div>
       <div className="w-[1px] h-full bg-gray-400"></div>
